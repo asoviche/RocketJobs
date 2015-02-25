@@ -219,71 +219,20 @@ But come back in a while !</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name , age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="30k-iL-v1W">
-                                <rect key="frame" x="10" y="406" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wmB-Ge-q09">
-                                <rect key="frame" x="10" y="76" width="208" height="211"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="U15-kv-WXa">
-                                <rect key="frame" x="10" y="295" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="NCh-ah-fVt">
-                                <rect key="frame" x="120" y="295" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DVt-eo-Zgy">
-                                <rect key="frame" x="231" y="295" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yOx-d2-Pdd">
-                                <rect key="frame" x="231" y="187" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="08E-rp-Tc4">
-                                <rect key="frame" x="231" y="76" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="sZI-c9-y31">
-                                <rect key="frame" x="104" y="172" width="20" height="20"/>
+                                <rect key="frame" x="150" y="165" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="BmW-bn-eAt">
-                                <rect key="frame" x="261" y="106" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="daa-BY-5LM">
-                                <rect key="frame" x="261" y="217" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="A2x-gn-bnp">
-                                <rect key="frame" x="261" y="325" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="NK6-Zu-Jsv">
-                                <rect key="frame" x="150" y="325" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="mdJ-L5-RAB">
-                                <rect key="frame" x="40" y="325" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Tp7-sa-7nS">
-                                <rect key="frame" x="10" y="76" width="301" height="296"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" id="4FI-2F-oL1">
-                                <rect key="frame" x="10" y="429" width="301" height="128"/>
+                                <rect key="frame" x="10" y="340" width="301" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wmB-Ge-q09">
+                                <rect key="frame" x="56" y="69" width="208" height="211"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -303,20 +252,10 @@ But come back in a while !</string>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="AboutName" destination="30k-iL-v1W" id="vPd-eh-Of6"/>
-                        <outlet property="scrollView" destination="Tp7-sa-7nS" id="cwg-0r-TYf"/>
+                        <outlet property="activityIndicatorPP" destination="sZI-c9-y31" id="k6E-ks-nyD"/>
+                        <outlet property="imageViewPP" destination="wmB-Ge-q09" id="sWY-QJ-9rD"/>
                         <outlet property="textViewDescription" destination="4FI-2F-oL1" id="9Aw-Gt-Pqn"/>
-                        <outletCollection property="images" destination="U15-kv-WXa" id="TDC-fx-b4A"/>
-                        <outletCollection property="images" destination="NCh-ah-fVt" id="xGg-xu-Xut"/>
-                        <outletCollection property="images" destination="DVt-eo-Zgy" id="BeT-rC-SsB"/>
-                        <outletCollection property="images" destination="yOx-d2-Pdd" id="hG4-Rw-g8B"/>
-                        <outletCollection property="images" destination="08E-rp-Tc4" id="Bfc-Sy-MzY"/>
                         <outletCollection property="images" destination="wmB-Ge-q09" id="cQL-bS-glb"/>
-                        <outletCollection property="activityIndicatorArray" destination="mdJ-L5-RAB" id="5BI-ty-Itg"/>
-                        <outletCollection property="activityIndicatorArray" destination="NK6-Zu-Jsv" id="7yh-n7-qXO"/>
-                        <outletCollection property="activityIndicatorArray" destination="A2x-gn-bnp" id="vAY-Iy-B8S"/>
-                        <outletCollection property="activityIndicatorArray" destination="daa-BY-5LM" id="EkR-0I-jYs"/>
-                        <outletCollection property="activityIndicatorArray" destination="BmW-bn-eAt" id="HLA-KX-run"/>
                         <outletCollection property="activityIndicatorArray" destination="sZI-c9-y31" id="syy-Nk-CzG"/>
                     </connections>
                 </viewController>
@@ -1637,7 +1576,7 @@ But come back in a while !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9eB-nS-h1g"/>
+        <segue reference="Wfe-yF-x4T"/>
         <segue reference="SjO-cN-bVf"/>
         <segue reference="s99-xL-pdZ"/>
     </inferredMetricsTieBreakers>
