@@ -110,9 +110,6 @@
                                 <state key="normal" title="conversations">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="E8O-ux-6RN" kind="push" identifier="conversationSegue" id="dw4-iw-rQL"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kA8-hd-WCL">
                                 <rect key="frame" x="65" y="259" width="191" height="82"/>
@@ -161,13 +158,7 @@ But come back in a while !</string>
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="goToConversation:" destination="H08-gE-NJg" eventType="touchUpInside" id="gJd-JV-pfM"/>
-                                </connections>
                             </button>
-                            <connections>
-                                <action selector="goToConversation:" destination="H08-gE-NJg" id="Asd-s6-ims"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -175,7 +166,6 @@ But come back in a while !</string>
                         <outlet property="ImageViewAccept" destination="l9S-1k-yq1" id="evs-lx-1rw"/>
                         <outlet property="ImageViewDeny" destination="5E3-ed-omI" id="pO9-U6-ZYr"/>
                         <outlet property="activityIndicator" destination="KyP-fd-SxI" id="YGj-kz-Nhi"/>
-                        <outlet property="barButtonConversation" destination="JFj-GR-WM1" id="diQ-de-4Wf"/>
                         <outlet property="buttonConversation" destination="wPv-ax-kuz" id="0Te-SX-Bxg"/>
                         <outlet property="buttonNext" destination="cwf-Jt-h0z" id="xeK-a8-zdu"/>
                         <outlet property="buttonReloadJobs" destination="kA8-hd-WCL" id="LqS-y2-mjP"/>
@@ -209,7 +199,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4E-QV-1cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170" y="-379"/>
+            <point key="canvasLocation" x="1096" y="948"/>
         </scene>
         <!--Title-->
         <scene sceneID="RwF-no-lv6">
@@ -261,7 +251,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3m-xt-PC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="105"/>
+            <point key="canvasLocation" x="-846" y="105"/>
         </scene>
         <!--Applicants-->
         <scene sceneID="Nq0-kR-Wuz">
@@ -305,9 +295,6 @@ But come back in a while !</string>
                                 <state key="normal" title="conversation">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="E8O-ux-6RN" kind="push" identifier="conversationSegue" id="03J-PP-pf1"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-no" id="tKS-Bh-lc6">
                                 <rect key="frame" x="-7" y="259" width="87" height="50"/>
@@ -342,9 +329,6 @@ But come back in a while !</string>
                                 <state key="normal" image="icon-messages">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="goToConversation:" destination="yxm-Ln-a9q" eventType="touchUpInside" id="ZyE-Y4-W9g"/>
-                                </connections>
                             </button>
                             <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -433,7 +417,7 @@ But come back in a while !</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWo-4H-54L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-611" y="100"/>
+            <point key="canvasLocation" x="-45" y="958"/>
         </scene>
         <!--Test Messages View Controller-->
         <scene sceneID="xwW-tb-sfZ">
@@ -455,9 +439,6 @@ But come back in a while !</string>
                                     <state key="normal" title="details profile">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <segue destination="YXd-RA-oGZ" kind="push" identifier="next" id="fZ6-MD-huv"/>
-                                    </connections>
                                 </button>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="SAO-1O-dGm">
@@ -562,7 +543,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-214" y="100"/>
+            <point key="canvasLocation" x="500" y="948"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="3GY-0d-bmX">
@@ -750,7 +731,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1994" y="-1878"/>
+            <point key="canvasLocation" x="-2418" y="-2346"/>
         </scene>
         <!--Post your job-->
         <scene sceneID="F2a-sA-i4g">
@@ -979,7 +960,7 @@ But come back in a while !</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppName2" rowHeight="60" id="kTv-oF-gjf">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchJobs" rowHeight="60" id="kTv-oF-gjf">
                                 <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kTv-oF-gjf" id="FND-ra-QcW">
@@ -1005,7 +986,7 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="news" rowHeight="60" id="EKT-CI-Lii">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyProfile" rowHeight="60" id="EKT-CI-Lii">
                                 <rect key="frame" x="0.0" y="82" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EKT-CI-Lii" id="kRj-em-pKQ">
@@ -1031,7 +1012,7 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="comments" rowHeight="60" id="yz8-mO-F2Y">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostAJob" rowHeight="60" id="yz8-mO-F2Y">
                                 <rect key="frame" x="0.0" y="142" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yz8-mO-F2Y" id="JFH-ET-0Bp">
@@ -1066,33 +1047,7 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="title" rowHeight="60" id="zuy-vB-24S">
-                                <rect key="frame" x="0.0" y="262" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zuy-vB-24S" id="ngV-QF-Ww2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-menu-messages" id="198-gV-Z3I">
-                                            <rect key="frame" x="15" y="11" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9jc-qm-as1">
-                                            <rect key="frame" x="20" y="0.0" width="300" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="          Conversations">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="E8O-ux-6RN" kind="custom" customClass="SWRevealViewControllerSegue" id="s99-xL-pdZ"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="map" rowHeight="60" id="fBl-RA-SLp">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Applicants" rowHeight="60" id="fBl-RA-SLp">
                                 <rect key="frame" x="0.0" y="322" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBl-RA-SLp" id="3d1-5X-Kad">
@@ -1118,7 +1073,7 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="calendar" rowHeight="60" id="dSZ-Aw-Ptw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" rowHeight="60" id="dSZ-Aw-Ptw">
                                 <rect key="frame" x="0.0" y="382" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSZ-Aw-Ptw" id="4ht-LU-fLV">
@@ -1375,7 +1330,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2456" y="-715"/>
+            <point key="canvasLocation" x="-2008" y="-637"/>
         </scene>
         <!--My profile-->
         <scene sceneID="5rq-jG-IDA">
@@ -1548,7 +1503,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1994" y="-627"/>
+            <point key="canvasLocation" x="-2418" y="-1655"/>
         </scene>
     </scenes>
     <resources>
@@ -1561,7 +1516,6 @@ But come back in a while !</string>
         <image name="icon-menu-addjob" width="44" height="50"/>
         <image name="icon-menu-applicants" width="54" height="50"/>
         <image name="icon-menu-jobs" width="44" height="50"/>
-        <image name="icon-menu-messages" width="57" height="50"/>
         <image name="icon-menu-myprofile" width="42" height="50"/>
         <image name="icon-menu-settings" width="50" height="50"/>
         <image name="icon-messages" width="26" height="22"/>
@@ -1576,8 +1530,7 @@ But come back in a while !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Jrk-Ga-X2e"/>
         <segue reference="Wfe-yF-x4T"/>
-        <segue reference="SjO-cN-bVf"/>
-        <segue reference="s99-xL-pdZ"/>
     </inferredMetricsTieBreakers>
 </document>
