@@ -19,6 +19,12 @@
 		AA0709E619E0DB52005760BB /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */; };
 		AA0709E719E0DB52005760BB /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA2DD650195633EB00538F2C /* OpenSans-Regular.ttf */; };
 		AA07A95A1947867F00427D7E /* DetailJobForConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07A9591947867F00427D7E /* DetailJobForConversationViewController.m */; };
+		AA0972D21A9E14D800BD394A /* ProfileMVPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */; };
+		AA0972D51A9E1E7C00BD394A /* ImageManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972D41A9E1E7C00BD394A /* ImageManagement.m */; };
+		AA0972D91A9E247600BD394A /* AddDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972D81A9E247600BD394A /* AddDescriptionView.m */; };
+		AA0972DC1A9E24A500BD394A /* AddDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972DB1A9E24A500BD394A /* AddDescriptionView.xib */; };
+		AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */; };
+		AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -100,6 +106,16 @@
 		AA0709E219E0BF62005760BB /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		AA07A9581947867F00427D7E /* DetailJobForConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailJobForConversationViewController.h; sourceTree = "<group>"; };
 		AA07A9591947867F00427D7E /* DetailJobForConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailJobForConversationViewController.m; sourceTree = "<group>"; };
+		AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMVPViewController.h; sourceTree = "<group>"; };
+		AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMVPViewController.m; sourceTree = "<group>"; };
+		AA0972D31A9E1E7C00BD394A /* ImageManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManagement.h; sourceTree = "<group>"; };
+		AA0972D41A9E1E7C00BD394A /* ImageManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManagement.m; sourceTree = "<group>"; };
+		AA0972D71A9E247600BD394A /* AddDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDescriptionView.h; sourceTree = "<group>"; };
+		AA0972D81A9E247600BD394A /* AddDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDescriptionView.m; sourceTree = "<group>"; };
+		AA0972DB1A9E24A500BD394A /* AddDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddDescriptionView.xib; sourceTree = "<group>"; };
+		AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhoneNumber.xib; sourceTree = "<group>"; };
+		AA0972DF1A9E2F0500BD394A /* AddPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhoneNumber.h; sourceTree = "<group>"; };
+		AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhoneNumber.m; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -230,6 +246,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA0972D61A9E1E8300BD394A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA0972D31A9E1E7C00BD394A /* ImageManagement.h */,
+				AA0972D41A9E1E7C00BD394A /* ImageManagement.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		AA0972DA1A9E248A00BD394A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */,
+				AA0972DF1A9E2F0500BD394A /* AddPhoneNumber.h */,
+				AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */,
+				AA0972DB1A9E24A500BD394A /* AddDescriptionView.xib */,
+				AA0972D71A9E247600BD394A /* AddDescriptionView.h */,
+				AA0972D81A9E247600BD394A /* AddDescriptionView.m */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
 		AA2AF70D193BAD36004661ED /* DateCalculations */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,8 +319,12 @@
 		AAD30260191924BB000E4A47 = {
 			isa = PBXGroup;
 			children = (
+				AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */,
+				AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */,
 				AA0709DB19E0A592005760BB /* THChatInput.h */,
 				AA0709DC19E0A592005760BB /* THChatInput.m */,
+				AA0972DA1A9E248A00BD394A /* CustomViews */,
+				AA0972D61A9E1E8300BD394A /* Models */,
 				AAD30272191924BB000E4A47 /* Cash Now */,
 				AAD30291191924BB000E4A47 /* Cash NowTests */,
 				AAD3026B191924BB000E4A47 /* Frameworks */,
@@ -511,10 +553,12 @@
 				AA0709E519E0BF62005760BB /* AvenirNextLTPro-UltLt.otf in Resources */,
 				AAD302BD19192656000E4A47 /* Storyboard.storyboard in Resources */,
 				AAD30277191924BB000E4A47 /* InfoPlist.strings in Resources */,
+				AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */,
 				AA0709E419E0BF62005760BB /* AvenirNextLTPro-Regular.otf in Resources */,
 				AAB966441922C2B4003E65CF /* login-button-small@2x.png in Resources */,
 				AACA39A01928280600B16BA5 /* Conversations.plist in Resources */,
 				AA4D493C1944D51D00C4BAF1 /* JobsList.plist in Resources */,
+				AA0972DC1A9E24A500BD394A /* AddDescriptionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +581,7 @@
 				AA9A8B88191EF0DA00644E86 /* SidebarViewController.m in Sources */,
 				AAD302C5191947DD000E4A47 /* addJobViewController.m in Sources */,
 				AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */,
+				AA0972D51A9E1E7C00BD394A /* ImageManagement.m in Sources */,
 				AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */,
 				AA07A95A1947867F00427D7E /* DetailJobForConversationViewController.m in Sources */,
 				AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */,
@@ -547,12 +592,15 @@
 				AA310B95191CD59900C9F92B /* GGOverlayView.m in Sources */,
 				AAD3027D191924BB000E4A47 /* AppDelegate.m in Sources */,
 				AAD30279191924BB000E4A47 /* main.m in Sources */,
+				AA0972D91A9E247600BD394A /* AddDescriptionView.m in Sources */,
 				AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */,
+				AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */,
 				AA9A8B82191ECB4200644E86 /* GGDraggableViewApplicants.m in Sources */,
 				AA0709DD19E0A592005760BB /* THChatInput.m in Sources */,
 				AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */,
 				AA5623561926AE8400DF0625 /* ProfileJobApplicantViewController.m in Sources */,
 				AAD23B9619197A4700297539 /* ProfileViewController.m in Sources */,
+				AA0972D21A9E14D800BD394A /* ProfileMVPViewController.m in Sources */,
 				AAB965FB19228794003E65CF /* ASPopUpView.m in Sources */,
 				AAB965FC19228794003E65CF /* ASProgressPopUpView.m in Sources */,
 				AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */,
