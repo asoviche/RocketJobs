@@ -54,9 +54,9 @@
 //         
 //     });
     
-    NSLog(@"TEST SEEN : %hhd", [self areJobsSeen]);
+
     
-    _menuItems = @[@"AppName2",@"title", @"news",@"blank", @"comments", @"map", @"calendar"];
+    _menuItems = @[@"SearchJobs",@"MyProfile", @"PostAJob",@"blank", @"Applicants", @"Settings"];
 }
 
 -(BOOL) areJobsSeen{
