@@ -193,11 +193,14 @@
 //            if (self.xOriginal > 80) {
                 if (xDistance > 150   ) { //like
                     
-                    [self Apply];
                     
+                    [self Apply];
+//                    [self.delegate GGDraggableViewDelegate_applyThisJob];
                     [self deallocTheView];
                     
                 }else if (xDistance < -150){ //don't like
+                    
+//                    [self.delegate GGDraggableViewDelegate_denyThisJob];
                     [self deallocTheView];
                 }
                 else{//pas assez loin
@@ -216,6 +219,8 @@
 
 -(void) Apply{
     //add the current user's objectID to the list of the applicants for the job
+    
+    
     
     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
     [query whereKey:@"objectId" equalTo:self.JobID];

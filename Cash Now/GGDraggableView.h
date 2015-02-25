@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol GGDraggableViewDelegate <NSObject>
+
+-(void) GGDraggableViewDelegate_applyThisJob;
+-(void) GGDraggableViewDelegate_denyThisJob;
+
+@end
+
+
 @interface GGDraggableView : UIView
+
+@property (nonatomic, assign) id<GGDraggableViewDelegate> delegate;
 
 @property (nonatomic) BOOL ViewDeleted;
 @property (nonatomic) BOOL LoadDetailView;

@@ -25,6 +25,8 @@
 		AA0972DC1A9E24A500BD394A /* AddDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972DB1A9E24A500BD394A /* AddDescriptionView.xib */; };
 		AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */; };
 		AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */; };
+		AA0972E41A9E446C00BD394A /* FirstTimePhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */; };
+		AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -116,6 +118,9 @@
 		AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhoneNumber.xib; sourceTree = "<group>"; };
 		AA0972DF1A9E2F0500BD394A /* AddPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhoneNumber.h; sourceTree = "<group>"; };
 		AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhoneNumber.m; sourceTree = "<group>"; };
+		AA0972E21A9E446C00BD394A /* FirstTimePhoneNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimePhoneNumberView.h; sourceTree = "<group>"; };
+		AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimePhoneNumberView.m; sourceTree = "<group>"; };
+		AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTimePhoneNumberView.xib; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -258,6 +263,9 @@
 		AA0972DA1A9E248A00BD394A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */,
+				AA0972E21A9E446C00BD394A /* FirstTimePhoneNumberView.h */,
+				AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */,
 				AA0972DD1A9E2EEE00BD394A /* AddPhoneNumber.xib */,
 				AA0972DF1A9E2F0500BD394A /* AddPhoneNumber.h */,
 				AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */,
@@ -552,6 +560,7 @@
 				AA0709E319E0BF62005760BB /* AvenirNextLTPro-Medium.otf in Resources */,
 				AA0709E519E0BF62005760BB /* AvenirNextLTPro-UltLt.otf in Resources */,
 				AAD302BD19192656000E4A47 /* Storyboard.storyboard in Resources */,
+				AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */,
 				AAD30277191924BB000E4A47 /* InfoPlist.strings in Resources */,
 				AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */,
 				AA0709E419E0BF62005760BB /* AvenirNextLTPro-Regular.otf in Resources */,
@@ -586,6 +595,7 @@
 				AA07A95A1947867F00427D7E /* DetailJobForConversationViewController.m in Sources */,
 				AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */,
 				AA0709CF19DE76CD005760BB /* MyProfileViewController.m in Sources */,
+				AA0972E41A9E446C00BD394A /* FirstTimePhoneNumberView.m in Sources */,
 				AAFD37CE191C34AF00DF0376 /* JobsViewController.m in Sources */,
 				AAD30283191924BB000E4A47 /* ViewController.m in Sources */,
 				AA34A7CF1929E12D006F5F4E /* TestMessagesViewController.m in Sources */,

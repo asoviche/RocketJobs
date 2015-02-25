@@ -18,7 +18,6 @@
 #import "NSDate+Calculations.h"
 
 
-
 @interface ViewController ()
 
 
@@ -36,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelNoJobs;
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barButtonConversation;
+
+@property (strong, nonatomic) FirstTimePhoneNumberView *firstTimePhoneNumberView;
 
 @end
 
@@ -144,8 +145,41 @@
                forKeyPath:@"ListConversationsHaveToBeUpdated"
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
-
+    
+    self.firstTimePhoneNumberView = [[FirstTimePhoneNumberView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.firstTimePhoneNumberView.delegate = self;
+    [self.view addSubview:self.firstTimePhoneNumberView];
+    self.firstTimePhoneNumberView.center = self.view.center;
+    CGRect framePhoneView = self.firstTimePhoneNumberView.frame;
+    framePhoneView.origin.y = -self.firstTimePhoneNumberView.frame.size.height;
+    self.firstTimePhoneNumberView.frame = framePhoneView;
 }
+
+#pragma mark - firstTimePhoneNumberView delegate
+
+-(void) FirstTimePhoneNumberDelegate_canceled{
+    CGRect frame = self.firstTimePhoneNumberView.frame;
+    frame.origin.y = -self.firstTimePhoneNumberView.frame.size.height;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.firstTimePhoneNumberView.frame = frame;
+    }];
+}
+
+-(void) FirstTimePhoneNumberDelegate_saved{
+    CGRect frame = self.firstTimePhoneNumberView.frame;
+    frame.origin.y = -self.firstTimePhoneNumberView.frame.size.height;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.firstTimePhoneNumberView.frame = frame;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    //save phone number in parse
+    [PFUser currentUser][@"phoneNumber"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
+    [[PFUser currentUser] saveEventually];
+}
+
+#pragma mark -
 
 -(void) viewWillDisappear:(BOOL)animated{
     
