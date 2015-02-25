@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-
+#import "GGDraggableView.h"
 #import "FirstTimePhoneNumberView.h"
 
-@interface ViewController : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, FirstTimePhoneNumberDelegate>
+@interface ViewController : UIViewController<PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, FirstTimePhoneNumberDelegate, GGDraggableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
