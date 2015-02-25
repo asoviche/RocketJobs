@@ -10,6 +10,8 @@
 #import "ViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
+#import "ImageManagement.h"
+
 @interface LogInViewControllerCustom ()
 @property (strong, nonatomic) IBOutlet UIImage *profilePicture;
 @property (strong,nonatomic) IBOutlet NSMutableData *imageData;
@@ -296,7 +298,9 @@
     NSData *imageData = [NSKeyedArchiver archivedDataWithRootObject:_profilePicture];
     [userDefaults setObject:imageData forKey:@"Image : 5"];
     
-    
+    [ImageManagement saveImageWithData:_imageData forName:@"imagePP"];
+    NSLog(@"image pp to save : %@", [ImageManagement getImageFromMemoryWithName:@"imagePP"]);
+    NSLog(@"data to save : %@", [imageData description]);
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
