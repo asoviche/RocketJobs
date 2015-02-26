@@ -508,7 +508,7 @@
                     
                     [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         //save to plist *************
-                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+//                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
                         
                         NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                                                                         Job[@"Price"], @"Price",
@@ -539,7 +539,7 @@
         else{
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 //save to plist *************
-                [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+//                [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
                 NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                      Job[@"Price"], @"Price",
                                      Job[@"Hour"], @"Hour",

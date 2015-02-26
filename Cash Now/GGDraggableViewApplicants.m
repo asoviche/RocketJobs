@@ -105,7 +105,7 @@
 - (void)loadImageAndStyle : (UIImage *) imageJob
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:imageJob];
-    imageView.frame = CGRectMake(0, 0, 291,300);
+    imageView.frame = CGRectMake(0, 0, self.frame.size.width ,300);
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:imageView];
 
