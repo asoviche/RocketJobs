@@ -28,6 +28,18 @@
 		AA0972E41A9E446C00BD394A /* FirstTimePhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */; };
 		AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */; };
 		AA0972E91A9F2F6300BD394A /* JobsParseManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */; };
+		AA0972F91A9F76E100BD394A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AA0972EB1A9F76E100BD394A /* .gitignore */; };
+		AA0972FA1A9F76E100BD394A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AA0972EC1A9F76E100BD394A /* LICENSE */; };
+		AA0972FB1A9F76E100BD394A /* NSObject+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972EE1A9F76E100BD394A /* NSObject+Properties.m */; };
+		AA0972FC1A9F76E100BD394A /* Parse+NSCoding.podspec in Resources */ = {isa = PBXBuildFile; fileRef = AA0972EF1A9F76E100BD394A /* Parse+NSCoding.podspec */; };
+		AA0972FD1A9F76E100BD394A /* PFACL+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972F11A9F76E100BD394A /* PFACL+NSCoding.m */; };
+		AA0972FE1A9F76E100BD394A /* PFFile+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972F31A9F76E100BD394A /* PFFile+NSCoding.m */; };
+		AA0972FF1A9F76E100BD394A /* PFGeoPoint+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972F51A9F76E100BD394A /* PFGeoPoint+NSCoding.m */; };
+		AA0973001A9F76E100BD394A /* PFObject+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972F71A9F76E100BD394A /* PFObject+NSCoding.m */; };
+		AA0973011A9F76E100BD394A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AA0972F81A9F76E100BD394A /* README.md */; };
+		AA0973041A9F794F00BD394A /* JobMemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973031A9F794F00BD394A /* JobMemoryManagement.m */; };
+		AA0973071A9F796700BD394A /* ApplicantsMemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973061A9F796700BD394A /* ApplicantsMemoryManagement.m */; };
+		AA09730A1A9F7A0900BD394A /* MemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973091A9F7A0900BD394A /* MemoryManagement.m */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -109,8 +121,8 @@
 		AA0709E219E0BF62005760BB /* AvenirNextLTPro-UltLt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-UltLt.otf"; sourceTree = "<group>"; };
 		AA07A9581947867F00427D7E /* DetailJobForConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailJobForConversationViewController.h; sourceTree = "<group>"; };
 		AA07A9591947867F00427D7E /* DetailJobForConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailJobForConversationViewController.m; sourceTree = "<group>"; };
-		AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMVPViewController.h; sourceTree = "<group>"; };
-		AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMVPViewController.m; sourceTree = "<group>"; };
+		AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileMVPViewController.h; path = ../ProfileMVPViewController.h; sourceTree = "<group>"; };
+		AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileMVPViewController.m; path = ../ProfileMVPViewController.m; sourceTree = "<group>"; };
 		AA0972D31A9E1E7C00BD394A /* ImageManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManagement.h; sourceTree = "<group>"; };
 		AA0972D41A9E1E7C00BD394A /* ImageManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManagement.m; sourceTree = "<group>"; };
 		AA0972D71A9E247600BD394A /* AddDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDescriptionView.h; sourceTree = "<group>"; };
@@ -124,6 +136,26 @@
 		AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTimePhoneNumberView.xib; sourceTree = "<group>"; };
 		AA0972E71A9F2F6300BD394A /* JobsParseManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobsParseManagement.h; path = "Cash Now/JobsParseManagement.h"; sourceTree = "<group>"; };
 		AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobsParseManagement.m; path = "Cash Now/JobsParseManagement.m"; sourceTree = "<group>"; };
+		AA0972EB1A9F76E100BD394A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		AA0972EC1A9F76E100BD394A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		AA0972ED1A9F76E100BD394A /* NSObject+Properties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Properties.h"; sourceTree = "<group>"; };
+		AA0972EE1A9F76E100BD394A /* NSObject+Properties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Properties.m"; sourceTree = "<group>"; };
+		AA0972EF1A9F76E100BD394A /* Parse+NSCoding.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Parse+NSCoding.podspec"; sourceTree = "<group>"; };
+		AA0972F01A9F76E100BD394A /* PFACL+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFACL+NSCoding.h"; sourceTree = "<group>"; };
+		AA0972F11A9F76E100BD394A /* PFACL+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFACL+NSCoding.m"; sourceTree = "<group>"; };
+		AA0972F21A9F76E100BD394A /* PFFile+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFFile+NSCoding.h"; sourceTree = "<group>"; };
+		AA0972F31A9F76E100BD394A /* PFFile+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFFile+NSCoding.m"; sourceTree = "<group>"; };
+		AA0972F41A9F76E100BD394A /* PFGeoPoint+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+NSCoding.h"; sourceTree = "<group>"; };
+		AA0972F51A9F76E100BD394A /* PFGeoPoint+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+NSCoding.m"; sourceTree = "<group>"; };
+		AA0972F61A9F76E100BD394A /* PFObject+NSCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+NSCoding.h"; sourceTree = "<group>"; };
+		AA0972F71A9F76E100BD394A /* PFObject+NSCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+NSCoding.m"; sourceTree = "<group>"; };
+		AA0972F81A9F76E100BD394A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AA0973021A9F794F00BD394A /* JobMemoryManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMemoryManagement.h; path = "Parse-NSCoding-master/JobMemoryManagement.h"; sourceTree = "<group>"; };
+		AA0973031A9F794F00BD394A /* JobMemoryManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMemoryManagement.m; path = "Parse-NSCoding-master/JobMemoryManagement.m"; sourceTree = "<group>"; };
+		AA0973051A9F796700BD394A /* ApplicantsMemoryManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicantsMemoryManagement.h; sourceTree = "<group>"; };
+		AA0973061A9F796700BD394A /* ApplicantsMemoryManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicantsMemoryManagement.m; sourceTree = "<group>"; };
+		AA0973081A9F7A0900BD394A /* MemoryManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryManagement.h; sourceTree = "<group>"; };
+		AA0973091A9F7A0900BD394A /* MemoryManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryManagement.m; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -257,8 +289,14 @@
 		AA0972D61A9E1E8300BD394A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AA0973021A9F794F00BD394A /* JobMemoryManagement.h */,
+				AA0973031A9F794F00BD394A /* JobMemoryManagement.m */,
+				AA0973051A9F796700BD394A /* ApplicantsMemoryManagement.h */,
+				AA0973061A9F796700BD394A /* ApplicantsMemoryManagement.m */,
 				AA0972D31A9E1E7C00BD394A /* ImageManagement.h */,
 				AA0972D41A9E1E7C00BD394A /* ImageManagement.m */,
+				AA0973081A9F7A0900BD394A /* MemoryManagement.h */,
+				AA0973091A9F7A0900BD394A /* MemoryManagement.m */,
 				AA0972E71A9F2F6300BD394A /* JobsParseManagement.h */,
 				AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */,
 			);
@@ -279,6 +317,27 @@
 				AA0972D81A9E247600BD394A /* AddDescriptionView.m */,
 			);
 			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		AA0972EA1A9F76E100BD394A /* Parse-NSCoding-master */ = {
+			isa = PBXGroup;
+			children = (
+				AA0972EB1A9F76E100BD394A /* .gitignore */,
+				AA0972EC1A9F76E100BD394A /* LICENSE */,
+				AA0972ED1A9F76E100BD394A /* NSObject+Properties.h */,
+				AA0972EE1A9F76E100BD394A /* NSObject+Properties.m */,
+				AA0972EF1A9F76E100BD394A /* Parse+NSCoding.podspec */,
+				AA0972F01A9F76E100BD394A /* PFACL+NSCoding.h */,
+				AA0972F11A9F76E100BD394A /* PFACL+NSCoding.m */,
+				AA0972F21A9F76E100BD394A /* PFFile+NSCoding.h */,
+				AA0972F31A9F76E100BD394A /* PFFile+NSCoding.m */,
+				AA0972F41A9F76E100BD394A /* PFGeoPoint+NSCoding.h */,
+				AA0972F51A9F76E100BD394A /* PFGeoPoint+NSCoding.m */,
+				AA0972F61A9F76E100BD394A /* PFObject+NSCoding.h */,
+				AA0972F71A9F76E100BD394A /* PFObject+NSCoding.m */,
+				AA0972F81A9F76E100BD394A /* README.md */,
+			);
+			path = "Parse-NSCoding-master";
 			sourceTree = "<group>";
 		};
 		AA2AF70D193BAD36004661ED /* DateCalculations */ = {
@@ -332,10 +391,9 @@
 		AAD30260191924BB000E4A47 = {
 			isa = PBXGroup;
 			children = (
-				AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */,
-				AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */,
 				AA0709DB19E0A592005760BB /* THChatInput.h */,
 				AA0709DC19E0A592005760BB /* THChatInput.m */,
+				AA0972EA1A9F76E100BD394A /* Parse-NSCoding-master */,
 				AA0972DA1A9E248A00BD394A /* CustomViews */,
 				AA0972D61A9E1E8300BD394A /* Models */,
 				AAD30272191924BB000E4A47 /* Cash Now */,
@@ -391,6 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				AAD302BC19192656000E4A47 /* Storyboard.storyboard */,
+				AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */,
+				AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */,
 				AA0709CD19DE76CD005760BB /* MyProfileViewController.h */,
 				AA0709CE19DE76CD005760BB /* MyProfileViewController.m */,
 				AAD302C3191947DD000E4A47 /* addJobViewController.h */,
@@ -569,6 +629,9 @@
 				AAD30277191924BB000E4A47 /* InfoPlist.strings in Resources */,
 				AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */,
 				AA0709E419E0BF62005760BB /* AvenirNextLTPro-Regular.otf in Resources */,
+				AA0972FA1A9F76E100BD394A /* LICENSE in Resources */,
+				AA0972FC1A9F76E100BD394A /* Parse+NSCoding.podspec in Resources */,
+				AA0972F91A9F76E100BD394A /* .gitignore in Resources */,
 				AAB966441922C2B4003E65CF /* login-button-small@2x.png in Resources */,
 				AACA39A01928280600B16BA5 /* Conversations.plist in Resources */,
 				AA4D493C1944D51D00C4BAF1 /* JobsList.plist in Resources */,
@@ -593,6 +656,7 @@
 			files = (
 				AAB20AA619369A25006C5455 /* MyAnnotation.m in Sources */,
 				AA9A8B88191EF0DA00644E86 /* SidebarViewController.m in Sources */,
+				AA0973001A9F76E100BD394A /* PFObject+NSCoding.m in Sources */,
 				AAD302C5191947DD000E4A47 /* addJobViewController.m in Sources */,
 				AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */,
 				AA0972D51A9E1E7C00BD394A /* ImageManagement.m in Sources */,
@@ -604,12 +668,16 @@
 				AAFD37CE191C34AF00DF0376 /* JobsViewController.m in Sources */,
 				AAD30283191924BB000E4A47 /* ViewController.m in Sources */,
 				AA34A7CF1929E12D006F5F4E /* TestMessagesViewController.m in Sources */,
+				AA09730A1A9F7A0900BD394A /* MemoryManagement.m in Sources */,
+				AA0973041A9F794F00BD394A /* JobMemoryManagement.m in Sources */,
 				AA310B95191CD59900C9F92B /* GGOverlayView.m in Sources */,
+				AA0972FB1A9F76E100BD394A /* NSObject+Properties.m in Sources */,
 				AAD3027D191924BB000E4A47 /* AppDelegate.m in Sources */,
 				AAD30279191924BB000E4A47 /* main.m in Sources */,
 				AA0972D91A9E247600BD394A /* AddDescriptionView.m in Sources */,
 				AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */,
 				AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */,
+				AA0972FE1A9F76E100BD394A /* PFFile+NSCoding.m in Sources */,
 				AA9A8B82191ECB4200644E86 /* GGDraggableViewApplicants.m in Sources */,
 				AA0709DD19E0A592005760BB /* THChatInput.m in Sources */,
 				AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */,
@@ -620,7 +688,11 @@
 				AAB965FB19228794003E65CF /* ASPopUpView.m in Sources */,
 				AAB965FC19228794003E65CF /* ASProgressPopUpView.m in Sources */,
 				AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */,
+				AA0973011A9F76E100BD394A /* README.md in Sources */,
+				AA0972FF1A9F76E100BD394A /* PFGeoPoint+NSCoding.m in Sources */,
 				AA9A8B85191EF04400644E86 /* SWRevealViewController.m in Sources */,
+				AA0973071A9F796700BD394A /* ApplicantsMemoryManagement.m in Sources */,
+				AA0972FD1A9F76E100BD394A /* PFACL+NSCoding.m in Sources */,
 				AA9A8BAF191F3E2300644E86 /* SettingsViewController.m in Sources */,
 				AA56234E19269FB100DF0625 /* ProfileJobsProviderViewController.m in Sources */,
 			);

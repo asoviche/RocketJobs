@@ -8,12 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "ApplicantsMemoryManagement.h"
+#import "JobMemoryManagement.h"
+
+@protocol GGDraggableViewApplicantDelegate <NSObject>
+
+
+-(void) GGDraggableViewApplicantDelegate_LoadDetailView;
+-(void) GGDraggableViewApplicantDelegate_positionViewChanged:(int)positionView;
+-(void) GGDraggableViewApplicantDelegate_deleteView;
+
+-(void) GGDraggableViewApplicantDelegate_AcceptApplicant;
+
+@end
 
 @interface GGDraggableViewApplicants : UIView
 
-@property (nonatomic) BOOL ViewDeleted;
-@property (nonatomic) BOOL LoadDetailView;
-@property (nonatomic) int position;
+
+
+@property (nonatomic, assign) id<GGDraggableViewApplicantDelegate> delegate;
+
+//@property (nonatomic) BOOL ViewDeleted;
+//@property (nonatomic) BOOL LoadDetailView;
+//@property (nonatomic) int position;
 
 
 @property (nonatomic) int numeroView;
@@ -24,7 +41,7 @@
 
 @property (nonatomic) NSString *Age;
 @property (nonatomic) NSString *About;
-@property (nonatomic) NSMutableArray *Pictures;
+@property (nonatomic) UIImage *imagePP;
 @property (nonatomic) NSString *ApplicantID;
 
 @property (nonatomic) NSString *JobsId;

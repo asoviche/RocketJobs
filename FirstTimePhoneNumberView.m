@@ -45,6 +45,7 @@
 
 - (IBAction)save:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:self.textFieldPhoneNumber.text forKey:@"phoneNumber"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.textFieldPhoneNumber resignFirstResponder];
     [self.delegate FirstTimePhoneNumberDelegate_savedWithCurrentJobId:self.currentJobId];
 }

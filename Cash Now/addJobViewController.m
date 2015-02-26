@@ -500,22 +500,32 @@
                     
                     self.buttonPost.enabled=YES;
                     
-//                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
                     [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-
-//                    [alert show];
+                    
+                    //                    [alert show];
                     Job[@"Picture"] = imageFile;
                     
                     [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         //save to plist *************
-                   [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+                        
+                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+                                                                                        Job[@"Price"], @"Price",
+                                                                                        Job[@"Hour"], @"Hour",
+                                                                                        Job[@"DateJob"], @"DateJob",
+                                                                                        Job[@"Location"], @"Location",
+                                                                                        Job.objectId, @"id", nil];
+                        NSLog(@"job to save : %@", [job description]);
+                        [JobMemoryManagement saveJobInMemory:job];
+                        
                         
                         self.progressView.hidden  = YES;
                         self.JobDesription.text = @"Job Description";
                         
                         [self goToAnotherViewController];
                     }];
-
+                    
                     
                     imageFile=nil;
                     picture_camera_small=nil;
@@ -530,6 +540,15 @@
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 //save to plist *************
                 [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+                NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+                                     Job[@"Price"], @"Price",
+                                     Job[@"Hour"], @"Hour",
+                                     Job[@"DateJob"], @"DateJob",
+                                     Job[@"Location"], @"Location", nil];
+                
+                [JobMemoryManagement saveJobInMemory:job];
+                
+                
                 
                 self.progressView.hidden  = YES;
                 
@@ -541,7 +560,7 @@
                 [self goToAnotherViewController];
             }];
             
-
+            
         }
     }
 }
