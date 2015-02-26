@@ -10,7 +10,7 @@
 
 @protocol FirstTimePhoneNumberDelegate <NSObject>
 
--(void) FirstTimePhoneNumberDelegate_saved;
+-(void) FirstTimePhoneNumberDelegate_savedWithCurrentJobId:(NSString*)JobIdToApply;
 -(void) FirstTimePhoneNumberDelegate_canceled;
 
 @end
@@ -20,5 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIView *firstTimePhoneNumberView;
 @property (nonatomic, assign) id<FirstTimePhoneNumberDelegate> delegate;
 -(void) showKeyboard;
+
+@property NSString* currentJobId;
 
 @end

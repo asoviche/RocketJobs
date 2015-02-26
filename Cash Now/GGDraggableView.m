@@ -133,7 +133,6 @@
 
 -(void) tapped: (UITapGestureRecognizer *) tapGestureRecognizer {
     
-//    self.LoadDetailView = YES;
     [self.delegate GGDraggableViewDelegate_LoadDetailView];
 }
 
@@ -163,55 +162,44 @@
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             self.originalPoint = self.center;
-
+            
             self.xOriginal = [gestureRecognizer locationInView:self].x;
             break;
         };
         case UIGestureRecognizerStateChanged:{
             
-//            if (self.xOriginal > 80) {
-            
-//                self.position = xDistance;
             [self.delegate GGDraggableViewDelegate_positionViewChanged:xDistance];
-                
-                CGFloat rotationStrength = MIN(xDistance / 320, 1);
-                CGFloat rotationAngel = (CGFloat) (2*M_PI/16 * rotationStrength);
-                CGFloat scaleStrength = 1 - fabsf(rotationStrength) / 4;
-                CGFloat scale = MAX(scaleStrength, 0.93);
-                CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngel);
-                CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
-                self.transform = scaleTransform;
-                self.center = CGPointMake(self.originalPoint.x + xDistance, self.originalPoint.y + yDistance);
-                
-                
-                NSLog(@"ori point : %f",self.xOriginal);
-                
-//        }
+            
+            CGFloat rotationStrength = MIN(xDistance / 320, 1);
+            CGFloat rotationAngel = (CGFloat) (2*M_PI/16 * rotationStrength);
+            CGFloat scaleStrength = 1 - fabsf(rotationStrength) / 4;
+            CGFloat scale = MAX(scaleStrength, 0.93);
+            CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngel);
+            CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
+            self.transform = scaleTransform;
+            self.center = CGPointMake(self.originalPoint.x + xDistance, self.originalPoint.y + yDistance);
             
             
             break;
         };
         case UIGestureRecognizerStateEnded: {
-//            if (self.xOriginal > 80) {
-                if (xDistance > 150   ) { //like
-                    
-                    
-                    [self Apply];
-
-                    [self deallocTheView];
-                    
-                }else if (xDistance < -150){ //don't like
-                    
-
-                    [self deallocTheView];
-                }
-                else{//pas assez loin
-//                    self.position=0;
-                    [self.delegate GGDraggableViewDelegate_positionViewChanged:0];
-                    [self resetViewPositionAndTransformations];
-                }
-                NSLog(@"distance : %f and %f", xDistance , yDistance);
-//            }
+            
+            if (xDistance > 150   ) { //like
+                
+                [self.delegate GGDraggableViewDelegate_ApplyForJob];
+                [self deallocTheView];
+                
+            }else if (xDistance < -150){ //don't like
+                
+                [self deallocTheView];
+            }
+            else{//pas assez loin
+                
+                [self.delegate GGDraggableViewDelegate_positionViewChanged:0];
+                [self resetViewPositionAndTransformations];
+            }
+            NSLog(@"distance : %f and %f", xDistance , yDistance);
+            
             break;
         };
         case UIGestureRecognizerStatePossible:break;
@@ -222,9 +210,7 @@
 
 -(void) Apply{
     //add the current user's objectID to the list of the applicants for the job
-    
-    
-    
+
     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
     [query whereKey:@"objectId" equalTo:self.JobID];
     [query getObjectInBackgroundWithId:self.JobID block:^(PFObject *JobToApply, NSError *error) {
@@ -267,6 +253,14 @@
     }];
 }
 
+- (void)deallocTheView
+{
+    NSLog(@"numero de la vue deleted : %d",self.numeroView);
+
+    [self removeGestureRecognizer:self.panGestureRecognizer];
+    [self.delegate GGDraggableViewDelegate_deleteView];
+}
+
 - (void)updateOverlay:(CGFloat)distance
 {
     if (distance > 0) {
@@ -288,16 +282,4 @@
                      }];
 }
 
-
-
-- (void)deallocTheView
-{
-    
-    NSLog(@"numero de la vue deleted : %d",self.numeroView);
-//    self.ViewDeleted = YES;
-    [self.delegate GGDraggableViewDelegate_deleteView];
-    [self removeGestureRecognizer:self.panGestureRecognizer];
-    
-    //the view is removed in the viewcontroller.m with KVO
-}
 @end

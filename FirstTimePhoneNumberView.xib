@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstTimePhoneNumberView">
             <connections>
+                <outlet property="buttonSave" destination="RXG-hC-ELS" id="dhp-7n-aNC"/>
+                <outlet property="buttonSkipJob" destination="CuC-8p-xbX" id="0LR-sc-et9"/>
                 <outlet property="firstTimePhoneNumberView" destination="iN0-l3-epB" id="dJE-Zk-MeM"/>
                 <outlet property="textFieldPhoneNumber" destination="lbn-3M-CH1" id="cGB-f6-qM2"/>
             </connections>
@@ -20,6 +22,9 @@
                     <rect key="frame" x="69" y="76" width="156" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                    <connections>
+                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="TuT-Ol-Sbv"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXG-hC-ELS">
                     <rect key="frame" x="199" y="128" width="34" height="30"/>
@@ -37,8 +42,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuC-8p-xbX">
-                    <rect key="frame" x="45" y="128" width="48" height="30"/>
-                    <state key="normal" title="Cancel">
+                    <rect key="frame" x="45" y="128" width="61" height="30"/>
+                    <state key="normal" title="Skip Job">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

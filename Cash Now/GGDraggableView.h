@@ -16,18 +16,14 @@
 -(void) GGDraggableViewDelegate_positionViewChanged:(int)positionView;
 -(void) GGDraggableViewDelegate_deleteView;
 
+-(void) GGDraggableViewDelegate_ApplyForJob;
+
 @end
 
 
 @interface GGDraggableView : UIView
 
 @property (nonatomic, assign) id<GGDraggableViewDelegate> delegate;
-
-//@property (nonatomic) BOOL ViewDeleted;
-//@property (nonatomic) BOOL LoadDetailView;
-//@property (nonatomic) int position;
-
-
 
 
 @property (nonatomic) int numeroView;

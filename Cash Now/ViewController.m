@@ -17,6 +17,7 @@
 #import "FriendsViewController.h"
 #import "NSDate+Calculations.h"
 
+#import "JobsParseManagement.h"
 
 @interface ViewController ()
 
@@ -111,8 +112,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:NO];
     
-
-    
     self.sidebarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x225378);
     // self.navigationController.navigationBar.translucent=NO;
@@ -148,7 +147,8 @@
     }];
 }
 
--(void) FirstTimePhoneNumberDelegate_saved{
+-(void) FirstTimePhoneNumberDelegate_savedWithCurrentJobId:(NSString *)JobIdToApply{
+    
     CGRect frame = self.firstTimePhoneNumberView.frame;
     frame.origin.y = -self.firstTimePhoneNumberView.frame.size.height;
     [UIView animateWithDuration:0.2 animations:^{
@@ -160,9 +160,25 @@
     //save phone number in parse
     [PFUser currentUser][@"phoneNumber"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
     [[PFUser currentUser] saveEventually];
+    
+    [JobsParseManagement applyForJobWithJobId:JobIdToApply];
+}
+#pragma mark -
+
+
+#pragma mark animations
+
+-(void) animation_showfirstTimePhoneNumberView{
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.firstTimePhoneNumberView.center = self.view.center;
+    }completion:^(BOOL finished) {
+        [self.firstTimePhoneNumberView showKeyboard];
+    }];
+    
 }
 
-#pragma mark -
+
 
 #pragma mark IBActions
 
@@ -181,7 +197,6 @@
 
 
 #pragma mark Jobs
-
 
 -(void) downloadJobs{
     
@@ -429,6 +444,24 @@
 }
 
 #pragma mark - GGDraggableView delegate
+
+-(void) GGDraggableViewDelegate_ApplyForJob{
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phoneNumber"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    PFObject *job = JobsArray[numberOfTheCurrentView];
+    
+    //check if the phone number is entered
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"] == nil) {
+        [self.view bringSubviewToFront:self.firstTimePhoneNumberView];
+        self.firstTimePhoneNumberView.currentJobId = job.objectId;
+        [self animation_showfirstTimePhoneNumberView];
+    }
+    else{
+        [JobsParseManagement applyForJobWithJobId:job.objectId];
+    }
+}
 
 -(void) GGDraggableViewDelegate_positionViewChanged:(int)positionView{
 
