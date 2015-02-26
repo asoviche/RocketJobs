@@ -70,7 +70,7 @@
     #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 }
 
-
+#pragma mark Life Cycle
 
 - (void)viewDidLoad
 {
@@ -98,7 +98,7 @@
     
     self.textUI.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
 
-    [self showTheGameHAHA];
+    [self downloadJobs];
     
 }
 
@@ -127,24 +127,7 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
 
-    //OBSERVE WHEN THE VIEW IS DELETED : CALLBACK BELLOW
-    for (GGDraggableView *dragView in ViewsArray) {
-        
-        if ([dragView isDescendantOfView:self.view]) {
-            
-//            [dragView addObserver:self forKeyPath:@"ViewDeleted" options:NSKeyValueObservingOptionNew context:nil];
-//            [dragView addObserver:self forKeyPath:@"LoadDetailView" options:NSKeyValueObservingOptionNew context:nil];
-//            [dragView addObserver:self forKeyPath:@"position" options:NSKeyValueObservingOptionNew context:nil];
-        }
-    }
-    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults addObserver:self
-//               forKeyPath:@"ListConversationsHaveToBeUpdated"
-//                  options:NSKeyValueObservingOptionNew
-//                  context:NULL];
     
     self.firstTimePhoneNumberView = [[FirstTimePhoneNumberView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     self.firstTimePhoneNumberView.delegate = self;
@@ -181,79 +164,26 @@
 
 #pragma mark -
 
-//-(void) viewWillDisappear:(BOOL)animated{
-//    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults removeObserver:self forKeyPath:@"ListConversationsHaveToBeUpdated"];
-//    
-//    for (GGDraggableView *dragView in ViewsArray) {
-//        
-//        @try {
-////            [dragView removeObserver:self forKeyPath:@"ViewDeleted"];
-//        }
-//        @catch (NSException *exception) {
-//            
-//        }
-//        @finally {
-//            
-//        }
-//        
-//        @try {
-////            [dragView removeObserver:self forKeyPath:@"LoadDetailView"];
-//        }
-//        @catch (NSException *exception) {
-//            
-//        }
-//        @finally {
-//            
-//        }
-//        
-//        @try {
-//            [dragView removeObserver:self forKeyPath:@"position"];
-//        }
-//        @catch (NSException *exception) {
-//            
-//        }
-//        @finally {
-//            
-//        }
-//    }
-//}
+#pragma mark IBActions
+
+- (IBAction)ReloadJobs:(UIButton *)sender {
+    
+    self.buttonReloadJobs.hidden = YES;
+    
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.hidden=NO;
+    self.labelNoJobs.hidden=YES;
+    self.textUI.hidden=NO;
+    
+    [self downloadJobs];
+}
 
 
-#pragma mark to be ordered
 
-//-(BOOL) areJobsSeen{
-//
-//    NSError *error;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-//    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-//    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Conversations.plist"]; //3
-//    
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    
-//    if (![fileManager fileExistsAtPath: path]) //4
-//    {
-//        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"Conversations" ofType:@"plist"]; //5
-//        [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
-//    }
-//    
-//    NSMutableDictionary *savedStock = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-//    NSLog(@"STATE BASE : %@", [[savedStock allKeys] description]);
-//    
-//    for (NSString *key in [savedStock allKeys]) {
-//        
-//        NSDictionary * dicJob = [savedStock objectForKey:key];
-//        if ([[[dicJob objectForKey:@"JobState"] objectForKey:@"Seen" ] isEqualToString:@"NO"]) {
-//            
-//            return NO;
-//        }
-//    }
-//    
-//    return YES;
-//}
+#pragma mark Jobs
 
--(void) showTheGameHAHA{
+
+-(void) downloadJobs{
     
     numberOfTheCurrentView = 0;
 
@@ -333,21 +263,6 @@
     }];
     
 }
-
-
-- (IBAction)ReloadJobs:(UIButton *)sender {
-    
-    self.buttonReloadJobs.hidden = YES;
-    
-    [self.activityIndicator startAnimating];
-    self.activityIndicator.hidden=NO;
-    self.labelNoJobs.hidden=YES;
-    self.textUI.hidden=NO;
-    
-    [self showTheGameHAHA];
-}
-
-
 
 //**************** MAKE ALL THE JOBS APPEAR ************************************
 
@@ -484,10 +399,6 @@
             
             
             
-            //OBSERVE WHEN THE VIEW IS DELETED : CALLBACK BELLOW
-//            [dragView addObserver:self forKeyPath:@"ViewDeleted" options:NSKeyValueObservingOptionNew context:nil];
-//            [dragView addObserver:self forKeyPath:@"LoadDetailView" options:NSKeyValueObservingOptionNew context:nil];
-//            [dragView addObserver:self forKeyPath:@"position" options:NSKeyValueObservingOptionNew context:nil];
             dragView.delegate = self;
             
             dragView.LabelDescriptionJob.text =Description;
@@ -515,31 +426,6 @@
     self.activityIndicator.hidden=YES;
     self.textUI.hidden=YES;
     
-}
-
-#pragma mark KVO
-
-//observe when the view is deleted
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-
-    if ([keyPath isEqualToString:@"positionView"]){
-        NSLog(@"position view changed for : %d",self.revealViewController.positionView);
-        
-        if (self.revealViewController.positionView == 3) { //revealview active
-            for (GGDraggableView *dragView in ViewsArray) {
-                [dragView setUserInteractionEnabled:NO];
-            }
-        }else if (self.revealViewController.positionView == 4){
-            for (GGDraggableView *dragView in ViewsArray) {//revealview inactive
-                [dragView setUserInteractionEnabled:YES];
-            }
-        }
-    }
-
 }
 
 #pragma mark - GGDraggableView delegate
@@ -644,28 +530,9 @@
         ProfileJobApplicantViewController* controller = [segue destinationViewController] ;
         controller.UserJobProvider = sender.objectId;
 
-    }else {
-        NSLog(@"conv");
-        
-        FriendsViewController *vc = [segue destinationViewController];
-        vc.activateBackButton = @"YES";
     }
 }
 
-- (IBAction)goToConversation:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"conversationSegue" sender:self];
-}
 
-
-
-//****************************************************
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end
