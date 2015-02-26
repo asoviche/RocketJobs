@@ -10,6 +10,8 @@
 
 @interface FirstTimePhoneNumberView()
 @property (strong, nonatomic) IBOutlet UITextField *textFieldPhoneNumber;
+@property (strong, nonatomic) IBOutlet UIButton *buttonSkipJob;
+@property (strong, nonatomic) IBOutlet UIButton *buttonSave;
 @end
 
 @implementation FirstTimePhoneNumberView
@@ -28,7 +30,7 @@
     //3. add as a subview
     [self addSubview:self.firstTimePhoneNumberView];
     
-    self.textFieldPhoneNumber.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
+    self.buttonSave.enabled = NO;
     
     
     return self;
@@ -44,12 +46,23 @@
 - (IBAction)save:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:self.textFieldPhoneNumber.text forKey:@"phoneNumber"];
     [self.textFieldPhoneNumber resignFirstResponder];
-    [self.delegate FirstTimePhoneNumberDelegate_saved];
+    [self.delegate FirstTimePhoneNumberDelegate_savedWithCurrentJobId:self.currentJobId];
 }
 
 - (IBAction)cancel:(id)sender {
     [self.textFieldPhoneNumber resignFirstResponder];
     [self.delegate FirstTimePhoneNumberDelegate_canceled];
+}
+
+#pragma mark textField delagate
+
+- (IBAction)textFieldEditingChanged:(UITextField *)sender {
+    if (self.textFieldPhoneNumber.text.length != 0) {
+        self.buttonSave.enabled = YES;
+    }else{
+        self.buttonSave.enabled = NO;
+    }
+    
 }
 
 @end

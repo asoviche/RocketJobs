@@ -27,6 +27,7 @@
 		AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E01A9E2F0500BD394A /* AddPhoneNumber.m */; };
 		AA0972E41A9E446C00BD394A /* FirstTimePhoneNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */; };
 		AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */; };
+		AA0972E91A9F2F6300BD394A /* JobsParseManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -121,6 +122,8 @@
 		AA0972E21A9E446C00BD394A /* FirstTimePhoneNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimePhoneNumberView.h; sourceTree = "<group>"; };
 		AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimePhoneNumberView.m; sourceTree = "<group>"; };
 		AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstTimePhoneNumberView.xib; sourceTree = "<group>"; };
+		AA0972E71A9F2F6300BD394A /* JobsParseManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobsParseManagement.h; path = "Cash Now/JobsParseManagement.h"; sourceTree = "<group>"; };
+		AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobsParseManagement.m; path = "Cash Now/JobsParseManagement.m"; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -256,6 +259,8 @@
 			children = (
 				AA0972D31A9E1E7C00BD394A /* ImageManagement.h */,
 				AA0972D41A9E1E7C00BD394A /* ImageManagement.m */,
+				AA0972E71A9F2F6300BD394A /* JobsParseManagement.h */,
+				AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				AA9A8B82191ECB4200644E86 /* GGDraggableViewApplicants.m in Sources */,
 				AA0709DD19E0A592005760BB /* THChatInput.m in Sources */,
 				AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */,
+				AA0972E91A9F2F6300BD394A /* JobsParseManagement.m in Sources */,
 				AA5623561926AE8400DF0625 /* ProfileJobApplicantViewController.m in Sources */,
 				AAD23B9619197A4700297539 /* ProfileViewController.m in Sources */,
 				AA0972D21A9E14D800BD394A /* ProfileMVPViewController.m in Sources */,
