@@ -133,7 +133,8 @@
 
 -(void) tapped: (UITapGestureRecognizer *) tapGestureRecognizer {
     
-    self.LoadDetailView = YES;
+//    self.LoadDetailView = YES;
+    [self.delegate GGDraggableViewDelegate_LoadDetailView];
 }
 
 - (void)loadImageAndStyle : (UIImage *) imageJob
@@ -170,7 +171,8 @@
             
 //            if (self.xOriginal > 80) {
             
-                self.position = xDistance;
+//                self.position = xDistance;
+            [self.delegate GGDraggableViewDelegate_positionViewChanged:xDistance];
                 
                 CGFloat rotationStrength = MIN(xDistance / 320, 1);
                 CGFloat rotationAngel = (CGFloat) (2*M_PI/16 * rotationStrength);
@@ -195,16 +197,17 @@
                     
                     
                     [self Apply];
-//                    [self.delegate GGDraggableViewDelegate_applyThisJob];
+
                     [self deallocTheView];
                     
                 }else if (xDistance < -150){ //don't like
                     
-//                    [self.delegate GGDraggableViewDelegate_denyThisJob];
+
                     [self deallocTheView];
                 }
                 else{//pas assez loin
-                    self.position=0;
+//                    self.position=0;
+                    [self.delegate GGDraggableViewDelegate_positionViewChanged:0];
                     [self resetViewPositionAndTransformations];
                 }
                 NSLog(@"distance : %f and %f", xDistance , yDistance);
@@ -291,7 +294,8 @@
 {
     
     NSLog(@"numero de la vue deleted : %d",self.numeroView);
-    self.ViewDeleted = YES;
+//    self.ViewDeleted = YES;
+    [self.delegate GGDraggableViewDelegate_deleteView];
     [self removeGestureRecognizer:self.panGestureRecognizer];
     
     //the view is removed in the viewcontroller.m with KVO

@@ -11,8 +11,10 @@
 
 @protocol GGDraggableViewDelegate <NSObject>
 
--(void) GGDraggableViewDelegate_applyThisJob;
--(void) GGDraggableViewDelegate_denyThisJob;
+
+-(void) GGDraggableViewDelegate_LoadDetailView;
+-(void) GGDraggableViewDelegate_positionViewChanged:(int)positionView;
+-(void) GGDraggableViewDelegate_deleteView;
 
 @end
 
@@ -21,9 +23,9 @@
 
 @property (nonatomic, assign) id<GGDraggableViewDelegate> delegate;
 
-@property (nonatomic) BOOL ViewDeleted;
-@property (nonatomic) BOOL LoadDetailView;
-@property (nonatomic) int position;
+//@property (nonatomic) BOOL ViewDeleted;
+//@property (nonatomic) BOOL LoadDetailView;
+//@property (nonatomic) int position;
 
 
 
