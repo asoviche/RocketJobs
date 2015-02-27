@@ -20,7 +20,14 @@
         
         NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",imageName]];
         
-        [imageData writeToFile:imagePath atomically:NO];
+        NSLog(@"imagePath to save : %@", imagePath);
+        
+        
+        if([imageData writeToFile:imagePath atomically:NO]){
+            NSLog(@"image saved ");
+        }else{
+            NSLog(@"image not saved ");
+        }
     });
 }
 
@@ -44,6 +51,9 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     NSString *imagePath =[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",nameImage]];
+    
+    NSLog(@"name image : %@", nameImage);
+    NSLog(@"getImageFromMemoryWithName : %@", [UIImage imageWithContentsOfFile:imagePath]);
     
     return [UIImage imageWithContentsOfFile:imagePath];
 }
