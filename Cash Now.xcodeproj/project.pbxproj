@@ -40,6 +40,8 @@
 		AA0973041A9F794F00BD394A /* JobMemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973031A9F794F00BD394A /* JobMemoryManagement.m */; };
 		AA0973071A9F796700BD394A /* ApplicantsMemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973061A9F796700BD394A /* ApplicantsMemoryManagement.m */; };
 		AA09730A1A9F7A0900BD394A /* MemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973091A9F7A0900BD394A /* MemoryManagement.m */; };
+		AA09730D1AA0622D00BD394A /* MyPostedJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09730C1AA0622D00BD394A /* MyPostedJobsViewController.m */; };
+		AA0973101AA06ADD00BD394A /* ApplicantsForJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -156,6 +158,10 @@
 		AA0973061A9F796700BD394A /* ApplicantsMemoryManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicantsMemoryManagement.m; sourceTree = "<group>"; };
 		AA0973081A9F7A0900BD394A /* MemoryManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryManagement.h; sourceTree = "<group>"; };
 		AA0973091A9F7A0900BD394A /* MemoryManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryManagement.m; sourceTree = "<group>"; };
+		AA09730B1AA0622D00BD394A /* MyPostedJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostedJobsViewController.h; sourceTree = "<group>"; };
+		AA09730C1AA0622D00BD394A /* MyPostedJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostedJobsViewController.m; sourceTree = "<group>"; };
+		AA09730E1AA06ADD00BD394A /* ApplicantsForJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicantsForJobViewController.h; path = ../ApplicantsForJobViewController.h; sourceTree = "<group>"; };
+		AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicantsForJobViewController.m; path = ../ApplicantsForJobViewController.m; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -449,6 +455,10 @@
 			isa = PBXGroup;
 			children = (
 				AAD302BC19192656000E4A47 /* Storyboard.storyboard */,
+				AA09730E1AA06ADD00BD394A /* ApplicantsForJobViewController.h */,
+				AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */,
+				AA09730B1AA0622D00BD394A /* MyPostedJobsViewController.h */,
+				AA09730C1AA0622D00BD394A /* MyPostedJobsViewController.m */,
 				AA0972D01A9E14D800BD394A /* ProfileMVPViewController.h */,
 				AA0972D11A9E14D800BD394A /* ProfileMVPViewController.m */,
 				AA0709CD19DE76CD005760BB /* MyProfileViewController.h */,
@@ -661,6 +671,7 @@
 				AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */,
 				AA0972D51A9E1E7C00BD394A /* ImageManagement.m in Sources */,
 				AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */,
+				AA09730D1AA0622D00BD394A /* MyPostedJobsViewController.m in Sources */,
 				AA07A95A1947867F00427D7E /* DetailJobForConversationViewController.m in Sources */,
 				AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */,
 				AA0709CF19DE76CD005760BB /* MyProfileViewController.m in Sources */,
@@ -689,6 +700,7 @@
 				AAB965FC19228794003E65CF /* ASProgressPopUpView.m in Sources */,
 				AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */,
 				AA0973011A9F76E100BD394A /* README.md in Sources */,
+				AA0973101AA06ADD00BD394A /* ApplicantsForJobViewController.m in Sources */,
 				AA0972FF1A9F76E100BD394A /* PFGeoPoint+NSCoding.m in Sources */,
 				AA9A8B85191EF04400644E86 /* SWRevealViewController.m in Sources */,
 				AA0973071A9F796700BD394A /* ApplicantsMemoryManagement.m in Sources */,

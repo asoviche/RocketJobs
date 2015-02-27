@@ -28,30 +28,19 @@
 
 @property (nonatomic, assign) id<GGDraggableViewApplicantDelegate> delegate;
 
-//@property (nonatomic) BOOL ViewDeleted;
-//@property (nonatomic) BOOL LoadDetailView;
-//@property (nonatomic) int position;
-
 
 @property (nonatomic) int numeroView;
 
-
-
 @property (nonatomic) NSString *Name;
-
 @property (nonatomic) NSString *Age;
 @property (nonatomic) NSString *About;
 @property (nonatomic) UIImage *imagePP;
 @property (nonatomic) NSString *ApplicantID;
-
 @property (nonatomic) NSString *JobsId;
-
-
 
 @property (nonatomic) NSMutableArray *dragViewArray;
 
 @property (strong, nonatomic) GGDraggableViewApplicants *NextDragView;
-
 
 @property (strong, nonatomic) IBOutlet UIImageView *FirstImage;
 @property (strong, nonatomic) IBOutlet UILabel *LabelNameAge;
@@ -65,8 +54,5 @@
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
 
 - (void)loadImageAndStyle : (UIImage *) imageJob;
-
-
-
 -(void) updateUI;
 @end
