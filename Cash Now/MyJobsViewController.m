@@ -466,13 +466,12 @@
 }
 
 -(void) GGDraggableViewApplicantDelegate_AcceptApplicant{
-    GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
     
+    GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
+
     
     //add the current user's objectID to the list of the applicants for the job
-    
-    
-    //SEND THE PUSH NOTIFICATION ****************************
+
     
     //get the applicant
     PFQuery *query = [PFUser query];
@@ -512,7 +511,7 @@
                                                                                     Applicant[@"name"], @"name",
                                                                                     Applicant[@"phoneNumber"],@"phoneNumber",
                                                                                     Applicant[@"About"], @"About",nil];
-            NSLog(@"applicant : %@", [dicApplicant description]);
+            NSLog(@"applicant image : %@", [dragCurrentView.imageViewPP.image description]);
             NSLog(@"applicant from parse : %@", [Applicant description]);
             [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:dragCurrentView.imageViewPP.image];
             
