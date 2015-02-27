@@ -31,10 +31,10 @@
 
 @property (nonatomic) int numeroView;
 
-@property (nonatomic) NSString *Name;
-@property (nonatomic) NSString *Age;
-@property (nonatomic) NSString *About;
-@property (nonatomic) UIImage *imagePP;
+//@property (nonatomic) NSString *Name;
+//@property (nonatomic) NSString *Age;
+//@property (nonatomic) NSString *About;
+//@property (nonatomic) UIImage *imagePP;
 @property (nonatomic) NSString *ApplicantID;
 @property (nonatomic) NSString *JobsId;
 
@@ -47,12 +47,24 @@
 @property (strong, nonatomic) IBOutlet UILabel *LabelDescription;
 @property (strong, nonatomic) IBOutlet UITextView *LabelJobDescription;
 
-@property (nonatomic) NSString *Description;
-@property (nonatomic) NSString *NameAge;
-@property (nonatomic) NSString *JobDescription;
+//@property (nonatomic) NSString *Description;
+//@property (nonatomic) NSString *NameAge;
+//@property (nonatomic) NSString *JobDescription;
 
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
 
-- (void)loadImageAndStyle : (UIImage *) imageJob;
--(void) updateUI;
+//- (void)loadImageAndStyle : (UIImage *) imageJob;
+//-(void) updateUI;
+
+
+@property (strong, nonatomic) IBOutlet UIView *viewApplicant;
+
+//iboutlets for xib
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewPP;
+@property (strong, nonatomic) IBOutlet UILabel *labelName;
+@property (strong, nonatomic) IBOutlet UITextView *textViewApplicantDescription;
+@property (strong, nonatomic) IBOutlet UITextView *textViewJobDescription;
+
+
+
 @end

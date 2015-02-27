@@ -33,6 +33,18 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
+    //1. load xib file
+    [[NSBundle mainBundle] loadNibNamed:@"ViewApplicant" owner:self options:nil];
+    
+    //2. adjust bounds
+    self.bounds = self.viewApplicant.bounds;
+    
+    //3. add as a subview
+    [self addSubview:self.viewApplicant];
+
+    
+    
+    
     [self setBackgroundColor:[UIColor whiteColor]];
     
     self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
@@ -55,38 +67,38 @@
     
     
     //lines
-    UIImageView *line2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"line_grey"]];
-    [self addSubview:line2];
-    line2.contentMode = UIViewContentModeScaleAspectFit;
-    line2.frame = CGRectMake(80, 310, 130,5);
+//    UIImageView *line2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"line_grey"]];
+//    [self addSubview:line2];
+//    line2.contentMode = UIViewContentModeScaleAspectFit;
+//    line2.frame = CGRectMake(80, 310, 130,5);
     
     //labels
-    self.LabelJobDescription = [[UITextView alloc]init];
-    [self addSubview:self.LabelJobDescription];
-    self.LabelJobDescription.editable = NO;
-    [self.LabelJobDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-    self.LabelJobDescription.textColor = UIColorFromRGB(0xea2e49);
-    self.LabelJobDescription.frame = CGRectMake(10, 315, 270,100);
+//    self.LabelJobDescription = [[UITextView alloc]init];
+//    [self addSubview:self.LabelJobDescription];
+//    self.LabelJobDescription.editable = NO;
+//    [self.LabelJobDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+//    self.LabelJobDescription.textColor = UIColorFromRGB(0xea2e49);
+//    self.LabelJobDescription.frame = CGRectMake(10, 315, 270,100);
     
     //line
-    UIImageView *line1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"line_grey"]];
-    [self addSubview:line1];
-    line1.contentMode = UIViewContentModeScaleAspectFit;
-    line1.frame = CGRectMake(80, 385, 130,30);
+//    UIImageView *line1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"line_grey"]];
+//    [self addSubview:line1];
+//    line1.contentMode = UIViewContentModeScaleAspectFit;
+//    line1.frame = CGRectMake(80, 385, 130,30);
     
     
-    self.LabelNameAge = [[UILabel alloc]init];
-    [self addSubview:self.LabelNameAge];
-    self.LabelNameAge.textColor = UIColorFromRGB(0x225378);
-    [self.LabelNameAge setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
-    self.LabelNameAge.frame = CGRectMake(10, 410, 300,20);
+//    self.LabelNameAge = [[UILabel alloc]init];
+//    [self addSubview:self.LabelNameAge];
+//    self.LabelNameAge.textColor = UIColorFromRGB(0x225378);
+//    [self.LabelNameAge setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
+//    self.LabelNameAge.frame = CGRectMake(10, 410, 300,20);
     
     
-    self.LabelDescription = [[UILabel alloc]init];
-    [self addSubview:self.LabelDescription];
-    self.LabelDescription.textColor = UIColorFromRGB(0x225378);
-    [self.LabelDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
-    self.LabelDescription.frame = CGRectMake(10, 430, 300,18);
+//    self.LabelDescription = [[UILabel alloc]init];
+//    [self addSubview:self.LabelDescription];
+//    self.LabelDescription.textColor = UIColorFromRGB(0x225378);
+//    [self.LabelDescription setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+//    self.LabelDescription.frame = CGRectMake(10, 430, 300,18);
     
     //launch loading
     self.activity = [[UIActivityIndicatorView alloc]init];
@@ -174,13 +186,13 @@
     self.overlayView.alpha = overlayStrength;
 }
 
--(void) updateUI{
-    self.LabelDescription.text = self.Description;
-    self.LabelNameAge.text = self.NameAge;
-    self.LabelJobDescription.text = self.JobDescription;
-    
-    NSLog(@"update ui : %@", self.LabelDescription.text);
-}
+//-(void) updateUI{
+//    self.LabelDescription.text = self.Description;
+//    self.LabelNameAge.text = self.NameAge;
+//    self.LabelJobDescription.text = self.JobDescription;
+//    
+//    NSLog(@"update ui : %@", self.LabelDescription.text);
+//}
 
 -(void) deny {
     

@@ -339,16 +339,20 @@
     
     //REMPLIR LES INFOS DE LA VUE POUR CHAQUE USER
     
-    if ( [applicant[@"About"] length] > 40) {
-        dragView.Description = [[applicant[@"About"] substringToIndex:40] stringByAppendingString:@"..."];
-    }else dragView.Description = applicant[@"About"] ;
+//    if ( [applicant[@"About"] length] > 40) {
+//        dragView.Description = [[applicant[@"About"] substringToIndex:40] stringByAppendingString:@"..."];
+//    }else dragView.Description = applicant[@"About"] ;
     
     
-    dragView.NameAge = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
+//    dragView.NameAge = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
     dragView.ApplicantID = applicant.objectId;
     dragView.JobsId = Job.objectId;
-    dragView.JobDescription = [NSString stringWithFormat:@"%@", Job[@"Description"]];
-    [dragView updateUI];
+//    dragView.JobDescription = [NSString stringWithFormat:@"%@", Job[@"Description"]];
+//    [dragView updateUI];
+    
+    dragView.labelName.text = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
+    dragView.textViewJobDescription.text = [NSString stringWithFormat:@"%@", Job[@"Description"]];
+    dragView.textViewApplicantDescription.text = applicant[@"About"];
     
     //gestion des images des applicants
     if (applicant[@"imagePP"]){
@@ -364,9 +368,12 @@
                     
                     [dragView.activity stopAnimating];
                     
-                    dragView.imagePP = image;
+//                    dragView.imagePP = image;
                     //placer les photos dans les vues
-                    [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
+//                    [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
+                    
+                    
+                    dragView.imageViewPP.image = image;
                 }
                 else NSLog(@"erreur");
             }
@@ -438,12 +445,12 @@
     if (numberOfTheCurrentView + 1 < numberApplicant) {
         
         GGDraggableViewApplicants *dragView = [ViewsArray objectAtIndex: (numberOfTheCurrentView + 1)];
-        [dragView updateUI];
+//        [dragView updateUI];
         [self.view addSubview:dragView];
         
         GGDraggableViewApplicants *dragCurrentView2 = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
         // + load the UI
-        [dragCurrentView2 updateUI];
+//        [dragCurrentView2 updateUI];
         [self.view bringSubviewToFront:dragCurrentView2];
         
         [UIView animateWithDuration:0.1 animations:^{
@@ -507,7 +514,7 @@
                                                                                     Applicant[@"About"], @"About",nil];
             NSLog(@"applicant : %@", [dicApplicant description]);
             NSLog(@"applicant from parse : %@", [Applicant description]);
-            [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:dragCurrentView.imagePP];
+            [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:dragCurrentView.imageViewPP.image];
             
             [JobMemoryManagement newApplicantWithId:Applicant.objectId forJobWithId:Job.objectId];
             

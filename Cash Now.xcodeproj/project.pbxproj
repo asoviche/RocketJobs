@@ -42,6 +42,7 @@
 		AA09730A1A9F7A0900BD394A /* MemoryManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973091A9F7A0900BD394A /* MemoryManagement.m */; };
 		AA09730D1AA0622D00BD394A /* MyPostedJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09730C1AA0622D00BD394A /* MyPostedJobsViewController.m */; };
 		AA0973101AA06ADD00BD394A /* ApplicantsForJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */; };
+		AA0973121AA0884900BD394A /* ViewApplicant.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0973111AA0884900BD394A /* ViewApplicant.xib */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -162,6 +163,7 @@
 		AA09730C1AA0622D00BD394A /* MyPostedJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostedJobsViewController.m; sourceTree = "<group>"; };
 		AA09730E1AA06ADD00BD394A /* ApplicantsForJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicantsForJobViewController.h; path = ../ApplicantsForJobViewController.h; sourceTree = "<group>"; };
 		AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicantsForJobViewController.m; path = ../ApplicantsForJobViewController.m; sourceTree = "<group>"; };
+		AA0973111AA0884900BD394A /* ViewApplicant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewApplicant.xib; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				AA310B94191CD59900C9F92B /* GGOverlayView.m */,
 				AA310B90191CD17E00C9F92B /* GGDraggableView.h */,
 				AA310B91191CD17E00C9F92B /* GGDraggableView.m */,
+				AA0973111AA0884900BD394A /* ViewApplicant.xib */,
 				AA9A8B80191ECB4200644E86 /* GGDraggableViewApplicants.h */,
 				AA9A8B81191ECB4200644E86 /* GGDraggableViewApplicants.m */,
 			);
@@ -646,6 +649,7 @@
 				AACA39A01928280600B16BA5 /* Conversations.plist in Resources */,
 				AA4D493C1944D51D00C4BAF1 /* JobsList.plist in Resources */,
 				AA0972DC1A9E24A500BD394A /* AddDescriptionView.xib in Resources */,
+				AA0973121AA0884900BD394A /* ViewApplicant.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
