@@ -7,7 +7,6 @@
 //
 
 #import "MyJobsViewController.h"
-#import "GGDraggableViewApplicants.h"
 #import <Parse/Parse.h>
 #import "ProfileJobApplicantViewController.h"
 #import "SWRevealViewController.h"
@@ -104,17 +103,6 @@
     
     self.labelNoApplicant.hidden = YES;
     
-    if ([ViewsArray count]) {
-        //OBSERVE WHEN THE VIEW IS DELETED : CALLBACK BELLOW
-        for (GGDraggableViewApplicants *dragView in ViewsArray) {
-            
-            if ([dragView isDescendantOfView:self.view]) {
-                [dragView addObserver:self forKeyPath:@"ViewDeleted" options:NSKeyValueObservingOptionNew context:nil];
-                [dragView addObserver:self forKeyPath:@"LoadDetailView" options:NSKeyValueObservingOptionNew context:nil];
-                [dragView addObserver:self forKeyPath:@"position" options:NSKeyValueObservingOptionNew context:nil];
-            }
-        }
-    }
 }
 
 
@@ -332,18 +320,12 @@
     
     //we add a view for each job
     GGDraggableViewApplicants *dragView= [[GGDraggableViewApplicants alloc] initWithFrame:CGRectMake((320-280)/2, 90, 280, 463)];
-    
+    dragView.delegate = self;
     
     if (numberApplicant < 2) [self.view addSubview:dragView]; //LOAD ONLY THE 2 FIRST VIEWS
     
     [ViewsArray addObject:dragView];
-    
-    
-    //OBSERVE WHEN THE VIEW IS DELETED : CALLBACK BELLOW
-    [dragView addObserver:self forKeyPath:@"ViewDeleted" options:NSKeyValueObservingOptionNew context:nil];
-    [dragView addObserver:self forKeyPath:@"LoadDetailView" options:NSKeyValueObservingOptionNew context:nil];
-    [dragView addObserver:self forKeyPath:@"position" options:NSKeyValueObservingOptionNew context:nil];
-    
+
     NSLog(@"le nombre de vue dans le array : %lu", (unsigned long)[ViewsArray count]);
     
     NSLog(@"NUMERO VIEW : %d", numberApplicant);
@@ -357,23 +339,27 @@
     
     //REMPLIR LES INFOS DE LA VUE POUR CHAQUE USER
     
-    if ( [applicant[@"About"] length] > 40) {
-        dragView.Description = [[applicant[@"About"] substringToIndex:40] stringByAppendingString:@"..."];
-    }else dragView.Description = applicant[@"About"] ;
+//    if ( [applicant[@"About"] length] > 40) {
+//        dragView.Description = [[applicant[@"About"] substringToIndex:40] stringByAppendingString:@"..."];
+//    }else dragView.Description = applicant[@"About"] ;
     
     
-    dragView.NameAge = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
+//    dragView.NameAge = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
     dragView.ApplicantID = applicant.objectId;
     dragView.JobsId = Job.objectId;
-    dragView.JobDescription = [NSString stringWithFormat:@"%@", Job[@"Description"]];
-    [dragView updateUI];
+//    dragView.JobDescription = [NSString stringWithFormat:@"%@", Job[@"Description"]];
+//    [dragView updateUI];
+    
+    dragView.labelName.text = [NSString stringWithFormat:@"%@ ", applicant[@"name"]];
+    dragView.textViewJobDescription.text = [NSString stringWithFormat:@"%@", Job[@"Description"]];
+    dragView.textViewApplicantDescription.text = applicant[@"About"];
     
     //gestion des images des applicants
-    if (applicant[@"Image5"]){
+    if (applicant[@"imagePP"]){
         
         [dragView.activity startAnimating];
         
-        PFFile *userImageFile = applicant[@"Image5"];
+        PFFile *userImageFile = applicant[@"imagePP"];
         [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if (!error) {
                 
@@ -382,9 +368,12 @@
                     
                     [dragView.activity stopAnimating];
                     
-                    [dragView.Pictures addObject:image];
+//                    dragView.imagePP = image;
                     //placer les photos dans les vues
-                    [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
+//                    [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
+                    
+                    
+                    dragView.imageViewPP.image = image;
                 }
                 else NSLog(@"erreur");
             }
@@ -397,137 +386,143 @@
     numberApplicant++;
 }
 
--(void) viewWillDisappear:(BOOL)animated{
-    for (GGDraggableViewApplicants *dragView in ViewsArray) {
-        
-        @try {
-            [dragView removeObserver:self forKeyPath:@"ViewDeleted"];
-        }
-        @catch (NSException *exception) {
-            
-        }
-        @finally {
-            
-        }
-        
-        @try {
-            [dragView removeObserver:self forKeyPath:@"LoadDetailView"];
-        }
-        @catch (NSException *exception) {
-            
-        }
-        @finally {
-            
-        }
-        
-        @try {
-            [dragView removeObserver:self forKeyPath:@"position"];
-        }
-        @catch (NSException *exception) {
-            
-        }
-        @finally {
-            
-        }
-    }
-}
-//observe when the view is deleted
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    NSLog(@"value changed");
-    
-    if ([keyPath isEqualToString:@"LoadDetailView"]) {
-        
-        NSLog(@"load view");
-        GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
-        
-        NSLog(@"numero current view : %@", dragCurrentView.ApplicantID);
-        
-        [self performSegueWithIdentifier:@"next" sender:dragCurrentView.ApplicantID];
-        
-    }else if ([keyPath isEqualToString:@"position"])
-    {
-        GGDraggableViewApplicants *o = object;
-        int pos = o.position;
-        NSLog(@"position : %d ", pos);
-        
-        static int factor = 2;
-        
-        //position < 0 : deny view
-        if (pos <= 0) {
-            
-            self.ImageViewDeny.hidden=NO;
-            [self.view bringSubviewToFront:self.ImageViewDeny];
-            
-            if (pos <= -150/factor) {
-                self.ImageViewDeny.frame = CGRectMake(-10, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
-            }else{
-                self.ImageViewDeny.frame = CGRectMake(-90 + factor*(-pos/150.0)*80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
-            }
-            
-            self.ImageViewAccept.frame = CGRectMake(320, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
-        }
-        //position >0  : accept view
-       if (pos >= 0){
 
-            self.ImageViewAccept.hidden=NO;
-            [self.view bringSubviewToFront:self.ImageViewAccept];
-            
-            if (pos >= 150/factor) {
-                self.ImageViewAccept.frame = CGRectMake(240, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
-            }else{
-                NSLog(@"change");
-                self.ImageViewAccept.frame = CGRectMake(240 + 80 - factor*(pos/150.0)*80, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
-            }
-           
-           self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
-        }
-    }
-    else{
+
+
+#pragma mark GGDraggableViewApplicant delegate
+
+-(void) GGDraggableViewApplicantDelegate_positionViewChanged:(int)positionView{
+
+    int pos = positionView;
+
+    static int factor = 2;
+    
+    //position < 0 : deny view
+    if (pos <= 0) {
         
-        //add a view
-        NSLog(@"numero current view : %d", numberOfTheCurrentView);
+        self.ImageViewDeny.hidden=NO;
+        [self.view bringSubviewToFront:self.ImageViewDeny];
         
-        GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
-        [dragCurrentView removeObserver:self forKeyPath:@"ViewDeleted"];
-        [dragCurrentView removeObserver:self forKeyPath:@"LoadDetailView"];
-        [dragCurrentView removeObserver:self forKeyPath:@"position"];
-        [dragCurrentView removeFromSuperview];
-        dragCurrentView = nil;
-        
-        if (numberOfTheCurrentView + 1 == numberApplicant) {
-            self.buttonReloadJobs.hidden=NO;
+        if (pos <= -150/factor) {
+            self.ImageViewDeny.frame = CGRectMake(-10, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+        }else{
+            self.ImageViewDeny.frame = CGRectMake(-90 + factor*(-pos/150.0)*80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
         }
         
-        numberOfTheCurrentView++;
-        
-        if (numberOfTheCurrentView + 1 < numberApplicant) {
-            
-            GGDraggableViewApplicants *dragView = [ViewsArray objectAtIndex: (numberOfTheCurrentView + 1)];
-            [dragView updateUI];
-            [self.view addSubview:dragView];
-            
-            GGDraggableViewApplicants *dragCurrentView2 = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
-            // + load the UI
-            [dragCurrentView2 updateUI];
-            [self.view bringSubviewToFront:dragCurrentView2];
-            
-            [UIView animateWithDuration:0.1 animations:^{
-                dragCurrentView2.frame = CGRectMake((320-291)/2, 80, 291, 463);
-            }];
-            
-        }
-        
-        //handle the view on the side : green/red
-        
-        self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
         self.ImageViewAccept.frame = CGRectMake(320, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
     }
+    //position >0  : accept view
+    if (pos >= 0){
+        
+        self.ImageViewAccept.hidden=NO;
+        [self.view bringSubviewToFront:self.ImageViewAccept];
+        
+        if (pos >= 150/factor) {
+            self.ImageViewAccept.frame = CGRectMake(240, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+        }else{
+            NSLog(@"change");
+            self.ImageViewAccept.frame = CGRectMake(240 + 80 - factor*(pos/150.0)*80, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+        }
+        
+        self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+    }
 }
 
+-(void) GGDraggableViewApplicantDelegate_deleteView{
+    //add a view
+    NSLog(@"numero current view : %d", numberOfTheCurrentView);
+    
+    GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
+    [dragCurrentView removeFromSuperview];
+    dragCurrentView = nil;
+    
+    if (numberOfTheCurrentView + 1 == numberApplicant) {
+        self.buttonReloadJobs.hidden=NO;
+    }
+    
+    numberOfTheCurrentView++;
+    
+    if (numberOfTheCurrentView + 1 < numberApplicant) {
+        
+        GGDraggableViewApplicants *dragView = [ViewsArray objectAtIndex: (numberOfTheCurrentView + 1)];
+//        [dragView updateUI];
+        [self.view addSubview:dragView];
+        
+        GGDraggableViewApplicants *dragCurrentView2 = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
+        // + load the UI
+//        [dragCurrentView2 updateUI];
+        [self.view bringSubviewToFront:dragCurrentView2];
+        
+        [UIView animateWithDuration:0.1 animations:^{
+            dragCurrentView2.frame = CGRectMake((320-291)/2, 80, 291, 463);
+        }];
+        
+    }
+    
+    //handle the view on the side : green/red
+    
+    self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+    self.ImageViewAccept.frame = CGRectMake(320, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+}
+
+-(void) GGDraggableViewApplicantDelegate_AcceptApplicant{
+    
+    GGDraggableViewApplicants *dragCurrentView = [ViewsArray objectAtIndex: numberOfTheCurrentView ];
+
+    
+    //add the current user's objectID to the list of the applicants for the job
+
+    
+    //get the applicant
+    PFQuery *query = [PFUser query];
+    [query getObjectInBackgroundWithId:dragCurrentView.ApplicantID block:^(PFObject *Applicant, NSError *error) {
+        
+        //get the job
+        PFQuery *queryJob = [PFQuery queryWithClassName:@"Job"];
+        [queryJob getObjectInBackgroundWithId:dragCurrentView.JobsId block:^(PFObject *Job, NSError *error) {
+            
+            //enlever les comments ! les 3 lignes suivantes sont utiles !
+//            [Job[@"ApplicantsID"] removeObject:Applicant.objectId];
+//            [Job addObject:Applicant.objectId forKey:@"acceptedApplicants"];
+//            [Job saveEventually];
+            
+            
+            // Create our Installation query
+            PFQuery *pushQuery = [PFInstallation query];
+            [pushQuery whereKey:@"user" equalTo:Applicant];
+            [pushQuery whereKey:@"active" equalTo:[NSNumber numberWithBool:YES]];
+            
+            NSLog(@"query desc : %@", [pushQuery description]);
+            
+            NSDictionary *dataPush = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"You have been accepted for a job !", @"alert",
+                                      @"Increment", @"badge",
+                                      @"a",@"notifMessage",
+                                      nil];
+            
+            // Send push notification to query
+            PFPush *push = [[PFPush alloc] init];
+            [push setQuery:pushQuery];
+            [push setData:dataPush];
+            [push sendPushInBackground];
+
+            //store Applicant
+            NSDictionary *dicApplicant = [NSDictionary dictionaryWithObjectsAndKeys:Applicant.objectId, @"id",
+                                                                                    Applicant[@"name"], @"name",
+                                                                                    Applicant[@"phoneNumber"],@"phoneNumber",
+                                                                                    Applicant[@"About"], @"About",nil];
+            NSLog(@"applicant image : %@", [dragCurrentView.imageViewPP.image description]);
+            NSLog(@"applicant from parse : %@", [Applicant description]);
+            [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:dragCurrentView.imageViewPP.image];
+            
+            [JobMemoryManagement newApplicantWithId:Applicant.objectId forJobWithId:Job.objectId];
+            
+        }];
+    }];
+    
+}
+
+#pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -547,28 +542,7 @@
     }
 }
 
-- (IBAction)goToConversation:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"conversationSegue" sender:self];
-}
 
 
-//****************************************************
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
+#import "JobMemoryManagement.h"
+
 @interface addJobViewController : UIViewController<UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate , UITextViewDelegate>
 
 @property BOOL newMedia;

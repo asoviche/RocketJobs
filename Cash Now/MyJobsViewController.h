@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GGDraggableViewApplicants.h"
 
-@interface MyJobsViewController : UIViewController
+@interface MyJobsViewController : UIViewController <GGDraggableViewApplicantDelegate>
 
 @end

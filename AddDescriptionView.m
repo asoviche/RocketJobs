@@ -45,6 +45,7 @@
 
 - (IBAction)save:(id)sender {
     [[NSUserDefaults standardUserDefaults] setObject:self.textViewDescription.text forKey:@"About"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.textViewDescription resignFirstResponder];
     [self.delegate AddDescriptionDelegate_saved];
 }
