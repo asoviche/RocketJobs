@@ -43,9 +43,13 @@
 #pragma mark tableView delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ApplicantsForJobViewController *vc1 = [sb instantiateViewControllerWithIdentifier:@"ApplicantsForJobViewController"];
-    vc1.arrayApplicantsFromJob = [[self.myJobsDictionary objectForKey: [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]] objectForKey:@"acceptedApplicants"];
+    
+    NSSet *applicantsSet = [NSSet setWithArray:[[self.myJobsDictionary objectForKey: [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]] objectForKey:@"acceptedApplicants"]];
+
+    vc1.arrayApplicantsFromJob = [applicantsSet allObjects];
     [self.navigationController pushViewController:vc1 animated:YES];
 }
 

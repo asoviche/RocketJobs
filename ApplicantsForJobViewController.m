@@ -9,10 +9,13 @@
 #import "ApplicantsForJobViewController.h"
 #import "MemoryManagement.h"
 #import "ImageManagement.h"
+
 @interface ApplicantsForJobViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayApplicants;
+
+@property (strong, nonatomic) MFMessageComposeViewController* controller;
 
 @end
 
@@ -21,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.controller = [[MFMessageComposeViewController alloc] init] ;
+    self.controller.delegate = self;
     
     NSLog(@"applicants from job . %@", [self.arrayApplicantsFromJob description]);
     
@@ -43,10 +49,57 @@
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mrak action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    NSDictionary * applicant = [self.arrayApplicants objectAtIndex:actionSheet.tag];
+    
+    if (buttonIndex == 0){ //call
+        
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:applicant[@"phoneNumber"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+        
+    }else if(buttonIndex == 1){ //send message
+        NSLog(@"send message !");
+        
+        if([MFMessageComposeViewController canSendText])
+        {
+            self.controller.body = @"SMS message here";
+            self.controller.recipients = [NSArray arrayWithObjects:applicant[@"phoneNumber"], nil];
+            self.controller.messageComposeDelegate = self;
+            [self presentViewController:self.controller animated:YES completion:nil];
+        }
+    }
+    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            NSLog(@"Cancelled");
+            break;
+        case MessageComposeResultFailed:
+
+            break;
+        case MessageComposeResultSent:
+            
+            break;
+        default:
+            break;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark tableView delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Choose" delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:@"Call", @"Message", nil];
+    actionSheet.tag=indexPath.row;
+    [actionSheet showInView:self.view];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
