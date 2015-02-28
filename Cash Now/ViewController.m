@@ -377,50 +377,81 @@
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                     float distanceToJob = [geoPoint distanceInKilometersTo:JobOnTop[@"Location"]];
                     if (distanceToJob < 0.1) {
-                        dragView.DistanceToUser.text = @"100 m";
+//                        dragView.DistanceToUser.text = @"100 m";
+                        dragView.labelJobLocation.text =@"100 m";
                     }else{
-                        dragView.DistanceToUser.text = [NSString stringWithFormat:@"%0.1f km", distanceToJob];
+//                        dragView.DistanceToUser.text = [NSString stringWithFormat:@"%0.1f km", distanceToJob];
+                        dragView.labelJobLocation.text = [NSString stringWithFormat:@"%0.1f km", distanceToJob];
                     }
                 }];
             }
             
+            //query users -> find the poster
+                //get the pp
+                    //set imagePP + name + description
+            PFQuery *query = [PFUser query];
+            [query getObjectInBackgroundWithId:((PFUser*)JobOnTop[@"Author"]).objectId block:^(PFObject *jobProvider, NSError *error) {
+                if (!error) {
+                    
+                    dragView.labelPosterName.text = jobProvider[@"name"];
+                    dragView.textViewPosterDescription.text = jobProvider[@"About"];
+                   
+                    PFFile *userImageFile = jobProvider[@"imagePP"];
+                    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                        if (!error) {
+                            dragView.imageViewPosterImagePP.image = [UIImage imageWithData:imageData];
+
+                        }
+                    }];
+                }
+            }];
+            
+            
             //gestion des images des jobs
-            if (JobOnTop[@"Picture"]) {
-                
-                [dragView.activity startAnimating];
-                
-                PFFile *userImageFile = JobOnTop[@"Picture"];
-                
-                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        UIImage *image = [UIImage imageWithData:imageData];
-                        [dragView.activity stopAnimating];
-                        if (image) {
-                            
-                            [JobsPicturesArray addObject:image];
-                            //placer les photos dans les vues
-                            [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
-                        }
-                        else{
-                            //error : load rand image
-                            [dragView loadImageAndStyle:[UIImage imageNamed:[@"rand_picture_" stringByAppendingString:[NSString stringWithFormat:@"%d", arc4random()%5]]]];
-                        }
-                    }
-                }];
-            }else{
-                //no image : load rand image
-                [dragView loadImageAndStyle:[UIImage imageNamed:[@"rand_picture_" stringByAppendingString:[NSString stringWithFormat:@"%d", arc4random()%5]]]];
-            }
+//            if (JobOnTop[@"Picture"]) {
+//                
+//                [dragView.activity startAnimating];
+//                
+//                PFFile *userImageFile = JobOnTop[@"Picture"];
+//                
+//                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+//                    if (!error) {
+//                        UIImage *image = [UIImage imageWithData:imageData];
+//                        [dragView.activity stopAnimating];
+//                        if (image) {
+//                            
+//                            [JobsPicturesArray addObject:image];
+//                            //placer les photos dans les vues
+//                            [dragView loadImageAndStyle:[UIImage imageWithData:imageData]];
+//                        }
+//                        else{
+//                            //error : load rand image
+//                            [dragView loadImageAndStyle:[UIImage imageNamed:[@"rand_picture_" stringByAppendingString:[NSString stringWithFormat:@"%d", arc4random()%5]]]];
+//                        }
+//                    }
+//                }];
+//            }else{
+//                //no image : load rand image
+//                [dragView loadImageAndStyle:[UIImage imageNamed:[@"rand_picture_" stringByAppendingString:[NSString stringWithFormat:@"%d", arc4random()%5]]]];
+//            }
             
             
             
             dragView.delegate = self;
             
-            dragView.LabelDescriptionJob.text =Description;
-            dragView.LabelDateJob.text =dateString;
-            dragView.LabelPriceJob.text =[NSString stringWithFormat:@"%@/h", Price];
-            dragView.LabelHourJob.text =Hour;
+//            dragView.LabelDescriptionJob.text =Description;
+//            dragView.LabelDateJob.text =dateString;
+//            dragView.LabelPriceJob.text =[NSString stringWithFormat:@"%@/h", Price];
+//            dragView.LabelHourJob.text =Hour;
+           
             dragView.JobID = JobID;
+            
+            
+            dragView.labelJobDate.text = dateString;
+            dragView.labelJobHour.text = Hour;
+            dragView.labelJobPrice.text = [NSString stringWithFormat:@"%@/h", Price];
+            dragView.textViewJobDesription.text = Description;
+            
             
             numberOfTheJob++;
             countAllJobs++;

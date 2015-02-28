@@ -42,4 +42,21 @@
 
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
 
+//.xib
+@property (strong, nonatomic) IBOutlet UIView *viewJob;
+
+//iboutlets
+@property (strong, nonatomic) IBOutlet UITextView *textViewJobDesription;
+
+@property (strong, nonatomic) IBOutlet UILabel *labelJobLocation;
+@property (strong, nonatomic) IBOutlet UILabel *labelJobDate;
+@property (strong, nonatomic) IBOutlet UILabel *labelJobHour;
+@property (strong, nonatomic) IBOutlet UILabel *labelJobPrice;
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewPosterImagePP;
+@property (strong, nonatomic) IBOutlet UILabel *labelPosterName;
+@property (strong, nonatomic) IBOutlet UITextView *textViewPosterDescription;
+
+
+
 @end
