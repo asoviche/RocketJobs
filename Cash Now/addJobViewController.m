@@ -453,11 +453,13 @@
         //*****************************************************************
         
         if (self.buttonOtherLocation.selected==YES && annotation != nil ) { //the user changed location
+            
             PFGeoPoint *newLocation = [PFGeoPoint geoPointWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
             Job[@"Location"] = newLocation;
             [Job saveInBackground];
         }
         else if (self.buttonOtherLocation.selected==NO) {
+            
             [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                 if (!error) {
                     // do something with the new geoPoint
@@ -467,87 +469,95 @@
             }];
         }
         
-        __block PFFile *imageFile;
-        //faire la photo
-        @try {
-            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
-            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-        }
-        @catch (NSException *exception) {
+//        __block PFFile *imageFile;
+//        //faire la photo
+//        @try {
+//            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
+//            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+//        }
+//        @catch (NSException *exception) {
+//            
+//        }
+//        @finally {
+//            
+//        }
+//
+//
+//        if (imageFile) {
+//            
+//            self.progressView.hidden  = NO;
+//            
+//            NSLog(@"there is a file somewhere in your ass");
+//            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                if (!error) {
+//                    
+//
+//                }
+//            } progressBlock:^(int percentDone) {
+//                NSLog(@"progress : %d", percentDone);
+//                
+//                self.progressView.progress = (float)percentDone/100.0;
+//                
+//                if (percentDone == 100) {
+//                    
+//                    self.buttonPost.enabled=YES;
+//                    
+//                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+//                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+//                    
+//                    //                    [alert show];
+//                    Job[@"Picture"] = imageFile;
+//                    
+//                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                        //save to plist *************
+////                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+//                        
+//                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+//                                                                                        Job[@"Price"], @"Price",
+//                                                                                        Job[@"Hour"], @"Hour",
+//                                                                                        Job[@"DateJob"], @"DateJob",
+//                                                                                        Job[@"Location"], @"Location",
+//                                                                                        Job.objectId, @"id", nil];
+//                        NSLog(@"job to save : %@", [job description]);
+//                        [JobMemoryManagement saveJobInMemory:job];
+//                        
+//                        
+//                        self.progressView.hidden  = YES;
+//                        self.JobDesription.text = @"Job Description";
+//                        
+//                        [self goToAnotherViewController];
+//                    }];
+//                    
+//                    
+//                    imageFile=nil;
+//                    picture_camera_small=nil;
+//                    picture_camera=nil;
+//                    self.progressView.hidden = YES;
+//                    self.imageViewJobPicture.image=nil;
+//                    
+//                }
+//            }];
+//        }
+//        else{
+        NSLog(@"TEST 1");
             
-        }
-        @finally {
-            
-        }
-
-        
-        if (imageFile) {
-            
-            self.progressView.hidden  = NO;
-            
-            NSLog(@"there is a file somewhere in your ass");
-            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    
-
-                }
-            } progressBlock:^(int percentDone) {
-                NSLog(@"progress : %d", percentDone);
-                
-                self.progressView.progress = (float)percentDone/100.0;
-                
-                if (percentDone == 100) {
-                    
-                    self.buttonPost.enabled=YES;
-                    
-                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
-                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                    
-                    //                    [alert show];
-                    Job[@"Picture"] = imageFile;
-                    
-                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        //save to plist *************
-//                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
-                        
-                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
-                                                                                        Job[@"Price"], @"Price",
-                                                                                        Job[@"Hour"], @"Hour",
-                                                                                        Job[@"DateJob"], @"DateJob",
-                                                                                        Job[@"Location"], @"Location",
-                                                                                        Job.objectId, @"id", nil];
-                        NSLog(@"job to save : %@", [job description]);
-                        [JobMemoryManagement saveJobInMemory:job];
-                        
-                        
-                        self.progressView.hidden  = YES;
-                        self.JobDesription.text = @"Job Description";
-                        
-                        [self goToAnotherViewController];
-                    }];
-                    
-                    
-                    imageFile=nil;
-                    picture_camera_small=nil;
-                    picture_camera=nil;
-                    self.progressView.hidden = YES;
-                    self.imageViewJobPicture.image=nil;
-                    
-                }
-            }];
-        }
-        else{
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 //save to plist *************
 //                [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+                
+                 NSLog(@"TEST 2");
+                
                 NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                      Job[@"Price"], @"Price",
                                      Job[@"Hour"], @"Hour",
                                      Job[@"DateJob"], @"DateJob",
-                                     Job[@"Location"], @"Location", nil];
+                                     Job[@"Location"], @"Location",
+                                     Job.objectId, @"id", nil];
+
                 
                 [JobMemoryManagement saveJobInMemory:job];
-                
+
+                NSLog(@"TEST 3");
                 
                 
                 self.progressView.hidden  = YES;
@@ -562,7 +572,7 @@
             
             
         }
-    }
+//    }
 }
 
 -(void) goToAnotherViewController {
@@ -574,40 +584,7 @@
     [revealController setFrontViewController:navigationController animated:YES];
 }
 
--(void) saveJobToPlistWithId:(NSString*)JobId Picture : (UIImage*)Image Description:(NSString*)description Price:(NSString*)price2 Hour:(NSString*)hour2 Date:(NSString*)date2 location:(PFGeoPoint*)geoPoint{
-    
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"JobsList.plist"]; //3
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) //4
-    {
-        NSLog(@"file does not exist");
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"JobsList" ofType:@"plist"]; //5
-        [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
-    }
-    
-    //all the stuff in the plist file
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    NSLog(@"plist for jobs  before : %@", data);
-    
-    //save the job
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: description, @"description", price2, @"price", hour2 , @"hour", date2 , @"date" , [NSDate date] , @"last_update", @"NO" , @"seen",  nil];
-    
-    if (![data objectForKey:JobId]) {
 
-        [data setObject:dictionary forKey:JobId];
-        
-        if([data writeToFile:path atomically:YES]){
-            NSLog(@"saved for dic : %@", dictionary);
-        }
-    }
-    
-    NSLog(@"plist for jobs  after : %@", data);
-}
 
 - (NSString *)progressView:(ASProgressPopUpView *)progressView stringForProgress:(float)progress
 {
@@ -676,15 +653,5 @@
     return updatedImage;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
