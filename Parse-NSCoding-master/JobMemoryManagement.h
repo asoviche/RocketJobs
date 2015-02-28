@@ -12,5 +12,7 @@
 
 +(void) saveJobInMemory:(NSDictionary*)job;
 +(void) newApplicantWithId:(NSString*)applicantId forJobWithId:(NSString*)jobId;
++(void) newApplicantsArray:(NSArray*)applicantsArray forJobWithId:(NSString*)jobId;
++(void) updateApplicantsForJobsWithDictionary:(NSDictionary*)applicantsToMyJobsDictionary;
 
 @end
