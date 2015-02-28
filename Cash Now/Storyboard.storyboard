@@ -5,6 +5,34 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Launch Image View Controller-->
+        <scene sceneID="ick-LL-5gR">
+            <objects>
+                <viewController id="eTy-Mu-v6q" customClass="LaunchImageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R4T-a6-WLz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njv-Yy-xWo">
+                                <rect key="frame" x="106" y="273" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_dark_grey" id="yDR-Ir-qG9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ld0-ry-SFc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LmI-eH-HjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2210" y="908"/>
+        </scene>
         <!--Log In View Controller Custom-->
         <scene sceneID="bTd-MF-c0S">
             <objects>
@@ -73,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd2-bu-zd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="901"/>
+            <point key="canvasLocation" x="-1784" y="1207"/>
         </scene>
         <!--My Posted Jobs View Controller-->
         <scene sceneID="gu0-UJ-sgV">
@@ -123,7 +151,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="zb1-mb-vuG">
-                                                    <rect key="frame" x="52" y="8" width="493" height="265"/>
+                                                    <rect key="frame" x="52" y="8" width="780" height="433.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -196,7 +224,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="400" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pA9-n5-mDw">
+                                                <imageView userInteractionEnabled="NO" tag="400" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pA9-n5-mDw">
                                                     <rect key="frame" x="8" y="8" width="77" height="110"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -208,7 +236,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="03t-AA-gp6">
-                                                    <rect key="frame" x="101" y="29" width="501" height="242"/>
+                                                    <rect key="frame" x="101" y="29" width="821" height="410.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -503,7 +531,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtn-pl-Pig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="-574"/>
+            <point key="canvasLocation" x="-904" y="-848"/>
         </scene>
         <!--Messages-->
         <scene sceneID="AHP-g9-3sX">
@@ -532,7 +560,7 @@ But come back in a while !</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" editable="NO" selectable="NO" id="VfZ-mZ-mil">
-                                            <rect key="frame" x="83" y="16" width="212" height="80"/>
+                                            <rect key="frame" x="83" y="16" width="212" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="textColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
@@ -1086,7 +1114,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1378" y="-1261"/>
+            <point key="canvasLocation" x="-1430" y="-821"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="NzE-Yw-T1G">
@@ -1261,6 +1289,9 @@ But come back in a while !</string>
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="FjS-dg-T5c" kind="custom" customClass="SWRevealViewControllerSegue" id="t0v-90-YsY"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-menu-settings" id="L3v-Sp-A4G">
                                             <rect key="frame" x="15" y="11" width="30" height="30"/>
@@ -1347,6 +1378,16 @@ But come back in a while !</string>
                                 <color key="textColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yLX-9W-vhY">
+                                <rect key="frame" x="82" y="464" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send useful feedback !">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFeedBack:" destination="FjS-dg-T5c" eventType="touchUpInside" id="Z5m-Op-rJA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1369,7 +1410,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seQ-Eg-ztd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="1685"/>
+            <point key="canvasLocation" x="-1513" y="1663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V9f-WF-dlC">
@@ -1384,12 +1425,12 @@ But come back in a while !</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3M0-nn-Kgi" kind="relationship" relationship="rootViewController" id="6mU-ZX-rVl"/>
+                        <segue destination="eTy-Mu-v6q" kind="relationship" relationship="rootViewController" id="han-UK-IST"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLp-w4-aSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2074" y="901"/>
+            <point key="canvasLocation" x="-2678" y="899"/>
         </scene>
         <!--ProfileMVP View Controller-->
         <scene sceneID="oxh-SX-55l">
@@ -1471,10 +1512,15 @@ But come back in a while !</string>
                                     <outletCollection property="gestureRecognizers" destination="z8e-uC-dMu" appends="YES" id="d1G-ae-DBg"/>
                                 </connections>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="gcd-ZV-pfb">
+                                <rect key="frame" x="150" y="213" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorImagePP" destination="gcd-ZV-pfb" id="Sz8-SU-qGC"/>
                         <outlet property="buttonAddDescription" destination="tKD-6Y-ntd" id="xSB-Me-dXB"/>
                         <outlet property="buttonAddPhoneNumber" destination="qqQ-nK-SrW" id="2kN-wq-zcC"/>
                         <outlet property="imageViewPP" destination="Yf1-Lg-oWd" id="7KV-K9-YGu"/>
@@ -1678,6 +1724,7 @@ But come back in a while !</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Background_dark_grey" width="639" height="1136"/>
         <image name="Rocket" width="83" height="88"/>
         <image name="back" width="13" height="22"/>
         <image name="button-login" width="164" height="45"/>
@@ -1701,7 +1748,7 @@ But come back in a while !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="SjO-cN-bVf"/>
         <segue reference="9eB-nS-h1g"/>
-        <segue reference="Jrk-Ga-X2e"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,7 +36,9 @@
     [MemoryManagement saveObjectInMemory:applicantDictionary toFolder:@"applicantsDictionary"];
     
     //store the image
-    [ImageManagement saveImageWithData:UIImagePNGRepresentation(imagePP) forName:applicant[@"id"]];
+    if (imagePP) {
+        [ImageManagement saveImageWithData:UIImagePNGRepresentation(imagePP) forName:applicant[@"id"]];
+    }
     
     //check
     NSLog(@"image : %@", [ImageManagement getImageFromMemoryWithName:applicant[@"id"]]);

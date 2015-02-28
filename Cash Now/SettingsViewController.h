@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-@interface SettingsViewController : UIViewController
+
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+
+@interface SettingsViewController : UIViewController<MFMailComposeViewControllerDelegate>
+
+
 
 @end

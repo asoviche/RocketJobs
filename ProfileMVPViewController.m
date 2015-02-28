@@ -25,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorImagePP;
+
 @property(strong, nonatomic) AddDescriptionView *addDescriptionView;
 @property(strong, nonatomic) AddPhoneNumber *addPhoneNumberView;
 @end
@@ -46,6 +48,8 @@
     //set title
     self.navBar.topItem.title = [[NSUserDefaults standardUserDefaults]stringForKey:@"name"];
 
+    self.activityIndicatorImagePP.hidden = YES;
+    
     //set image PP
     self.imageViewPP.layer.cornerRadius = 3;
     self.imageViewPP.clipsToBounds=YES;
@@ -235,16 +239,35 @@
     UIImage *picture_camera = [info objectForKey:UIImagePickerControllerEditedImage];
     // You have the image. You can use this to present the image in the next view like you require in `#3`.
     
-    //save picture
-    [ImageManagement saveImageWithData:UIImagePNGRepresentation(picture_camera) forName:@"imagePP"];
-    self.imageViewPP.image = [ImageManagement getImageFromMemoryWithName:@"imagePP"];
+    self.imageViewPP.alpha = 0.6;
+    
+    self.activityIndicatorImagePP.hidden = NO;
+    [self.activityIndicatorImagePP startAnimating];
+    [self.imageViewPP bringSubviewToFront:self.activityIndicatorImagePP];
     
     
     //save the photo into parse
     NSData *ParseimageData = UIImagePNGRepresentation(picture_camera);
     PFFile *imageFile = [PFFile fileWithName:@"image.png" data:ParseimageData];
     [PFUser currentUser][@"imagePP"] = imageFile;
-    [[PFUser currentUser] saveInBackground];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        self.imageViewPP.alpha = 1;
+        self.activityIndicatorImagePP.hidden = YES;
+        [self.activityIndicatorImagePP stopAnimating];
+        
+        if (succeeded && !error) {
+            
+            //save picture
+            [ImageManagement saveImageWithData:UIImagePNGRepresentation(picture_camera) forName:@"imagePP"];
+            self.imageViewPP.image = picture_camera;
+            
+        }else{
+            //display error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"A problem occured while uploading your profile picture" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+    }];
     
     
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -58,4 +58,59 @@
     NSLog(@"new job dic new applicatn : %@", [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"]);
 }
 
++(void) newApplicantsArray:(NSArray*)applicantsArray forJobWithId:(NSString*)jobId{
+    
+    NSMutableDictionary *jobsDictionary = [[MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"] mutableCopy];
+
+    NSMutableDictionary *job = [[jobsDictionary objectForKey:jobId] mutableCopy];
+    
+    if (job == nil) { //job not in memory
+        return;
+    }
+    
+    if (applicantsArray != nil ) {
+        job[@"acceptedApplicants"] = applicantsArray;
+    }else{
+        NSLog(@"empty array  app :%@", [applicantsArray description]);
+        [job removeObjectForKey:@"acceptedApplicants"];
+    }
+    
+    
+    NSLog(@"job id : %@", jobId);
+    NSLog(@"array applicants :%@", [applicantsArray description]);
+    
+    [jobsDictionary setObject:job forKey:jobId];
+    
+    [MemoryManagement saveObjectInMemory:jobsDictionary toFolder:@"myJobsDictionary"];
+    
+    //check
+    NSLog(@"new job dic new applicatn : %@", [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"]);
+}
+
++(void) updateApplicantsForJobsWithDictionary:(NSDictionary*)applicantsToMyJobsDictionary{
+    
+    NSMutableDictionary *jobsDictionary = [[MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"] mutableCopy];
+
+    for (NSString *myJobId in [jobsDictionary allKeys]) {
+        
+        if ([applicantsToMyJobsDictionary objectForKey:myJobId]) {
+            
+            NSLog(@"job id to update : %@", myJobId);
+            
+            NSMutableDictionary *myJobToUpdate = [[jobsDictionary objectForKey:myJobId] mutableCopy];
+            myJobToUpdate[@"acceptedApplicants"] = [applicantsToMyJobsDictionary objectForKey:myJobId];
+            
+            NSLog(@"myJobToUpdate[@'acceptedApplicants'] : %@",[myJobToUpdate[@"acceptedApplicants"] description] );
+            
+            
+            [jobsDictionary setObject:myJobToUpdate forKey:myJobId];
+        }
+    }
+    [MemoryManagement saveObjectInMemory:jobsDictionary toFolder:@"myJobsDictionary"];
+    NSLog(@"jobsDictionary_updated : %@", [jobsDictionary description]);
+
+}
+
+
+
 @end
