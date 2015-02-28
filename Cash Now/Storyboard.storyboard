@@ -5,6 +5,34 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Launch Image View Controller-->
+        <scene sceneID="ick-LL-5gR">
+            <objects>
+                <viewController id="eTy-Mu-v6q" customClass="LaunchImageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R4T-a6-WLz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="njv-Yy-xWo">
+                                <rect key="frame" x="106" y="273" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background_dark_grey" id="yDR-Ir-qG9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ld0-ry-SFc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LmI-eH-HjD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2210" y="908"/>
+        </scene>
         <!--Log In View Controller Custom-->
         <scene sceneID="bTd-MF-c0S">
             <objects>
@@ -73,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fd2-bu-zd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="901"/>
+            <point key="canvasLocation" x="-1784" y="1207"/>
         </scene>
         <!--My Posted Jobs View Controller-->
         <scene sceneID="gu0-UJ-sgV">
@@ -1350,6 +1378,16 @@ But come back in a while !</string>
                                 <color key="textColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yLX-9W-vhY">
+                                <rect key="frame" x="82" y="464" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Send useful feedback !">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendFeedBack:" destination="FjS-dg-T5c" eventType="touchUpInside" id="Z5m-Op-rJA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1387,12 +1425,12 @@ But come back in a while !</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3M0-nn-Kgi" kind="relationship" relationship="rootViewController" id="6mU-ZX-rVl"/>
+                        <segue destination="eTy-Mu-v6q" kind="relationship" relationship="rootViewController" id="han-UK-IST"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLp-w4-aSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2074" y="901"/>
+            <point key="canvasLocation" x="-2678" y="899"/>
         </scene>
         <!--ProfileMVP View Controller-->
         <scene sceneID="oxh-SX-55l">
@@ -1686,6 +1724,7 @@ But come back in a while !</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Background_dark_grey" width="639" height="1136"/>
         <image name="Rocket" width="83" height="88"/>
         <image name="back" width="13" height="22"/>
         <image name="button-login" width="164" height="45"/>
@@ -1709,7 +1748,7 @@ But come back in a while !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Jrk-Ga-X2e"/>
-        <segue reference="Wfe-yF-x4T"/>
+        <segue reference="SjO-cN-bVf"/>
+        <segue reference="9eB-nS-h1g"/>
     </inferredMetricsTieBreakers>
 </document>

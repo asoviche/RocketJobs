@@ -11,6 +11,8 @@
 #import "ViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
+#import "LogInViewControllerCustom.h"
+
 @implementation AppDelegate{
 //    BOOL allowCheckDatabase;
 }
@@ -67,17 +69,22 @@
                                                          UIRemoteNotificationTypeSound)];
     }
     
-    if ([PFUser currentUser]) {
-        NSLog(@"good categroy 2");
-        [self GoToDataBaseToRefreshMessages];
-    }
+    
+//    LogInViewControllerCustom *loginController=[[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil] instantiateViewControllerWithIdentifier:@"LogInVc"]; //or the homeController
+//    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginController];
+//    self.window.rootViewController=navController;
+    
+//    if ([PFUser currentUser]) {
+//        NSLog(@"good categroy 2");
+//        [self GoToDataBaseToRefreshMessages];
+//    }
     
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults addObserver:self
-               forKeyPath:@"ListConversationsHaveToBeUpdated"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults addObserver:self
+//               forKeyPath:@"ListConversationsHaveToBeUpdated"
+//                  options:NSKeyValueObservingOptionNew
+//                  context:NULL];
     
 
     return YES;
@@ -88,26 +95,26 @@
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
     
-    //analytics for push notifications
-    if (application.applicationState == UIApplicationStateInactive) {
-        // The application was just brought from the background to the foreground,
-        // so we consider the app as having been "opened by a push notification."
-        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
-    
-    NSLog(@"notification : %@", [userInfo description]);
-    
-    // HANDLE THE RECEIVED NOTIFICATION ********************************* MESSAGE / APPLICANT
-    
-    if ([PFUser currentUser] && [userInfo objectForKey:@"notifMessage"] ) {
-        NSLog(@"good categroy");
-        [self GoToDataBaseToRefreshMessages];
-    }
-    else if([PFUser currentUser] && [userInfo objectForKey:@"deleteConv"]){
-        [self deleteConversationForJobId:[userInfo objectForKey:@"JobId"] andOtherUserId:[userInfo objectForKey:@"userId"]];
-    }
-    
-    NSLog(@" current vc : %@", self.window.rootViewController.navigationController.visibleViewController.class);
+//    //analytics for push notifications
+//    if (application.applicationState == UIApplicationStateInactive) {
+//        // The application was just brought from the background to the foreground,
+//        // so we consider the app as having been "opened by a push notification."
+//        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+//    }
+//    
+//    NSLog(@"notification : %@", [userInfo description]);
+//    
+//    // HANDLE THE RECEIVED NOTIFICATION ********************************* MESSAGE / APPLICANT
+//    
+//    if ([PFUser currentUser] && [userInfo objectForKey:@"notifMessage"] ) {
+//        NSLog(@"good categroy");
+//        [self GoToDataBaseToRefreshMessages];
+//    }
+//    else if([PFUser currentUser] && [userInfo objectForKey:@"deleteConv"]){
+//        [self deleteConversationForJobId:[userInfo objectForKey:@"JobId"] andOtherUserId:[userInfo objectForKey:@"userId"]];
+//    }
+//    
+//    NSLog(@" current vc : %@", self.window.rootViewController.navigationController.visibleViewController.class);
 }
 
 - (void)application:(UIApplication *)application
@@ -181,6 +188,14 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [[PFFacebookUtils session] close];
 }
 
+
+
+
+
+
+
+
+//CONVERSATION METHODS
 
 -(void) GoToDataBaseToRefreshMessages{
     

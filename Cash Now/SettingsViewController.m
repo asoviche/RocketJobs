@@ -109,46 +109,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (buttonIndex == 1) {
-        NSLog(@"The cancel button was clicked for alertView");
-        
-        
-        
-        
-        
-        
-        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
-        //VIEW0
-        LogInViewControllerCustom* vc0 = [sb instantiateViewControllerWithIdentifier:@"FirstVC"];
-        
-        [self presentViewController:vc0 animated:YES completion:nil];
-        
-        
-        
-        //DELETE PLIST FOR CONVERSATIONS
-        NSError *error;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-        NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Conversations.plist"]; //3
-        
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        if (![fileManager fileExistsAtPath: path]) //4
-        {
-            NSLog(@"file does not exist");
-            NSString *bundle = [[NSBundle mainBundle] pathForResource:@"Conversations" ofType:@"plist"]; //5
-            [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
-        }
-        [fileManager removeItemAtPath:path error:&error];
-        
-        //DELETE FILE FOR JOBS
-        NSError *error2;
-        NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-        NSString *documentsDirectory2 = [paths2 objectAtIndex:0]; //2
-        NSString *path2 = [documentsDirectory2 stringByAppendingPathComponent:@"Conversations.plist"]; //3
-        
-        NSFileManager *fileManager2 = [NSFileManager defaultManager];
-        [fileManager2 removeItemAtPath:path2 error:&error2];
-        
         
         
         //change installation to false
@@ -157,20 +117,72 @@
         [installation saveInBackground];
         
         [PFUser logOut];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"name"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"About"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"phoneNumber"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
+        //display the login view
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        LogInViewControllerCustom* vc0 = [sb instantiateViewControllerWithIdentifier:@"FirstVC"];
+        [self presentViewController:vc0 animated:YES completion:nil];
+        
+        
+        
+//        //DELETE PLIST FOR CONVERSATIONS
+//        NSError *error;
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+//        NSString *documentsDirectory = [paths objectAtIndex:0]; //2
+//        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Conversations.plist"]; //3
+//        
+//        NSFileManager *fileManager = [NSFileManager defaultManager];
+//        
+//        if (![fileManager fileExistsAtPath: path]) //4
+//        {
+//            NSLog(@"file does not exist");
+//            NSString *bundle = [[NSBundle mainBundle] pathForResource:@"Conversations" ofType:@"plist"]; //5
+//            [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
+//        }
+//        [fileManager removeItemAtPath:path error:&error];
+//        
+//        //DELETE FILE FOR JOBS
+//        NSError *error2;
+//        NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
+//        NSString *documentsDirectory2 = [paths2 objectAtIndex:0]; //2
+//        NSString *path2 = [documentsDirectory2 stringByAppendingPathComponent:@"Conversations.plist"]; //3
+//        
+//        NSFileManager *fileManager2 = [NSFileManager defaultManager];
+//        [fileManager2 removeItemAtPath:path2 error:&error2];
+        
+        
+
 
     }
     // else do your stuff for the rest of the buttons (firstOtherButtonIndex, secondOtherButtonIndex, etc)
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark send mail
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)sendFeedBack:(id)sender {
+    if([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mailCont = [[MFMailComposeViewController alloc] init];
+        mailCont.mailComposeDelegate = self;
+        mailCont.navigationBar.translucent = NO;
+//        [mailCont.navigationBar setTintColor:[UIColor whiteColor]];
+        
+        //        mailCont.topViewController.navigationController
+
+        
+        [mailCont setSubject:@"Support - feedback"];
+        [mailCont setToRecipients:@[@"amaury@payonesnap.com"]];
+        
+        [self presentViewController:mailCont animated:YES completion:nil];
+    }
 }
-*/
 
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

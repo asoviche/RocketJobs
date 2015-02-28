@@ -44,6 +44,7 @@
 		AA0973101AA06ADD00BD394A /* ApplicantsForJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */; };
 		AA0973121AA0884900BD394A /* ViewApplicant.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0973111AA0884900BD394A /* ViewApplicant.xib */; };
 		AA0973141AA09E8100BD394A /* ViewJob.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0973131AA09E8100BD394A /* ViewJob.xib */; };
+		AA0973171AA22BAA00BD394A /* LaunchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0973161AA22BAA00BD394A /* LaunchImageViewController.m */; };
 		AA2AF710193BAD36004661ED /* NSDate+Calculations.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */; };
 		AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2E3EE819240F54000C4692 /* FriendsViewController.m */; };
 		AA310B92191CD17E00C9F92B /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA310B91191CD17E00C9F92B /* GGDraggableView.m */; };
@@ -166,6 +167,8 @@
 		AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicantsForJobViewController.m; path = ../ApplicantsForJobViewController.m; sourceTree = "<group>"; };
 		AA0973111AA0884900BD394A /* ViewApplicant.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewApplicant.xib; sourceTree = "<group>"; };
 		AA0973131AA09E8100BD394A /* ViewJob.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewJob.xib; sourceTree = "<group>"; };
+		AA0973151AA22BAA00BD394A /* LaunchImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchImageViewController.h; path = ../LaunchImageViewController.h; sourceTree = "<group>"; };
+		AA0973161AA22BAA00BD394A /* LaunchImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchImageViewController.m; path = ../LaunchImageViewController.m; sourceTree = "<group>"; };
 		AA2AF70E193BAD36004661ED /* NSDate+Calculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Calculations.h"; sourceTree = "<group>"; };
 		AA2AF70F193BAD36004661ED /* NSDate+Calculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Calculations.m"; sourceTree = "<group>"; };
 		AA2DD64F195633EB00538F2C /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "../OpenSans-Light.ttf"; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				AAD302BC19192656000E4A47 /* Storyboard.storyboard */,
+				AA0973151AA22BAA00BD394A /* LaunchImageViewController.h */,
+				AA0973161AA22BAA00BD394A /* LaunchImageViewController.m */,
 				AA09730E1AA06ADD00BD394A /* ApplicantsForJobViewController.h */,
 				AA09730F1AA06ADD00BD394A /* ApplicantsForJobViewController.m */,
 				AA09730B1AA0622D00BD394A /* MyPostedJobsViewController.h */,
@@ -687,6 +692,7 @@
 				AAFD37CE191C34AF00DF0376 /* JobsViewController.m in Sources */,
 				AAD30283191924BB000E4A47 /* ViewController.m in Sources */,
 				AA34A7CF1929E12D006F5F4E /* TestMessagesViewController.m in Sources */,
+				AA0973171AA22BAA00BD394A /* LaunchImageViewController.m in Sources */,
 				AA09730A1A9F7A0900BD394A /* MemoryManagement.m in Sources */,
 				AA0973041A9F794F00BD394A /* JobMemoryManagement.m in Sources */,
 				AA310B95191CD59900C9F92B /* GGOverlayView.m in Sources */,
