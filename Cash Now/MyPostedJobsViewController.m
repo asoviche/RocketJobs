@@ -12,6 +12,8 @@
 #import "ApplicantsForJobViewController.h"
 #import <Parse/Parse.h>
 #import "JobMemoryManagement.h"
+#import "ApplicantsMemoryManagement.h"
+#import "ImageManagement.h"
 
 @interface MyPostedJobsViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -48,7 +50,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    NSMutableArray *arrayAllApplicantsId = [NSMutableArray new];
     
+    //DOWNLOAD JOBS PROFILE
     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
     [query whereKey:@"Author" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *myJobsArray, NSError *error) {
@@ -58,43 +62,71 @@
             return;
         }
         
-        
         NSLog(@"count posted jobs : %lu", (unsigned long)[myJobsArray count]);
     
-        
         for (PFObject *myJob in myJobsArray) {
             
             if ( [myJob[@"ApplicantsID"] count] > 0 ) {
                 
                 NSLog(@"my job : %@", [myJob description]);
-                
                 NSLog(@"ApplicantsID : %@", myJob[@"ApplicantsID"]);
                 
                 NSSet *applicantsSet = [NSSet setWithArray:myJob[@"ApplicantsID"]];
                 [self.applicantsToMyJobsDictionary setObject:[applicantsSet allObjects] forKey:myJob.objectId];
-
                 
-                //download applicant profile + save to memory
+                [arrayAllApplicantsId addObjectsFromArray:[applicantsSet allObjects]];
                 
-                
-            }else{
+            }else{ //no applicants
                 
                 NSLog(@"empty array : %@", myJob.objectId);
                 
                 [self.applicantsToMyJobsDictionary setObject:[NSArray array] forKey:myJob.objectId];
-
             }
-            
-            
-           
-            
         }
         
         [JobMemoryManagement updateApplicantsForJobsWithDictionary:self.applicantsToMyJobsDictionary];
         
-
-        self.myJobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"]; //update jobs
+        self.myJobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"]; //update jobs from memory
         [self.tableView reloadData];
+        
+        //DOWNLOAD APPLICANTS PROFILES
+        PFQuery *queryApplicants = [PFUser query];
+        [query whereKey:@"objectId" containedIn:arrayAllApplicantsId];
+        [queryApplicants findObjectsInBackgroundWithBlock:^(NSArray *arrayApplicantsParse, NSError *error) {
+            
+            if (error) {
+                NSLog(@"error : %@", [error description]);
+                return;
+            }
+            
+            for (PFUser *applicant in arrayApplicantsParse) {
+                
+                NSMutableDictionary *dicApplicant = [NSMutableDictionary dictionaryWithObjectsAndKeys:applicant.objectId, @"id", nil];
+                if (applicant[@"name"]) {
+                    [dicApplicant setObject:applicant[@"name"] forKey:@"name"];
+                }
+                if (applicant[@"phoneNumber"]) {
+                    [dicApplicant setObject:applicant[@"phoneNumber"] forKey:@"phoneNumber"];
+                }
+                if (applicant[@"About"]) {
+                    [dicApplicant setObject:applicant[@"About"] forKey:@"About"];
+                }
+                
+                NSLog(@"dic applicant to save : %@", [dicApplicant description]);
+                
+                [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:nil];
+                
+                //DOWLOAD IMAGE PP
+                PFFile *userImageFile = applicant[@"imagePP"];
+                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                    if (!error) {
+                        [ImageManagement saveImageWithData:imageData forName:applicant.objectId];
+                    }
+                }];
+            }
+            
+        }];
+        
     }];
 
 }
@@ -106,14 +138,17 @@
     UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     ApplicantsForJobViewController *vc1 = [sb instantiateViewControllerWithIdentifier:@"ApplicantsForJobViewController"];
     
-//    NSSet *applicantsSet = [NSSet setWithArray:[[self.myJobsDictionary objectForKey: [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]] objectForKey:@"acceptedApplicants"]];
-//    vc1.arrayApplicantsFromJob = [applicantsSet allObjects];
+    NSSet *applicantsSet = [NSSet setWithArray:[[self.myJobsDictionary objectForKey: [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]] objectForKey:@"acceptedApplicants"]];
+    vc1.arrayApplicantsFromJob = [applicantsSet allObjects];
 
-    NSDictionary *job = [self.myJobsDictionary objectForKey:[[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]];
-    if ([self.applicantsToMyJobsDictionary objectForKey:job[@"id"]] && [[self.applicantsToMyJobsDictionary objectForKey:job[@"id"]] count] > 0) {
-        vc1.arrayApplicantsFromJob = [self.applicantsToMyJobsDictionary objectForKey:job[@"id"]];
-        [self.navigationController pushViewController:vc1 animated:YES];
-    }
+    [self.navigationController pushViewController:vc1 animated:YES];
+    
+    
+//    NSDictionary *job = [self.myJobsDictionary objectForKey:[[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]];
+//    if ([self.applicantsToMyJobsDictionary objectForKey:job[@"id"]] && [[self.applicantsToMyJobsDictionary objectForKey:job[@"id"]] count] > 0) {
+//        vc1.arrayApplicantsFromJob = [self.applicantsToMyJobsDictionary objectForKey:job[@"id"]];
+//        [self.navigationController pushViewController:vc1 animated:YES];
+//    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

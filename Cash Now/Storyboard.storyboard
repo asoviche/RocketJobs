@@ -196,7 +196,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="400" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pA9-n5-mDw">
+                                                <imageView userInteractionEnabled="NO" tag="400" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="pA9-n5-mDw">
                                                     <rect key="frame" x="8" y="8" width="77" height="110"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -503,7 +503,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtn-pl-Pig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="-574"/>
+            <point key="canvasLocation" x="-904" y="-848"/>
         </scene>
         <!--Messages-->
         <scene sceneID="AHP-g9-3sX">
@@ -1086,7 +1086,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1378" y="-1261"/>
+            <point key="canvasLocation" x="-1430" y="-821"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="NzE-Yw-T1G">
@@ -1261,6 +1261,9 @@ But come back in a while !</string>
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="FjS-dg-T5c" kind="custom" customClass="SWRevealViewControllerSegue" id="t0v-90-YsY"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-menu-settings" id="L3v-Sp-A4G">
                                             <rect key="frame" x="15" y="11" width="30" height="30"/>
@@ -1369,7 +1372,7 @@ But come back in a while !</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seQ-Eg-ztd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378" y="1685"/>
+            <point key="canvasLocation" x="-1513" y="1663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V9f-WF-dlC">
@@ -1471,10 +1474,15 @@ But come back in a while !</string>
                                     <outletCollection property="gestureRecognizers" destination="z8e-uC-dMu" appends="YES" id="d1G-ae-DBg"/>
                                 </connections>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="gcd-ZV-pfb">
+                                <rect key="frame" x="150" y="213" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorImagePP" destination="gcd-ZV-pfb" id="Sz8-SU-qGC"/>
                         <outlet property="buttonAddDescription" destination="tKD-6Y-ntd" id="xSB-Me-dXB"/>
                         <outlet property="buttonAddPhoneNumber" destination="qqQ-nK-SrW" id="2kN-wq-zcC"/>
                         <outlet property="imageViewPP" destination="Yf1-Lg-oWd" id="7KV-K9-YGu"/>
@@ -1701,7 +1709,7 @@ But come back in a while !</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9eB-nS-h1g"/>
         <segue reference="Jrk-Ga-X2e"/>
+        <segue reference="Wfe-yF-x4T"/>
     </inferredMetricsTieBreakers>
 </document>
