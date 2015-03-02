@@ -54,6 +54,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonCurrentLocation;
 
 
+@property (strong, nonatomic) IBOutlet UILabel *labelCountDescription;
 
 
 @end
@@ -206,30 +207,17 @@
 
 #pragma mark -
 
-- (IBAction) btnAction:(UIButton*)button{
-    self.buttonCurrentLocation.selected=NO;
-    self.buttonOtherLocation.selected=NO;
-    
-    button.selected = YES;
-}
 
-- (IBAction)LocateSomewhereElse:(id)sender {
-    
-    self.buttonPost.enabled = NO;
+#pragma mark - TextView delegate
 
-    self.title = @"Pin your job location";
-    
-    [self.JobDesription resignFirstResponder];
-
-    [self.mapViewCustom showMapView];
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.mapViewCustom.alpha=1;
-    } completion:^(BOOL finished) {
-    }];
+-(void) textViewDidChange:(UITextView *)textView{
+    self.labelCountDescription.text = [NSString stringWithFormat:@"%lu/140", (unsigned long)textView.text.length];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    
+    
     self.JobDesription.textColor =  UIColorFromRGB(0x225378);
     
     if([text isEqualToString:@"\n"]) {
@@ -256,6 +244,32 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark -
+
+
+- (IBAction) btnAction:(UIButton*)button{
+    self.buttonCurrentLocation.selected=NO;
+    self.buttonOtherLocation.selected=NO;
+    
+    button.selected = YES;
+}
+
+- (IBAction)LocateSomewhereElse:(id)sender {
+    
+    self.buttonPost.enabled = NO;
+    
+    self.title = @"Pin your job location";
+    
+    [self.JobDesription resignFirstResponder];
+    
+    [self.mapViewCustom showMapView];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.mapViewCustom.alpha=1;
+    } completion:^(BOOL finished) {
+    }];
 }
 
 - (IBAction)SegmentControlDateJob:(UISegmentedControl *)sender {
@@ -285,7 +299,7 @@
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
     
-    if ([self.JobDesription.text isEqualToString:@"Job Description"]) {
+    if ([self.JobDesription.text isEqualToString:@"Job Description"] || self.JobDesription.text.length == 0 ) {
         [[[UIAlertView alloc]initWithTitle:@"Bad Description" message:@"Please fill in the job description" delegate:self cancelButtonTitle:@"Thanks" otherButtonTitles: nil] show];
         self.activityIndicator.hidden = YES;
         return;
@@ -518,6 +532,8 @@
     }
     return s;
 }
+
+#pragma mark - Job picture
 
 - (IBAction)takePicture:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:

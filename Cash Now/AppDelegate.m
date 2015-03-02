@@ -23,6 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
 
     //PARSE
     [Parse setApplicationId:@"7tBiHO4i8Pa6UuRyb34KrP7O4mpRaO7Z52IXgYZi"
@@ -37,7 +38,6 @@
                                consumerSecret:@"BwBRZI8PfGUbL3ggFM1CXjU3FgJygZInSeh2Vqr7RjbBK"];
     
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     //analytics for push notifications
     if (application.applicationState != UIApplicationStateBackground) {
@@ -68,6 +68,9 @@
                                                          UIRemoteNotificationTypeAlert |
                                                          UIRemoteNotificationTypeSound)];
     }
+    
+    
+
     
     
 //    LogInViewControllerCustom *loginController=[[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil] instantiateViewControllerWithIdentifier:@"LogInVc"]; //or the homeController
