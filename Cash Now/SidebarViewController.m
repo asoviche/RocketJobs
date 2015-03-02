@@ -9,6 +9,8 @@
 #import "SidebarViewController.h"
 #import "SWRevealViewController.h"
 #import "addJobViewController.h"
+#import "ImageManagement.h"
+#import "ProfileMVPViewController.h"
 
 @interface SidebarViewController ()
 
@@ -35,8 +37,11 @@
     self.view.backgroundColor=  UIColorFromRGB(0x225378);
     
 //    [[NSUserDefaults standardUserDefaults] objectForKey:@"areAllJobsSeen"]
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[self areJobsSeen]] forKey:@"areAllJobsSeen"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:[self areJobsSeen]] forKey:@"areAllJobsSeen"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [self.tableView reloadData];
+    
+    NSLog(@"viewWillAppear");
     [self.tableView reloadData];
 }
 
@@ -56,7 +61,7 @@
     
 
     
-    _menuItems = @[@"SearchJobs",@"MyProfile", @"PostAJob",@"blank", @"MyJobs", @"Settings"];
+    _menuItems = @[@"ProfileInfo", @"SearchJobs", @"PostAJob", @"MyJobs",@"blank", @"Settings"];
 }
 
 -(BOOL) areJobsSeen{
@@ -90,11 +95,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -115,22 +116,49 @@
     NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    UIButton *button = (UIButton*)[cell viewWithTag:100];
-    if (button != nil) {
-        button.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
-    }
+    NSLog(@"refresh");
     
-    if( indexPath.row == 1) {
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"areAllJobsSeen"] boolValue] == NO ){
-            cell.backgroundColor = [UIColor whiteColor];
-            button.titleLabel.textColor =  UIColorFromRGB(0x225378);
+    if ([[self.menuItems objectAtIndex:indexPath.row] isEqualToString:@"ProfileInfo"]) {
+        
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:100];
+        UILabel *labelName = (UILabel*)[cell viewWithTag:200];
+        UILabel *labelPhone = (UILabel*)[cell viewWithTag:300];
+        
+        labelPhone.textColor = [UIColor whiteColor];
+        labelName.textColor = [UIColor whiteColor];
+        labelName.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
+        labelPhone.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
+        
+        labelName.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"name"];
+        imageView.image = [ImageManagement getImageFromMemoryWithName:@"imagePP"];
+        
+        imageView.layer.cornerRadius = imageView.frame.size.width/2;
+        imageView.clipsToBounds = YES;
+        
+        if([[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"]){
+            labelPhone.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
+        }else{
+            labelPhone.text = @"Enter your phone number";
         }
-        else{
-            cell.backgroundColor = UIColorFromRGB(0x225378);
-            button.titleLabel.textColor = [UIColor whiteColor];
+        
+    }else{
+        
+        UIButton *button = (UIButton*)[cell viewWithTag:100];
+        if (button != nil) {
+            button.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
+        }
+        
+        if( indexPath.row == 1) {
+            if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"areAllJobsSeen"] boolValue] == NO ){
+                cell.backgroundColor = [UIColor whiteColor];
+                button.titleLabel.textColor =  UIColorFromRGB(0x225378);
+            }
+            else{
+                cell.backgroundColor = UIColorFromRGB(0x225378);
+                button.titleLabel.textColor = [UIColor whiteColor];
+            }
         }
     }
-
 
     
     return cell;
@@ -138,18 +166,32 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    
+    if ([[self.menuItems objectAtIndex:indexPath.row] isEqualToString:@"ProfileInfo"]) {
+        
+        return 120;
+    }else{
+        return 60;
+    }
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if ([[self.menuItems objectAtIndex:indexPath.row] isEqualToString:@"ProfileInfo"]) {
+      
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+        ProfileMVPViewController *vc1 = [sb instantiateViewControllerWithIdentifier:@"ProfileMVPViewController"];
+//        [self presentViewController:vc1 animated:YES completion:nil];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileInfo" forIndexPath:indexPath];
+        UIButton *button = (UIButton*)[cell viewWithTag:500];
+        [button sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
-    NSLog(@"good part 0");
-    
-    // Set the title of navigation bar by using the menu items
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-    
-    
 
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         NSLog(@"good part 1");
@@ -159,7 +201,7 @@
             
             UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
             [navController setViewControllers: @[dvc] animated: NO ];
-            [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
+            [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated: YES];
         };
         
     }

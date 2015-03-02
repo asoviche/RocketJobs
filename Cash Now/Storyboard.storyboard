@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Launch Image View Controller-->
@@ -1134,6 +1135,42 @@ But come back in a while !</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileInfo" rowHeight="120" id="cw7-gU-azj">
+                                <rect key="frame" x="0.0" y="382" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cw7-gU-azj" id="Slq-0V-ZcN">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LoH-B8-hSA">
+                                            <rect key="frame" x="15" y="15" width="90" height="90"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH5-zg-XrU">
+                                            <rect key="frame" x="139" y="38" width="268" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="300" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBU-lH-ekP">
+                                            <rect key="frame" x="139" y="61" width="268" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="500" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXJ-0Q-yl5">
+                                            <rect key="frame" x="524" y="30" width="68" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="w8P-Bh-cTI" kind="custom" customClass="SWRevealViewControllerSegue" id="ijT-Kl-Gqj"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchJobs" rowHeight="60" id="kTv-oF-gjf">
                                 <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1142,40 +1179,16 @@ But come back in a while !</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-menu-jobs" translatesAutoresizingMaskIntoConstraints="NO" id="KwX-U9-LPK">
-                                            <rect key="frame" x="15" y="11" width="30" height="30"/>
+                                            <rect key="frame" x="45" y="11" width="30" height="30"/>
                                         </imageView>
                                         <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anc-Ve-Efv">
-                                            <rect key="frame" x="15" y="0.0" width="300" height="60"/>
+                                            <rect key="frame" x="45" y="0.0" width="300" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <state key="normal" title="           Search Jobs">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
                                                 <segue destination="H08-gE-NJg" kind="custom" customClass="SWRevealViewControllerSegue" id="Jrk-Ga-X2e"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyProfile" rowHeight="60" id="EKT-CI-Lii">
-                                <rect key="frame" x="0.0" y="82" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EKT-CI-Lii" id="kRj-em-pKQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-menu-myprofile" translatesAutoresizingMaskIntoConstraints="NO" id="cmZ-38-JBv">
-                                            <rect key="frame" x="15" y="11" width="30" height="30"/>
-                                        </imageView>
-                                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKF-1P-L3Q">
-                                            <rect key="frame" x="20" y="0.0" width="300" height="60"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <state key="normal" title="         My profile">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="w8P-Bh-cTI" kind="custom" customClass="SWRevealViewControllerSegue" id="A3z-Ej-EzB"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1190,16 +1203,37 @@ But come back in a while !</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-menu-addjob" translatesAutoresizingMaskIntoConstraints="NO" id="ZUo-FX-ZGy">
-                                            <rect key="frame" x="15" y="11" width="30" height="30"/>
+                                            <rect key="frame" x="45" y="11" width="30" height="30"/>
                                         </imageView>
                                         <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpI-hR-AMW">
-                                            <rect key="frame" x="20" y="0.0" width="300" height="60"/>
+                                            <rect key="frame" x="45" y="0.0" width="300" height="60"/>
                                             <state key="normal" title="          Post a job">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
                                                 <segue destination="HaS-xy-qPt" kind="custom" customClass="SWRevealViewControllerSegue" id="uuN-fs-hzY"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyJobs" rowHeight="60" id="dSZ-Aw-Ptw">
+                                <rect key="frame" x="0.0" y="382" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSZ-Aw-Ptw" id="4ht-LU-fLV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXS-eP-4TO">
+                                            <rect key="frame" x="45" y="0.0" width="300" height="60"/>
+                                            <state key="normal" title="          My Jobs">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="I8x-n7-inn" kind="custom" customClass="SWRevealViewControllerSegue" id="2Xe-zN-QHN"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1215,27 +1249,6 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyJobs" rowHeight="60" id="dSZ-Aw-Ptw">
-                                <rect key="frame" x="0.0" y="382" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSZ-Aw-Ptw" id="4ht-LU-fLV">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXS-eP-4TO">
-                                            <rect key="frame" x="20" y="0.0" width="300" height="60"/>
-                                            <state key="normal" title="          My Jobs">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="I8x-n7-inn" kind="custom" customClass="SWRevealViewControllerSegue" id="2Xe-zN-QHN"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Settings" rowHeight="60" id="z2O-4X-kmd">
                                 <rect key="frame" x="0.0" y="382" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1244,7 +1257,7 @@ But come back in a while !</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idE-Gv-uDl">
-                                            <rect key="frame" x="20" y="0.0" width="300" height="60"/>
+                                            <rect key="frame" x="45" y="0.0" width="300" height="60"/>
                                             <state key="normal" title="          Settings">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1254,7 +1267,7 @@ But come back in a while !</string>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-menu-settings" translatesAutoresizingMaskIntoConstraints="NO" id="L3v-Sp-A4G">
-                                            <rect key="frame" x="15" y="11" width="30" height="30"/>
+                                            <rect key="frame" x="45" y="15" width="30" height="30"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -1269,7 +1282,7 @@ But come back in a while !</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ljf-ec-N5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3888.75" y="110.91549295774647"/>
+            <point key="canvasLocation" x="-3889" y="110"/>
         </scene>
         <!--Settings-->
         <scene sceneID="QhM-iZ-wWP">
@@ -1449,7 +1462,7 @@ But come back in a while !</string>
         <!--ProfileMVP View Controller-->
         <scene sceneID="oxh-SX-55l">
             <objects>
-                <viewController id="w8P-Bh-cTI" customClass="ProfileMVPViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileMVPViewController" id="w8P-Bh-cTI" customClass="ProfileMVPViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sLm-fB-bPq"/>
                         <viewControllerLayoutGuide type="bottom" id="FGZ-NV-PZw"/>
@@ -1458,11 +1471,11 @@ But come back in a while !</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-8X-1Vp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiD-8X-1Vp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjf-kS-B4v">
-                                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjf-kS-B4v">
+                                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                         <color key="barTintColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <textAttributes key="titleTextAttributes">
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1477,16 +1490,29 @@ But come back in a while !</string>
                                     </navigationBar>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="7TC-aC-pym"/>
+                                    <constraint firstItem="hjf-kS-B4v" firstAttribute="leading" secondItem="xiD-8X-1Vp" secondAttribute="leading" id="gW1-m1-xrZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="hjf-kS-B4v" secondAttribute="trailing" id="oWh-Kl-7OR"/>
+                                    <constraint firstAttribute="bottom" secondItem="hjf-kS-B4v" secondAttribute="bottom" id="p1l-ru-v2d"/>
+                                </constraints>
                             </view>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yf1-Lg-oWd">
-                                <rect key="frame" x="40" y="80" width="240" height="286"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yf1-Lg-oWd">
+                                <rect key="frame" x="180" y="80" width="240" height="286"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="d45-pq-sEv"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="hEn-KZ-xoK" appends="YES" id="cV6-JX-J2x"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-6Y-ntd">
-                                <rect key="frame" x="99" y="417" width="122" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKD-6Y-ntd">
+                                <rect key="frame" x="239" y="434" width="122" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TNI-2Y-gRt"/>
+                                    <constraint firstAttribute="width" constant="122" id="ueB-If-CHX"/>
+                                </constraints>
                                 <state key="normal" title="Add a description">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1494,8 +1520,12 @@ But come back in a while !</string>
                                     <action selector="addDescription:" destination="w8P-Bh-cTI" eventType="touchUpInside" id="K0j-X4-a7x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-nK-SrW">
-                                <rect key="frame" x="88" y="464" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqQ-nK-SrW">
+                                <rect key="frame" x="228" y="484" width="145" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3nC-2l-yoc"/>
+                                    <constraint firstAttribute="width" constant="145" id="y6f-ju-4F7"/>
+                                </constraints>
                                 <state key="normal" title="Add a phone number">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1503,19 +1533,13 @@ But come back in a while !</string>
                                     <action selector="addPhoneNumber:" destination="w8P-Bh-cTI" eventType="touchUpInside" id="oeq-xj-D5F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtE-Zr-0XP">
-                                <rect key="frame" x="0.0" y="481" width="320" height="34"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0n-K7-VzB">
+                                <rect key="frame" x="140" y="374" width="320" height="74"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="8db-Fe-xst" appends="YES" id="Hq3-hn-9zP"/>
-                                </connections>
-                            </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0n-K7-VzB">
-                                <rect key="frame" x="0.0" y="354" width="320" height="74"/>
-                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="hOj-lc-GO6"/>
+                                    <constraint firstAttribute="width" constant="320" id="jqe-IP-esT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1523,11 +1547,49 @@ But come back in a while !</string>
                                     <outletCollection property="gestureRecognizers" destination="z8e-uC-dMu" appends="YES" id="d1G-ae-DBg"/>
                                 </connections>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-ZV-pfb">
-                                <rect key="frame" x="150" y="213" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-ZV-pfb">
+                                <rect key="frame" x="290" y="213" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtE-Zr-0XP">
+                                <rect key="frame" x="140" y="501" width="320" height="34"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="0J5-Pz-f8v"/>
+                                    <constraint firstAttribute="width" constant="320" id="N5C-yM-jj6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8db-Fe-xst" appends="YES" id="Hq3-hn-9zP"/>
+                                </connections>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="OtE-Zr-0XP" secondAttribute="centerX" id="0nJ-oS-Jq9"/>
+                            <constraint firstAttribute="centerX" secondItem="S0n-K7-VzB" secondAttribute="centerX" id="45R-Oa-otd"/>
+                            <constraint firstAttribute="centerX" secondItem="xiD-8X-1Vp" secondAttribute="centerX" id="BqE-Dm-BXk"/>
+                            <constraint firstItem="OtE-Zr-0XP" firstAttribute="top" secondItem="Yf1-Lg-oWd" secondAttribute="bottom" constant="135" id="ICG-tv-7Ek"/>
+                            <constraint firstItem="gcd-ZV-pfb" firstAttribute="centerY" secondItem="Yf1-Lg-oWd" secondAttribute="centerY" id="Ies-6a-cme"/>
+                            <constraint firstAttribute="centerX" secondItem="qqQ-nK-SrW" secondAttribute="centerX" id="MKn-Uv-dLu"/>
+                            <constraint firstItem="gcd-ZV-pfb" firstAttribute="centerX" secondItem="Yf1-Lg-oWd" secondAttribute="centerX" id="RAg-NU-uLF"/>
+                            <constraint firstAttribute="centerX" secondItem="tKD-6Y-ntd" secondAttribute="centerX" id="Zpd-X8-ZzA"/>
+                            <constraint firstItem="Yf1-Lg-oWd" firstAttribute="top" secondItem="xiD-8X-1Vp" secondAttribute="bottom" constant="16" id="a3b-Vi-VsJ"/>
+                            <constraint firstAttribute="centerX" secondItem="Yf1-Lg-oWd" secondAttribute="centerX" id="bAk-vk-NVi"/>
+                            <constraint firstItem="qqQ-nK-SrW" firstAttribute="top" secondItem="Yf1-Lg-oWd" secondAttribute="bottom" constant="118" id="cIn-6n-27u"/>
+                            <constraint firstItem="xiD-8X-1Vp" firstAttribute="top" secondItem="QZa-kz-0qb" secondAttribute="top" id="fCg-Ll-1zK"/>
+                            <constraint firstItem="tKD-6Y-ntd" firstAttribute="top" secondItem="Yf1-Lg-oWd" secondAttribute="bottom" constant="68" id="hc8-wa-7oR"/>
+                            <constraint firstAttribute="height" secondItem="Yf1-Lg-oWd" secondAttribute="height" id="i2c-fe-RHk"/>
+                            <constraint firstItem="S0n-K7-VzB" firstAttribute="top" secondItem="Yf1-Lg-oWd" secondAttribute="bottom" constant="8" id="iDW-nS-VNS"/>
+                            <constraint firstAttribute="width" secondItem="xiD-8X-1Vp" secondAttribute="width" id="k36-od-die"/>
+                            <constraint firstAttribute="height" secondItem="Yf1-Lg-oWd" secondAttribute="height" multiplier="2.5" id="nLE-QY-anm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="i2c-fe-RHk"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="activityIndicatorImagePP" destination="gcd-ZV-pfb" id="Sz8-SU-qGC"/>
@@ -1557,7 +1619,7 @@ But come back in a while !</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-3765" y="-672.88732394366195"/>
+            <point key="canvasLocation" x="-3765" y="-673"/>
         </scene>
         <!--My profile-->
         <scene sceneID="5rq-jG-IDA">
@@ -1730,7 +1792,6 @@ But come back in a while !</string>
         <image name="icon-menu" width="23" height="16"/>
         <image name="icon-menu-addjob" width="44" height="50"/>
         <image name="icon-menu-jobs" width="44" height="50"/>
-        <image name="icon-menu-myprofile" width="42" height="50"/>
         <image name="icon-menu-settings" width="50" height="50"/>
         <image name="icon-messages" width="26" height="22"/>
         <image name="icon-no" width="71" height="49"/>
@@ -1739,7 +1800,7 @@ But come back in a while !</string>
         <image name="icon-yes" width="73" height="49"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SjO-cN-bVf"/>
         <segue reference="9eB-nS-h1g"/>
+        <segue reference="Jrk-Ga-X2e"/>
     </inferredMetricsTieBreakers>
 </document>
