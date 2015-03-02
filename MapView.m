@@ -73,6 +73,7 @@
     
     annotation = [[MyAnnotation alloc] initWithCoordinates:touchMapCoordinate title:@"Job's location"];
     [self.map addAnnotation:annotation];
+    [self.map setSelectedAnnotations:@[annotation]];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {

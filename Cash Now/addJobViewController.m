@@ -342,8 +342,8 @@
             
             
             //progress view
-            self.progressView.hidden = NO;
-            self.progressView.progress = 0.0;
+//            self.progressView.hidden = NO;
+//            self.progressView.progress = 0.0;
             
             
             
@@ -470,7 +470,6 @@
         NSLog(@"TEST 1");
             
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-
                 
                 NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                      Job[@"Price"], @"Price",
@@ -479,20 +478,17 @@
                                      Job[@"Location"], @"Location",
                                      Job.objectId, @"id", nil];
 
-                
                 [JobMemoryManagement saveJobInMemory:job];
 
-
-                
-                
-                self.progressView.hidden  = YES;
-                
-                self.JobDesription.text = @"Job Description";
-                
-//                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
                 [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                self.activityIndicator.hidden = YES;
+                
                 [self goToAnotherViewController];
+                
+//                self.activityIndicator.hidden = YES;
+//                self.progressView.hidden  = YES;
+//                self.JobDesription.text = @"Job Description";
+//                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+
             }];
             
             
