@@ -63,6 +63,7 @@
 		AA9A8B88191EF0DA00644E86 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B87191EF0DA00644E86 /* SidebarViewController.m */; };
 		AA9A8BAF191F3E2300644E86 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8BAE191F3E2300644E86 /* SettingsViewController.m */; };
 		AA9A8BB3191F8F6500644E86 /* Media2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA9A8BB2191F8F6500644E86 /* Media2.xcassets */; };
+		AA9EC14A1AA476C6000515FE /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9EC1491AA476C6000515FE /* Launch Screen.xib */; };
 		AAB20A9A193676C7006C5455 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB20A99193676C7006C5455 /* MapKit.framework */; };
 		AAB20AA619369A25006C5455 /* MyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB20AA519369A25006C5455 /* MyAnnotation.m */; };
 		AAB9652C19226B5C003E65CF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB9652B19226B5C003E65CF /* MediaPlayer.framework */; };
@@ -206,6 +207,7 @@
 		AA9A8BAD191F3E2300644E86 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		AA9A8BAE191F3E2300644E86 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		AA9A8BB2191F8F6500644E86 /* Media2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media2.xcassets; sourceTree = "<group>"; };
+		AA9EC1491AA476C6000515FE /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		AAB20A99193676C7006C5455 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AAB20AA419369A25006C5455 /* MyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnnotation.h; sourceTree = "<group>"; };
 		AAB20AA519369A25006C5455 /* MyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnnotation.m; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				AA2DD650195633EB00538F2C /* OpenSans-Regular.ttf */,
 				AAD3027B191924BB000E4A47 /* AppDelegate.h */,
 				AAD3027C191924BB000E4A47 /* AppDelegate.m */,
+				AA9EC1491AA476C6000515FE /* Launch Screen.xib */,
 				AAD30274191924BB000E4A47 /* Cash Now-Info.plist */,
 				AA4D493B1944D51D00C4BAF1 /* JobsList.plist */,
 				AACA399F1928280600B16BA5 /* Conversations.plist */,
@@ -653,6 +656,7 @@
 				AA9A8BB3191F8F6500644E86 /* Media2.xcassets in Resources */,
 				AA0709E319E0BF62005760BB /* AvenirNextLTPro-Medium.otf in Resources */,
 				AA0709E519E0BF62005760BB /* AvenirNextLTPro-UltLt.otf in Resources */,
+				AA9EC14A1AA476C6000515FE /* Launch Screen.xib in Resources */,
 				AAD302BD19192656000E4A47 /* Storyboard.storyboard in Resources */,
 				AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */,
 				AAD30277191924BB000E4A47 /* InfoPlist.strings in Resources */,
