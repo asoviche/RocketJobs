@@ -79,6 +79,12 @@
     
     NSLog(@"viewDidLoad");
     
+    //display white status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
+    
+    
     self.activityIndicator.hidden=YES;
     [self.activityIndicator startAnimating];
     self.activityIndicator.color = UIColorFromRGB(0x225378);
@@ -108,15 +114,14 @@
     
     NSLog(@"viewWillAppear");
     
-    // Do any additional setup after loading the view, typically from a nib.
-    [self.navigationController setNavigationBarHidden:NO];
-    
     self.sidebarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x225378);
     // self.navigationController.navigationBar.translucent=NO;
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.view setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1]];
+    
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
 
 
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.

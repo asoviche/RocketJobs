@@ -23,6 +23,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation MyPostedJobsViewController
@@ -47,12 +49,27 @@
     self.myJobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
     NSLog(@"myJobsDictionary : %@", [self.myJobsDictionary description]);
     
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [self downloadPostedJobs];
+}
+
+-(void)refreshTable{
+   
+    [self downloadPostedJobs];
+    [self.refreshControl endRefreshing];
+}
+
+-(void) downloadPostedJobs{
+    
     NSMutableArray *arrayAllApplicantsId = [NSMutableArray new];
     
-    //DOWNLOAD JOBS PROFILE
+    //DOWNLOAD JOBS
     PFQuery *query = [PFQuery queryWithClassName:@"Job"];
     [query whereKey:@"Author" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *myJobsArray, NSError *error) {
@@ -63,7 +80,7 @@
         }
         
         NSLog(@"count posted jobs : %lu", (unsigned long)[myJobsArray count]);
-    
+        
         for (PFObject *myJob in myJobsArray) {
             
             if ( [myJob[@"ApplicantsID"] count] > 0 ) {
@@ -89,47 +106,51 @@
         self.myJobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"]; //update jobs from memory
         [self.tableView reloadData];
         
-        //DOWNLOAD APPLICANTS PROFILES
-        PFQuery *queryApplicants = [PFUser query];
-        [query whereKey:@"objectId" containedIn:arrayAllApplicantsId];
-        [queryApplicants findObjectsInBackgroundWithBlock:^(NSArray *arrayApplicantsParse, NSError *error) {
-            
-            if (error) {
-                NSLog(@"error : %@", [error description]);
-                return;
-            }
-            
-            for (PFUser *applicant in arrayApplicantsParse) {
-                
-                NSMutableDictionary *dicApplicant = [NSMutableDictionary dictionaryWithObjectsAndKeys:applicant.objectId, @"id", nil];
-                if (applicant[@"name"]) {
-                    [dicApplicant setObject:applicant[@"name"] forKey:@"name"];
-                }
-                if (applicant[@"phoneNumber"]) {
-                    [dicApplicant setObject:applicant[@"phoneNumber"] forKey:@"phoneNumber"];
-                }
-                if (applicant[@"About"]) {
-                    [dicApplicant setObject:applicant[@"About"] forKey:@"About"];
-                }
-                
-                NSLog(@"dic applicant to save : %@", [dicApplicant description]);
-                
-                [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:nil];
-                
-                //DOWLOAD IMAGE PP
-                PFFile *userImageFile = applicant[@"imagePP"];
-                [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-                    if (!error) {
-                        [ImageManagement saveImageWithData:imageData forName:applicant.objectId];
-                    }
-                }];
-            }
-            
-        }];
+        [self downloadApplicantsProfilesWithIds:arrayAllApplicantsId];
         
     }];
-
 }
+
+-(void) downloadApplicantsProfilesWithIds:(NSArray*) applicantsArrayIds{
+    
+    PFQuery *queryApplicants = [PFUser query];
+    [queryApplicants whereKey:@"objectId" containedIn:applicantsArrayIds];
+    [queryApplicants findObjectsInBackgroundWithBlock:^(NSArray *arrayApplicantsParse, NSError *error) {
+        
+        if (error) {
+            NSLog(@"error : %@", [error description]);
+            return;
+        }
+        
+        for (PFUser *applicant in arrayApplicantsParse) {
+            
+            NSMutableDictionary *dicApplicant = [NSMutableDictionary dictionaryWithObjectsAndKeys:applicant.objectId, @"id", nil];
+            if (applicant[@"name"]) {
+                [dicApplicant setObject:applicant[@"name"] forKey:@"name"];
+            }
+            if (applicant[@"phoneNumber"]) {
+                [dicApplicant setObject:applicant[@"phoneNumber"] forKey:@"phoneNumber"];
+            }
+            if (applicant[@"About"]) {
+                [dicApplicant setObject:applicant[@"About"] forKey:@"About"];
+            }
+            
+            NSLog(@"dic applicant to save : %@", [dicApplicant description]);
+            
+            [ApplicantsMemoryManagement saveApplicant:dicApplicant withImagePP:nil];
+            
+            //DOWLOAD IMAGE PP
+            PFFile *userImageFile = applicant[@"imagePP"];
+            [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error) {
+                    [ImageManagement saveImageWithData:imageData forName:applicant.objectId];
+                }
+            }];
+        }
+        
+    }];
+}
+
 
 #pragma mark tableView delegate
 
@@ -185,5 +206,7 @@
     
     return cell;
 }
+
+
 
 @end
