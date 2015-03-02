@@ -73,7 +73,7 @@
     
     NSString *currency;
     
-    #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -87,7 +87,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x225378);
-
+    
     self.JobDesription.textColor =  UIColorFromRGB(0x225378);
     
     self.imageViewJobPicture.layer.cornerRadius = 3;
@@ -126,7 +126,7 @@
     
     self.progressView.hidden = YES;
     
-     self.JobDesription.layer.cornerRadius = 5.0f;
+    self.JobDesription.layer.cornerRadius = 5.0f;
     self.JobDesription.layer.borderWidth = 1.0f;
     self.JobDesription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
@@ -136,8 +136,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.sidebarButton.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.8 blue:0.9 alpha:1];
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.8 blue:0.9 alpha:1];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.view setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1]];
     
     
@@ -177,13 +177,13 @@
     
     sliderHour = (int)hourSlider;
     sliderMinute = (int)quarter;
-
+    
 }
 
 #pragma mark - MapViewCustom Delegate
 
 -(void) MapViewDelegate_clickedOkWithLocation:(MyAnnotation*)annotation{
-
+    
     annotationForMap = annotation;
     self.buttonPost.enabled=YES;
     
@@ -195,8 +195,13 @@
 }
 
 -(void) MapViewDelegate_clickedCancel{
-
+    
     self.buttonPost.enabled=YES;
+    
+    if (!annotationForMap) {
+        self.buttonCurrentLocation.selected=YES;
+        self.buttonOtherLocation.selected=NO;
+    }
     
     [UIView animateWithDuration:0.2 animations:^{
         self.mapViewCustom.alpha=0;
@@ -224,7 +229,7 @@
         [textView resignFirstResponder];
         return NO;
     }
-
+    
     return textView.text.length + (text.length - range.length) <= 140;
 }
 
@@ -252,8 +257,11 @@
 - (IBAction) btnAction:(UIButton*)button{
     self.buttonCurrentLocation.selected=NO;
     self.buttonOtherLocation.selected=NO;
-    
     button.selected = YES;
+    
+    if (button == self.buttonCurrentLocation) {
+        annotationForMap = nil;
+    }
 }
 
 - (IBAction)LocateSomewhereElse:(id)sender {
@@ -277,7 +285,7 @@
 }
 
 - (IBAction)SliderPrice:(UISlider *)sender {
-
+    
     self.jobPriceLabel.text = [NSString stringWithFormat:@"Hourly rate : %d %@/h", (int)sender.value, currency ];
     price = [NSString stringWithFormat:@"%d",(int)sender.value];
 }
@@ -320,7 +328,7 @@
         Job[@"Date"] = date;
         Job[@"Hour"] = [NSString stringWithFormat:@"%02d : %02d", sliderHour, sliderMinute];
         [Job setObject:[PFUser currentUser] forKey:@"Author"];
-
+        
         
         // HANDLE DATE OF THE JOB ***************************************
         NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
@@ -356,15 +364,15 @@
             
             
             //progress view
-//            self.progressView.hidden = NO;
-//            self.progressView.progress = 0.0;
+            //            self.progressView.hidden = NO;
+            //            self.progressView.progress = 0.0;
             
             
             
             
             NSLog(@"hour before sending : %d", sliderHour);
             NSDate *dateJob = [NSDate dateWithYear:(int)[components year] month:(int)[components month] day:(int)[components day] hour:sliderHour minute:sliderMinute second:0];
-
+            
             NSLog(@"date to save : %@", dateJob);
             
             Job[@"DateJob"] = dateJob;
@@ -391,7 +399,7 @@
             
             Job[@"DateJob"] = dateJobTomorrow;
             
-        
+            
         }
         //*****************************************************************
         
@@ -411,103 +419,114 @@
             }];
         }
         
-//        __block PFFile *imageFile;
-//        //faire la photo
-//        @try {
-//            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
-//            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-//        }
-//        @catch (NSException *exception) {
-//            
-//        }
-//        @finally {
-//            
-//        }
-//
-//
-//        if (imageFile) {
-//            
-//            self.progressView.hidden  = NO;
-//            
-//            NSLog(@"there is a file somewhere in your ass");
-//            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                if (!error) {
-//                    
-//
-//                }
-//            } progressBlock:^(int percentDone) {
-//                NSLog(@"progress : %d", percentDone);
-//                
-//                self.progressView.progress = (float)percentDone/100.0;
-//                
-//                if (percentDone == 100) {
-//                    
-//                    self.buttonPost.enabled=YES;
-//                    
-//                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
-//                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-//                    
-//                    //                    [alert show];
-//                    Job[@"Picture"] = imageFile;
-//                    
-//                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//                        //save to plist *************
-////                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
-//                        
-//                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
-//                                                                                        Job[@"Price"], @"Price",
-//                                                                                        Job[@"Hour"], @"Hour",
-//                                                                                        Job[@"DateJob"], @"DateJob",
-//                                                                                        Job[@"Location"], @"Location",
-//                                                                                        Job.objectId, @"id", nil];
-//                        NSLog(@"job to save : %@", [job description]);
-//                        [JobMemoryManagement saveJobInMemory:job];
-//                        
-//                        
-//                        self.progressView.hidden  = YES;
-//                        self.JobDesription.text = @"Job Description";
-//                        
-//                        [self goToAnotherViewController];
-//                    }];
-//                    
-//                    
-//                    imageFile=nil;
-//                    picture_camera_small=nil;
-//                    picture_camera=nil;
-//                    self.progressView.hidden = YES;
-//                    self.imageViewJobPicture.image=nil;
-//                    
-//                }
-//            }];
-//        }
-//        else{
+        //        __block PFFile *imageFile;
+        //        //faire la photo
+        //        @try {
+        //            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
+        //            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+        //        }
+        //        @catch (NSException *exception) {
+        //
+        //        }
+        //        @finally {
+        //
+        //        }
+        //
+        //
+        //        if (imageFile) {
+        //
+        //            self.progressView.hidden  = NO;
+        //
+        //            NSLog(@"there is a file somewhere in your ass");
+        //            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //                if (!error) {
+        //
+        //
+        //                }
+        //            } progressBlock:^(int percentDone) {
+        //                NSLog(@"progress : %d", percentDone);
+        //
+        //                self.progressView.progress = (float)percentDone/100.0;
+        //
+        //                if (percentDone == 100) {
+        //
+        //                    self.buttonPost.enabled=YES;
+        //
+        //                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+        //                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+        //
+        //                    //                    [alert show];
+        //                    Job[@"Picture"] = imageFile;
+        //
+        //                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        //                        //save to plist *************
+        ////                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+        //
+        //                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+        //                                                                                        Job[@"Price"], @"Price",
+        //                                                                                        Job[@"Hour"], @"Hour",
+        //                                                                                        Job[@"DateJob"], @"DateJob",
+        //                                                                                        Job[@"Location"], @"Location",
+        //                                                                                        Job.objectId, @"id", nil];
+        //                        NSLog(@"job to save : %@", [job description]);
+        //                        [JobMemoryManagement saveJobInMemory:job];
+        //
+        //
+        //                        self.progressView.hidden  = YES;
+        //                        self.JobDesription.text = @"Job Description";
+        //
+        //                        [self goToAnotherViewController];
+        //                    }];
+        //
+        //
+        //                    imageFile=nil;
+        //                    picture_camera_small=nil;
+        //                    picture_camera=nil;
+        //                    self.progressView.hidden = YES;
+        //                    self.imageViewJobPicture.image=nil;
+        //
+        //                }
+        //            }];
+        //        }
+        //        else{
         NSLog(@"TEST 1");
+        
+        [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
-            [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                
-                NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
-                                     Job[@"Price"], @"Price",
-                                     Job[@"Hour"], @"Hour",
-                                     Job[@"DateJob"], @"DateJob",
-                                     Job[@"Location"], @"Location",
-                                     Job.objectId, @"id", nil];
-
-                [JobMemoryManagement saveJobInMemory:job];
-
-                [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                
-                [self goToAnotherViewController];
-                
-//                self.activityIndicator.hidden = YES;
-//                self.progressView.hidden  = YES;
-//                self.JobDesription.text = @"Job Description";
-//                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
-
-            }];
+            NSLog(@"TEST 2");
+            
+            NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+                                 Job[@"Price"], @"Price",
+                                 Job[@"Hour"], @"Hour",
+                                 Job[@"DateJob"], @"DateJob",
+                                 Job[@"Location"], @"Location",
+                                 Job.objectId, @"id", nil];
+            
+            NSLog(@"annotation for map : %@", [annotationForMap description]);
             
             
-        }
-//    }
+            NSLog(@"job : %@", Job[@"Location"]);
+            
+            NSLog(@"TEST 3");
+            
+            [JobMemoryManagement saveJobInMemory:job];
+            
+            NSLog(@"TEST 4");
+            
+            [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+            
+            [self goToAnotherViewController];
+            
+            //                self.activityIndicator.hidden = YES;
+            //                self.progressView.hidden  = YES;
+            //                self.JobDesription.text = @"Job Description";
+            //                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+            
+        }];
+        
+        
+    }
+    //    }
 }
 
 -(void) goToAnotherViewController {
@@ -565,7 +584,7 @@
     self.ImageViewJob.image = picture_camera;
     
     self.imageViewJobPicture.image = picture_camera;
-
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
