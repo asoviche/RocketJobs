@@ -45,15 +45,16 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonPost;
 
-@property (strong, nonatomic) IBOutlet MKMapView *MapView;
-@property (strong, nonatomic) IBOutlet UIView *viewForLocation;
-@property (strong, nonatomic) CLLocationManager *myLocation;
+
+//****
+@property (strong, nonatomic) MapView* mapViewCustom;
+//
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonOtherLocation;
 @property (strong, nonatomic) IBOutlet UIButton *buttonCurrentLocation;
 
-@property (strong, nonatomic) IBOutlet UIButton *buttonOK;
-@property (strong, nonatomic) IBOutlet UIButton *buttonCancel;
+
+
 
 @end
 
@@ -67,12 +68,11 @@
     int sliderHour;
     int sliderMinute;
     
-    MyAnnotation *annotation;
+    MyAnnotation *annotationForMap;
     
     NSString *currency;
     
-
-        #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+    #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -89,12 +89,6 @@
 
     self.JobDesription.textColor =  UIColorFromRGB(0x225378);
     
-    self.buttonCancel.layer.cornerRadius = 3;
-    self.buttonOK.layer.cornerRadius = 3;
-    
-    [self.MapView addSubview:self.buttonOK];
-    [self.MapView addSubview:self.buttonCancel];
-    
     self.imageViewJobPicture.layer.cornerRadius = 3;
     self.imageViewJobPicture.clipsToBounds = YES;
     
@@ -103,25 +97,16 @@
     
     
     //fonts
-    
     self.buttonOtherLocation.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
     self.buttonCurrentLocation.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:14];
-
-    self.buttonOK.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
-    self.buttonCancel.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"OpenSans-Light" size:14.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     self.jobTimeLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     self.jobPriceLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     
-    
-
-    
     self.JobDesription.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     self.labelInfoSnap.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
-    
-    
 }
 
 - (void)viewDidLoad
@@ -134,6 +119,7 @@
     self.jobTitle.enabled=NO;
     
     self.activityIndicator.hidden=YES;
+    self.activityIndicator.hidesWhenStopped = YES;
     
     self.JobDesription.delegate=self;
     
@@ -159,11 +145,6 @@
     _sidebarButton.action = @selector(revealToggle:);
     
     
-    
-
-    
-    
-    
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
@@ -172,18 +153,12 @@
     self.buttonCurrentLocation.selected=YES;
     
     //mapView ***********************************
-    self.viewForLocation.alpha=0;
-    self.MapView.delegate=self;
-    self.myLocation.delegate=self;
-    
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.0; //user needs to press for 2 seconds
-    [self.MapView addGestureRecognizer:lpgr];
-
+    self.mapViewCustom = [[MapView alloc]init];
+    self.mapViewCustom.center = self.view.center;
+    self.mapViewCustom.alpha = 0;
+    self.mapViewCustom.delegate=self;
+    [self.view addSubview:self.mapViewCustom];
     //*******************************************
-    
-   
     
     
     //initialisation
@@ -204,27 +179,38 @@
 
 }
 
+#pragma mark - MapViewCustom Delegate
+
+-(void) MapViewDelegate_clickedOkWithLocation:(MyAnnotation*)annotation{
+
+    annotationForMap = annotation;
+    self.buttonPost.enabled=YES;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.mapViewCustom.alpha=0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void) MapViewDelegate_clickedCancel{
+
+    self.buttonPost.enabled=YES;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.mapViewCustom.alpha=0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+#pragma mark -
+
 - (IBAction) btnAction:(UIButton*)button{
     self.buttonCurrentLocation.selected=NO;
     self.buttonOtherLocation.selected=NO;
     
     button.selected = YES;
-}
-
-
-- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan){
-        return;
-    }
-    
-    [self.MapView removeAnnotations:self.MapView.annotations];
-    
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.MapView];
-    CLLocationCoordinate2D touchMapCoordinate = [self.MapView convertPoint:touchPoint toCoordinateFromView:self.MapView];
-    
-    annotation = [[MyAnnotation alloc] initWithCoordinates:touchMapCoordinate title:@"Job's location"];
-    [self.MapView addAnnotation:annotation];
 }
 
 - (IBAction)LocateSomewhereElse:(id)sender {
@@ -234,66 +220,16 @@
     self.title = @"Pin your job location";
     
     [self.JobDesription resignFirstResponder];
-    
-    self.MapView.delegate=self;
-    
-    self.MapView.showsUserLocation =YES;
-    [self.myLocation startUpdatingLocation];
-    
-    [self.view bringSubviewToFront:self.viewForLocation];
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        
-        self.viewForLocation.alpha=1;
 
-    } completion:^(BOOL finished) {
-//        self.viewForLocation.hidden=NO;
-        
-    }];
-}
-- (IBAction)MapViewOK:(id)sender {
-    
-    self.buttonPost.enabled=YES;
+    [self.mapViewCustom showMapView];
     
     [UIView animateWithDuration:0.2 animations:^{
-//        self.viewForLocation.hidden=YES;
-        self.viewForLocation.alpha=0;
+        self.mapViewCustom.alpha=1;
     } completion:^(BOOL finished) {
-        
-    }];
-}
-- (IBAction)MapViewCancel:(id)sender {
-    
-    self.buttonPost.enabled=YES;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-//        self.viewForLocation.hidden=YES;
-        self.viewForLocation.alpha=0;
-    } completion:^(BOOL finished) {
-        
     }];
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.013;
-    span.longitudeDelta = 0.013;
-    CLLocationCoordinate2D location;
-    location.latitude = userLocation.coordinate.latitude;
-    location.longitude = userLocation.coordinate.longitude;
-    region.span = span;
-    region.center = location;
-    [self.MapView setRegion:region animated:YES];
-    
-    [self.myLocation stopUpdatingLocation];
-    
-//    self.MapView.showsUserLocation = NO;
-    self.MapView.delegate=nil;
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     self.JobDesription.textColor =  UIColorFromRGB(0x225378);
     
     if([text isEqualToString:@"\n"]) {
@@ -301,13 +237,10 @@
         return NO;
     }
 
-    
     return textView.text.length + (text.length - range.length) <= 140;
-
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
+- (void)textViewDidBeginEditing:(UITextView *)textView{
     if ([textView.text isEqualToString:@"Job Description"]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor]; //optional
@@ -325,22 +258,16 @@
     return YES;
 }
 
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)SegmentControlDateJob:(UISegmentedControl *)sender {
     [self.JobDesription resignFirstResponder];
 }
+
 - (IBAction)SliderPrice:(UISlider *)sender {
 
     self.jobPriceLabel.text = [NSString stringWithFormat:@"Hourly rate : %d %@/h", (int)sender.value, currency ];
     price = [NSString stringWithFormat:@"%d",(int)sender.value];
 }
+
 - (IBAction)sliderHour:(UISlider *)sender {
     int hourInteger = sender.value/4;
     int remainder = (int)sender.value%4;
@@ -353,13 +280,14 @@
     
 }
 
-
-- (IBAction)POST:(id)sender {
+-(IBAction)POST:(id)sender {
     
-    
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
     
     if ([self.JobDesription.text isEqualToString:@"Job Description"]) {
         [[[UIAlertView alloc]initWithTitle:@"Bad Description" message:@"Please fill in the job description" delegate:self cancelButtonTitle:@"Thanks" otherButtonTitles: nil] show];
+        self.activityIndicator.hidden = YES;
         return;
     }
     
@@ -405,6 +333,7 @@
                 
                 [[[UIAlertView alloc]initWithTitle:@"Wrong Date" message:@"Please provide a valide date" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
                 self.buttonPost.enabled=YES;
+                self.activityIndicator.hidden = YES;
                 return;
             }
             
@@ -452,12 +381,13 @@
         }
         //*****************************************************************
         
-        if (self.buttonOtherLocation.selected==YES && annotation != nil ) { //the user changed location
-            PFGeoPoint *newLocation = [PFGeoPoint geoPointWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+        if (self.buttonOtherLocation.selected==YES && annotationForMap != nil ) { //the user changed location
+            
+            PFGeoPoint *newLocation = [PFGeoPoint geoPointWithLatitude:annotationForMap.coordinate.latitude longitude:annotationForMap.coordinate.longitude];
             Job[@"Location"] = newLocation;
-            [Job saveInBackground];
         }
         else if (self.buttonOtherLocation.selected==NO) {
+            
             [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                 if (!error) {
                     // do something with the new geoPoint
@@ -467,87 +397,92 @@
             }];
         }
         
-        __block PFFile *imageFile;
-        //faire la photo
-        @try {
-            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
-            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
-        }
-        @catch (NSException *exception) {
+//        __block PFFile *imageFile;
+//        //faire la photo
+//        @try {
+//            NSData *imageData = UIImagePNGRepresentation(picture_camera_small);
+//            imageFile = [PFFile fileWithName:@"image.png" data:imageData];
+//        }
+//        @catch (NSException *exception) {
+//            
+//        }
+//        @finally {
+//            
+//        }
+//
+//
+//        if (imageFile) {
+//            
+//            self.progressView.hidden  = NO;
+//            
+//            NSLog(@"there is a file somewhere in your ass");
+//            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                if (!error) {
+//                    
+//
+//                }
+//            } progressBlock:^(int percentDone) {
+//                NSLog(@"progress : %d", percentDone);
+//                
+//                self.progressView.progress = (float)percentDone/100.0;
+//                
+//                if (percentDone == 100) {
+//                    
+//                    self.buttonPost.enabled=YES;
+//                    
+//                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+//                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+//                    
+//                    //                    [alert show];
+//                    Job[@"Picture"] = imageFile;
+//                    
+//                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                        //save to plist *************
+////                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+//                        
+//                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+//                                                                                        Job[@"Price"], @"Price",
+//                                                                                        Job[@"Hour"], @"Hour",
+//                                                                                        Job[@"DateJob"], @"DateJob",
+//                                                                                        Job[@"Location"], @"Location",
+//                                                                                        Job.objectId, @"id", nil];
+//                        NSLog(@"job to save : %@", [job description]);
+//                        [JobMemoryManagement saveJobInMemory:job];
+//                        
+//                        
+//                        self.progressView.hidden  = YES;
+//                        self.JobDesription.text = @"Job Description";
+//                        
+//                        [self goToAnotherViewController];
+//                    }];
+//                    
+//                    
+//                    imageFile=nil;
+//                    picture_camera_small=nil;
+//                    picture_camera=nil;
+//                    self.progressView.hidden = YES;
+//                    self.imageViewJobPicture.image=nil;
+//                    
+//                }
+//            }];
+//        }
+//        else{
+        NSLog(@"TEST 1");
             
-        }
-        @finally {
-            
-        }
-
-        
-        if (imageFile) {
-            
-            self.progressView.hidden  = NO;
-            
-            NSLog(@"there is a file somewhere in your ass");
-            [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    
-
-                }
-            } progressBlock:^(int percentDone) {
-                NSLog(@"progress : %d", percentDone);
-                
-                self.progressView.progress = (float)percentDone/100.0;
-                
-                if (percentDone == 100) {
-                    
-                    self.buttonPost.enabled=YES;
-                    
-                    //                    AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
-                    [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                    
-                    //                    [alert show];
-                    Job[@"Picture"] = imageFile;
-                    
-                    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        //save to plist *************
-//                        [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
-                        
-                        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
-                                                                                        Job[@"Price"], @"Price",
-                                                                                        Job[@"Hour"], @"Hour",
-                                                                                        Job[@"DateJob"], @"DateJob",
-                                                                                        Job[@"Location"], @"Location",
-                                                                                        Job.objectId, @"id", nil];
-                        NSLog(@"job to save : %@", [job description]);
-                        [JobMemoryManagement saveJobInMemory:job];
-                        
-                        
-                        self.progressView.hidden  = YES;
-                        self.JobDesription.text = @"Job Description";
-                        
-                        [self goToAnotherViewController];
-                    }];
-                    
-                    
-                    imageFile=nil;
-                    picture_camera_small=nil;
-                    picture_camera=nil;
-                    self.progressView.hidden = YES;
-                    self.imageViewJobPicture.image=nil;
-                    
-                }
-            }];
-        }
-        else{
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                //save to plist *************
-//                [self saveJobToPlistWithId:Job.objectId Picture:nil Description:Job[@"Description"] Price:Job[@"Price"] Hour:Job[@"Hour"] Date:Job[@"DateJob"] location:Job[@"Location"]];
+
+                
                 NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                      Job[@"Price"], @"Price",
                                      Job[@"Hour"], @"Hour",
                                      Job[@"DateJob"], @"DateJob",
-                                     Job[@"Location"], @"Location", nil];
+                                     Job[@"Location"], @"Location",
+                                     Job.objectId, @"id", nil];
+
                 
                 [JobMemoryManagement saveJobInMemory:job];
-                
+
+
                 
                 
                 self.progressView.hidden  = YES;
@@ -556,13 +491,13 @@
                 
 //                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
                 [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                
+                self.activityIndicator.hidden = YES;
                 [self goToAnotherViewController];
             }];
             
             
         }
-    }
+//    }
 }
 
 -(void) goToAnotherViewController {
@@ -574,43 +509,7 @@
     [revealController setFrontViewController:navigationController animated:YES];
 }
 
--(void) saveJobToPlistWithId:(NSString*)JobId Picture : (UIImage*)Image Description:(NSString*)description Price:(NSString*)price2 Hour:(NSString*)hour2 Date:(NSString*)date2 location:(PFGeoPoint*)geoPoint{
-    
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //1
-    NSString *documentsDirectory = [paths objectAtIndex:0]; //2
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"JobsList.plist"]; //3
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path]) //4
-    {
-        NSLog(@"file does not exist");
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"JobsList" ofType:@"plist"]; //5
-        [fileManager copyItemAtPath:bundle toPath: path error:&error]; //6
-    }
-    
-    //all the stuff in the plist file
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
-    NSLog(@"plist for jobs  before : %@", data);
-    
-    //save the job
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: description, @"description", price2, @"price", hour2 , @"hour", date2 , @"date" , [NSDate date] , @"last_update", @"NO" , @"seen",  nil];
-    
-    if (![data objectForKey:JobId]) {
-
-        [data setObject:dictionary forKey:JobId];
-        
-        if([data writeToFile:path atomically:YES]){
-            NSLog(@"saved for dic : %@", dictionary);
-        }
-    }
-    
-    NSLog(@"plist for jobs  after : %@", data);
-}
-
-- (NSString *)progressView:(ASProgressPopUpView *)progressView stringForProgress:(float)progress
-{
+- (NSString *)progressView:(ASProgressPopUpView *)progressView stringForProgress:(float)progress{
     NSString *s;
     if (progress < 0.2) {
         s = @"Just starting";
@@ -659,8 +558,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (UIImage*)imageScaled:(UIImage *) image toMaxSideSize:(int) maxSize
-{
+- (UIImage*)imageScaled:(UIImage *) image toMaxSideSize:(int) maxSize{
     float scaleFactor = 0;
     
     if(image.size.width > image.size.height) scaleFactor = maxSize / image.size.width;
@@ -676,15 +574,5 @@
     return updatedImage;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -100,7 +100,6 @@
     self.textUI.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
 
     [self downloadJobs];
-    
 }
 
 
@@ -219,14 +218,13 @@
             NSLog(@"il y a tant de jobs %d",countAllJobs);
             
             //search for the prefered distance for the job area
-            int distance = (int)[[[NSUserDefaults standardUserDefaults]stringForKey:@"distanceForSearch"] integerValue] ;
+            int distance = (int)[[[NSUserDefaults standardUserDefaults] stringForKey:@"distanceForSearch"] integerValue];
             NSLog(@"date today : %@", [NSDate date]);
             
             [query whereKey:@"Location" nearGeoPoint:userGeoPoint withinKilometers:distance];
             [query whereKey:@"Author" notEqualTo:[PFUser currentUser]]; // remove own jobs
 
-            NSDateComponents* components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit
-                                                         fromDate:[NSDate date]];
+            NSDateComponents* components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit fromDate:[NSDate date]];
             
             NSDate *currentDate = [NSDate dateWithYear:(int)[components year] month:(int)[components month] day:(int)[components day] hour:(int)[components hour] minute:(int)[components minute] second:0];
             
@@ -234,11 +232,12 @@
             
             [query whereKey:@"DateJob" greaterThan:currentDate];
             NSLog(@"description query : %@",[query description]);
+         
+            
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                 if (!error) {
                     if ([objects count] != 0) {
                         
-                        //ON A TOUS LES OBJETS
                         JobsArray = objects;
                         NSLog(@"desc distance des jobs : %@",[JobsArray description]);
                         
@@ -377,10 +376,8 @@
                 [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
                     float distanceToJob = [geoPoint distanceInKilometersTo:JobOnTop[@"Location"]];
                     if (distanceToJob < 0.1) {
-//                        dragView.DistanceToUser.text = @"100 m";
                         dragView.labelJobLocation.text =@"100 m";
                     }else{
-//                        dragView.DistanceToUser.text = [NSString stringWithFormat:@"%0.1f km", distanceToJob];
                         dragView.labelJobLocation.text = [NSString stringWithFormat:@"%0.1f km", distanceToJob];
                     }
                 }];
@@ -439,14 +436,7 @@
             
             dragView.delegate = self;
             
-//            dragView.LabelDescriptionJob.text =Description;
-//            dragView.LabelDateJob.text =dateString;
-//            dragView.LabelPriceJob.text =[NSString stringWithFormat:@"%@/h", Price];
-//            dragView.LabelHourJob.text =Hour;
-           
             dragView.JobID = JobID;
-            
-            
             dragView.labelJobDate.text = dateString;
             dragView.labelJobHour.text = Hour;
             dragView.labelJobPrice.text = [NSString stringWithFormat:@"%@/h", Price];
@@ -455,7 +445,6 @@
             
             numberOfTheJob++;
             countAllJobs++;
-            
         }
         
         

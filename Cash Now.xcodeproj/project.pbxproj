@@ -55,6 +55,8 @@
 		AA5623561926AE8400DF0625 /* ProfileJobApplicantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5623551926AE8400DF0625 /* ProfileJobApplicantViewController.m */; };
 		AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD41E1922C4B20032C21C /* UserDetailsViewController.m */; };
 		AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */; };
+		AA9213861AA37C31009D0D25 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9213851AA37C31009D0D25 /* MapView.m */; };
+		AA9213881AA37C3A009D0D25 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9213871AA37C3A009D0D25 /* MapView.xib */; };
 		AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B7E191EAA8800644E86 /* MyJobsViewController.m */; };
 		AA9A8B82191ECB4200644E86 /* GGDraggableViewApplicants.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B81191ECB4200644E86 /* GGDraggableViewApplicants.m */; };
 		AA9A8B85191EF04400644E86 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B84191EF04400644E86 /* SWRevealViewController.m */; };
@@ -190,6 +192,9 @@
 		AA5BD41E1922C4B20032C21C /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		AA5BD4201922C54F0032C21C /* LogInViewControllerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewControllerCustom.h; sourceTree = "<group>"; };
 		AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewControllerCustom.m; sourceTree = "<group>"; };
+		AA9213841AA37C31009D0D25 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		AA9213851AA37C31009D0D25 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
+		AA9213871AA37C3A009D0D25 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		AA9A8B7D191EAA8800644E86 /* MyJobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJobsViewController.h; sourceTree = "<group>"; };
 		AA9A8B7E191EAA8800644E86 /* MyJobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJobsViewController.m; sourceTree = "<group>"; };
 		AA9A8B80191ECB4200644E86 /* GGDraggableViewApplicants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDraggableViewApplicants.h; sourceTree = "<group>"; };
@@ -319,6 +324,9 @@
 		AA0972DA1A9E248A00BD394A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				AA9213871AA37C3A009D0D25 /* MapView.xib */,
+				AA9213841AA37C31009D0D25 /* MapView.h */,
+				AA9213851AA37C31009D0D25 /* MapView.m */,
 				AA0972E51A9E447900BD394A /* FirstTimePhoneNumberView.xib */,
 				AA0972E21A9E446C00BD394A /* FirstTimePhoneNumberView.h */,
 				AA0972E31A9E446C00BD394A /* FirstTimePhoneNumberView.m */,
@@ -649,6 +657,7 @@
 				AA0972E61A9E447900BD394A /* FirstTimePhoneNumberView.xib in Resources */,
 				AAD30277191924BB000E4A47 /* InfoPlist.strings in Resources */,
 				AA0972DE1A9E2EEE00BD394A /* AddPhoneNumber.xib in Resources */,
+				AA9213881AA37C3A009D0D25 /* MapView.xib in Resources */,
 				AA0709E419E0BF62005760BB /* AvenirNextLTPro-Regular.otf in Resources */,
 				AA0973141AA09E8100BD394A /* ViewJob.xib in Resources */,
 				AA0972FA1A9F76E100BD394A /* LICENSE in Resources */,
@@ -711,6 +720,7 @@
 				AAD23B9619197A4700297539 /* ProfileViewController.m in Sources */,
 				AA0972D21A9E14D800BD394A /* ProfileMVPViewController.m in Sources */,
 				AAB965FB19228794003E65CF /* ASPopUpView.m in Sources */,
+				AA9213861AA37C31009D0D25 /* MapView.m in Sources */,
 				AAB965FC19228794003E65CF /* ASProgressPopUpView.m in Sources */,
 				AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */,
 				AA0973011A9F76E100BD394A /* README.md in Sources */,

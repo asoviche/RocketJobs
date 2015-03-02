@@ -151,7 +151,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="zb1-mb-vuG">
-                                                    <rect key="frame" x="52" y="8" width="780" height="433.5"/>
+                                                    <rect key="frame" x="52" y="8" width="1067" height="602"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -236,7 +236,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="03t-AA-gp6">
-                                                    <rect key="frame" x="101" y="29" width="821" height="410.5"/>
+                                                    <rect key="frame" x="101" y="29" width="1141" height="579"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -924,18 +924,8 @@ But come back in a while !</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yQa-zt-Thg">
-                                <rect key="frame" x="20" y="89" width="94" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icon-appareil-photo">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePicture:" destination="HaS-xy-qPt" eventType="touchUpInside" id="TNB-yk-x5n"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Job Description" textAlignment="center" id="ze9-gs-4ZF">
-                                <rect key="frame" x="20" y="194" width="280" height="105"/>
+                                <rect key="frame" x="20" y="127" width="280" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -943,7 +933,7 @@ But come back in a while !</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="cbb-wW-tja">
-                                <rect key="frame" x="20" y="319" width="280" height="29"/>
+                                <rect key="frame" x="20" y="252" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
@@ -956,14 +946,14 @@ But come back in a while !</string>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly rate : 8 €/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YF1-7E-R3f">
-                                <rect key="frame" x="66" y="422" width="188" height="21"/>
+                                <rect key="frame" x="66" y="355" width="188" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="4" maxValue="50" id="1D6-8b-jkj">
-                                <rect key="frame" x="18" y="451" width="284" height="31"/>
+                                <rect key="frame" x="18" y="384" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.47058823529411764" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
@@ -971,7 +961,7 @@ But come back in a while !</string>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="96" id="0JE-h9-6BT">
-                                <rect key="frame" x="18" y="518" width="284" height="31"/>
+                                <rect key="frame" x="18" y="451" width="284" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.47058823529411764" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
@@ -979,33 +969,22 @@ But come back in a while !</string>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job starts at :  20 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MOH-ID-Qdo">
-                                <rect key="frame" x="79" y="489" width="168" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snap a nice picture of the job you offer !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sY9-NY-lzD">
-                                <rect key="frame" x="131" y="95" width="158" height="55"/>
+                                <rect key="frame" x="79" y="422" width="168" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="ZcE-0G-d3D">
-                                <rect key="frame" x="142" y="186" width="37" height="37"/>
+                                <rect key="frame" x="142" y="119" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="Qqb-gi-a3B" customClass="ASProgressPopUpView">
-                                <rect key="frame" x="20" y="297" width="280" height="2"/>
+                                <rect key="frame" x="20" y="230" width="280" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1xH-A6-KFf">
-                                <rect key="frame" x="20" y="71" width="105" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dT3-hT-N82">
-                                <rect key="frame" x="159" y="370" width="141" height="30"/>
+                                <rect key="frame" x="159" y="303" width="141" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Other location">
@@ -1017,45 +996,8 @@ But come back in a while !</string>
                                     <action selector="btnAction:" destination="HaS-xy-qPt" eventType="touchUpInside" id="gff-CU-IIE"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="wo7-7X-YOf">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PUi-u1-kAw">
-                                        <rect key="frame" x="57" y="417" width="77" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="MapViewCancel:" destination="HaS-xy-qPt" eventType="touchUpInside" id="dhC-A9-Qv2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Cd-rU-m4U">
-                                        <rect key="frame" x="191" y="417" width="77" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
-                                        <state key="normal" title="OK">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="MapViewOK:" destination="HaS-xy-qPt" eventType="touchUpInside" id="jYe-dG-uEp"/>
-                                        </connections>
-                                    </button>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="4c6-na-cn0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="503"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </mapView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pgm-SI-7tF">
-                                <rect key="frame" x="20" y="370" width="138" height="30"/>
+                                <rect key="frame" x="20" y="303" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Current location">
@@ -1066,6 +1008,11 @@ But come back in a while !</string>
                                     <action selector="btnAction:" destination="HaS-xy-qPt" eventType="touchUpInside" id="kJs-dj-t7y"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="qFn-ck-BZh">
+                                <rect key="frame" x="142" y="82" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1089,22 +1036,15 @@ But come back in a while !</string>
                         <outlet property="JobDate" destination="cbb-wW-tja" id="vNQ-hF-ZUb"/>
                         <outlet property="JobDesription" destination="ze9-gs-4ZF" id="YaN-Zm-rfE"/>
                         <outlet property="JobTimeSlider" destination="0JE-h9-6BT" id="sYF-qb-zcl"/>
-                        <outlet property="MapView" destination="4c6-na-cn0" id="Zd5-EI-xJC"/>
-                        <outlet property="activityIndicator" destination="ZcE-0G-d3D" id="Sax-Pw-JaG"/>
-                        <outlet property="buttonCamera" destination="yQa-zt-Thg" id="6br-Rd-OAg"/>
-                        <outlet property="buttonCancel" destination="PUi-u1-kAw" id="Kc2-yr-ADO"/>
+                        <outlet property="activityIndicator" destination="qFn-ck-BZh" id="z0U-PK-kbG"/>
                         <outlet property="buttonCurrentLocation" destination="pgm-SI-7tF" id="gR9-H5-QJg"/>
-                        <outlet property="buttonOK" destination="8Cd-rU-m4U" id="9wy-Bm-paK"/>
                         <outlet property="buttonOtherLocation" destination="dT3-hT-N82" id="s0B-PK-Zsi"/>
                         <outlet property="buttonPost" destination="chz-ci-No4" id="Juk-0a-ZoR"/>
-                        <outlet property="imageViewJobPicture" destination="1xH-A6-KFf" id="qpm-VY-Dfw"/>
                         <outlet property="jobPriceLabel" destination="YF1-7E-R3f" id="Yy7-ma-lFf"/>
                         <outlet property="jobPriceSlider" destination="1D6-8b-jkj" id="YmZ-Li-teY"/>
                         <outlet property="jobTimeLabel" destination="MOH-ID-Qdo" id="QVg-0V-jXL"/>
-                        <outlet property="labelInfoSnap" destination="sY9-NY-lzD" id="iZM-yA-vFa"/>
                         <outlet property="progressView" destination="Qqb-gi-a3B" id="mbg-sK-Eox"/>
                         <outlet property="sidebarButton" destination="CpZ-BZ-d1w" id="qBj-es-oKA"/>
-                        <outlet property="viewForLocation" destination="wo7-7X-YOf" id="KsX-C9-0yl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTv-Fb-4E5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1728,7 +1668,6 @@ But come back in a while !</string>
         <image name="Rocket" width="83" height="88"/>
         <image name="back" width="13" height="22"/>
         <image name="button-login" width="164" height="45"/>
-        <image name="icon-appareil-photo" width="94" height="73"/>
         <image name="icon-back" width="13" height="22"/>
         <image name="icon-menu" width="23" height="16"/>
         <image name="icon-menu-addjob" width="44" height="50"/>
