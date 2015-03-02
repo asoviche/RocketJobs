@@ -56,10 +56,10 @@
     [self.activityIndicator startAnimating];
     
     // Set permissions required from the facebook user account
-//    NSArray *permissionsArray = @[ @"user_location"];
+    NSArray *permissionsArray = @[];
     
     // Login PFUser using facebook
-    [PFFacebookUtils logInWithPermissions:nil block:^(PFUser *user, NSError *error) {
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
       
         NSLog(@"user : %@", [user description]);
         
@@ -154,7 +154,6 @@
                                                                   timeoutInterval:2.0f];
             // Run network request asynchronously
             NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
-            
         }
     }];
 }

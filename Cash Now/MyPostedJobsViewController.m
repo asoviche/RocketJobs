@@ -46,7 +46,7 @@
     
     self.applicantsToMyJobsDictionary = [NSMutableDictionary new];
     
-    self.myJobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    self.myJobsDictionary =  [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
     NSLog(@"myJobsDictionary : %@", [self.myJobsDictionary description]);
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -180,6 +180,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"my jobs count : %d", [self.myJobsDictionary count]);
     return [self.myJobsDictionary count];
 }
 
@@ -197,6 +198,8 @@
     
     textViewDescription.text = job[@"Description"];
     labelNbApplicants.text = [NSString stringWithFormat:@"%lu Applicants", (unsigned long)[job[@"acceptedApplicants"] count] ];
+    
+    NSLog(@"desc : %@", textViewDescription.text);
     
 //    if ([self.applicantsToMyJobsDictionary objectForKey:job[@"id"]]) {
 //        labelNbApplicants.text = [NSString stringWithFormat:@"%lu Applicants", (unsigned long)[[self.applicantsToMyJobsDictionary objectForKey:job[@"id"]] count] ];

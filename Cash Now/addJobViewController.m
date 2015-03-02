@@ -198,6 +198,11 @@
 
     self.buttonPost.enabled=YES;
     
+    if (!annotationForMap) {
+        self.buttonCurrentLocation.selected=YES;
+        self.buttonOtherLocation.selected=NO;
+    }
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.mapViewCustom.alpha=0;
     } completion:^(BOOL finished) {
@@ -252,8 +257,11 @@
 - (IBAction) btnAction:(UIButton*)button{
     self.buttonCurrentLocation.selected=NO;
     self.buttonOtherLocation.selected=NO;
-    
     button.selected = YES;
+  
+    if (button == self.buttonCurrentLocation) {
+        annotationForMap = nil;
+    }
 }
 
 - (IBAction)LocateSomewhereElse:(id)sender {
@@ -485,14 +493,25 @@
             
             [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
+                NSLog(@"TEST 2");
+                
                 NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                                      Job[@"Price"], @"Price",
                                      Job[@"Hour"], @"Hour",
                                      Job[@"DateJob"], @"DateJob",
                                      Job[@"Location"], @"Location",
                                      Job.objectId, @"id", nil];
-
+                
+                NSLog(@"annotation for map : %@", [annotationForMap description]);
+                
+                
+                NSLog(@"job : %@", Job[@"Location"]);
+                
+                NSLog(@"TEST 3");
+                
                 [JobMemoryManagement saveJobInMemory:job];
+                
+                NSLog(@"TEST 4");
 
                 [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
                 
