@@ -11,8 +11,9 @@
 #import <MapKit/MapKit.h>
 
 #import "JobMemoryManagement.h"
+#import "MapView.h"
 
-@interface addJobViewController : UIViewController<UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate , UITextViewDelegate>
+@interface addJobViewController : UIViewController<UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate, MKMapViewDelegate,CLLocationManagerDelegate , UITextViewDelegate, MapViewDelegate>
 
 @property BOOL newMedia;
 

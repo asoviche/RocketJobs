@@ -151,7 +151,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="zb1-mb-vuG">
-                                                    <rect key="frame" x="52" y="8" width="780" height="433.5"/>
+                                                    <rect key="frame" x="52" y="8" width="1067" height="602"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -236,7 +236,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" editable="NO" selectable="NO" id="03t-AA-gp6">
-                                                    <rect key="frame" x="101" y="29" width="821" height="410.5"/>
+                                                    <rect key="frame" x="101" y="29" width="1141" height="579"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1008,43 +1008,11 @@ But come back in a while !</string>
                                     <action selector="btnAction:" destination="HaS-xy-qPt" eventType="touchUpInside" id="kJs-dj-t7y"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" id="wo7-7X-YOf">
-                                <rect key="frame" x="0.0" y="314" width="320" height="254"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="qFn-ck-BZh">
+                                <rect key="frame" x="142" y="82" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PUi-u1-kAw">
-                                        <rect key="frame" x="57" y="168" width="77" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="MapViewCancel:" destination="HaS-xy-qPt" eventType="touchUpInside" id="dhC-A9-Qv2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Cd-rU-m4U">
-                                        <rect key="frame" x="191" y="168" width="77" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
-                                        <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
-                                        <state key="normal" title="OK">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="MapViewOK:" destination="HaS-xy-qPt" eventType="touchUpInside" id="jYe-dG-uEp"/>
-                                        </connections>
-                                    </button>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="4c6-na-cn0">
-                                        <rect key="frame" x="0.0" y="31" width="320" height="223"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </mapView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                                <color key="color" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1068,11 +1036,8 @@ But come back in a while !</string>
                         <outlet property="JobDate" destination="cbb-wW-tja" id="vNQ-hF-ZUb"/>
                         <outlet property="JobDesription" destination="ze9-gs-4ZF" id="YaN-Zm-rfE"/>
                         <outlet property="JobTimeSlider" destination="0JE-h9-6BT" id="sYF-qb-zcl"/>
-                        <outlet property="MapView" destination="4c6-na-cn0" id="Zd5-EI-xJC"/>
-                        <outlet property="activityIndicator" destination="ZcE-0G-d3D" id="Sax-Pw-JaG"/>
-                        <outlet property="buttonCancel" destination="PUi-u1-kAw" id="Kc2-yr-ADO"/>
+                        <outlet property="activityIndicator" destination="qFn-ck-BZh" id="z0U-PK-kbG"/>
                         <outlet property="buttonCurrentLocation" destination="pgm-SI-7tF" id="gR9-H5-QJg"/>
-                        <outlet property="buttonOK" destination="8Cd-rU-m4U" id="9wy-Bm-paK"/>
                         <outlet property="buttonOtherLocation" destination="dT3-hT-N82" id="s0B-PK-Zsi"/>
                         <outlet property="buttonPost" destination="chz-ci-No4" id="Juk-0a-ZoR"/>
                         <outlet property="jobPriceLabel" destination="YF1-7E-R3f" id="Yy7-ma-lFf"/>
@@ -1080,7 +1045,6 @@ But come back in a while !</string>
                         <outlet property="jobTimeLabel" destination="MOH-ID-Qdo" id="QVg-0V-jXL"/>
                         <outlet property="progressView" destination="Qqb-gi-a3B" id="mbg-sK-Eox"/>
                         <outlet property="sidebarButton" destination="CpZ-BZ-d1w" id="qBj-es-oKA"/>
-                        <outlet property="viewForLocation" destination="wo7-7X-YOf" id="KsX-C9-0yl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTv-Fb-4E5" userLabel="First Responder" sceneMemberID="firstResponder"/>
