@@ -61,7 +61,7 @@
     
 
     
-    _menuItems = @[@"ProfileInfo", @"SearchJobs", @"PostAJob", @"MyJobs",@"blank", @"Settings"];
+    _menuItems = @[@"ProfileInfo", @"Blank2", @"SearchJobs", @"PostAJob", @"MyJobs",@"blank", @"Settings"];
 }
 
 -(BOOL) areJobsSeen{

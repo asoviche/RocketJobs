@@ -407,6 +407,7 @@
             
             PFGeoPoint *newLocation = [PFGeoPoint geoPointWithLatitude:annotationForMap.coordinate.latitude longitude:annotationForMap.coordinate.longitude];
             Job[@"Location"] = newLocation;
+            [self saveJobParse:Job];
         }
         else if (self.buttonOtherLocation.selected==NO) {
             
@@ -414,9 +415,12 @@
                 if (!error) {
                     // do something with the new geoPoint
                     Job[@"Location"] = geoPoint;
-                    [Job saveInBackground];
+                    [self saveJobParse:Job];
+                }else{
+                    NSLog(@"error finding current location");
                 }
             }];
+            
         }
         
 //        __block PFFile *imageFile;
@@ -489,44 +493,49 @@
 //            }];
 //        }
 //        else{
-        NSLog(@"TEST 1");
+
             
-            [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                
-                NSLog(@"TEST 2");
-                
-                NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
-                                     Job[@"Price"], @"Price",
-                                     Job[@"Hour"], @"Hour",
-                                     Job[@"DateJob"], @"DateJob",
-                                     Job[@"Location"], @"Location",
-                                     Job.objectId, @"id", nil];
-                
-                NSLog(@"annotation for map : %@", [annotationForMap description]);
-                
-                
-                NSLog(@"job : %@", Job[@"Location"]);
-                
-                NSLog(@"TEST 3");
-                
-                [JobMemoryManagement saveJobInMemory:job];
-                
-                NSLog(@"TEST 4");
 
-                [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-                
-                [self goToAnotherViewController];
-                
-//                self.activityIndicator.hidden = YES;
-//                self.progressView.hidden  = YES;
-//                self.JobDesription.text = @"Job Description";
-//                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
-
-            }];
             
             
         }
 //    }
+}
+
+-(void) saveJobParse:(PFObject*) Job{
+    
+    [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        NSLog(@"TEST 2");
+        
+        NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
+                             Job[@"Price"], @"Price",
+                             Job[@"Hour"], @"Hour",
+                             Job[@"DateJob"], @"DateJob",
+                             Job[@"Location"], @"Location",
+                             Job.objectId, @"id", nil];
+        
+        NSLog(@"annotation for map : %@", [annotationForMap description]);
+        
+        
+        NSLog(@"job : %@", Job[@"Location"]);
+        
+        NSLog(@"TEST 3");
+        
+        [JobMemoryManagement saveJobInMemory:job];
+        
+        NSLog(@"TEST 4");
+        
+        [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+        
+        [self goToAnotherViewController];
+        
+        //                self.activityIndicator.hidden = YES;
+        //                self.progressView.hidden  = YES;
+        //                self.JobDesription.text = @"Job Description";
+        //                AMSmoothAlertView *alert = [[AMSmoothAlertView alloc] initDropAlertWithTitle:@"Thanks" andText:@"Your job has been posted !" andCancelButton:NO forAlertType:AlertSuccess];
+        
+    }];
 }
 
 -(void) goToAnotherViewController {

@@ -1241,6 +1241,15 @@ But come back in a while !</string>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Blank2" rowHeight="60" id="cIS-2I-lCC">
+                                <rect key="frame" x="0.0" y="382" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cIS-2I-lCC" id="QNp-D1-p7Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchJobs" rowHeight="60" id="kTv-oF-gjf">
                                 <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1306,6 +1315,9 @@ But come back in a while !</string>
                                                 <segue destination="I8x-n7-inn" kind="custom" customClass="SWRevealViewControllerSegue" id="2Xe-zN-QHN"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon-menu-applicants" translatesAutoresizingMaskIntoConstraints="NO" id="7QC-kh-j4q">
+                                            <rect key="frame" x="45" y="15" width="30" height="30"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1903,6 +1915,7 @@ But come back in a while !</string>
         <image name="icon-back" width="13" height="22"/>
         <image name="icon-menu" width="23" height="16"/>
         <image name="icon-menu-addjob" width="44" height="50"/>
+        <image name="icon-menu-applicants" width="54" height="50"/>
         <image name="icon-menu-jobs" width="44" height="50"/>
         <image name="icon-menu-settings" width="50" height="50"/>
         <image name="icon-messages" width="26" height="22"/>
