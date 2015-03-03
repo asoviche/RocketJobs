@@ -55,6 +55,7 @@
 		AA5623561926AE8400DF0625 /* ProfileJobApplicantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5623551926AE8400DF0625 /* ProfileJobApplicantViewController.m */; };
 		AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD41E1922C4B20032C21C /* UserDetailsViewController.m */; };
 		AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */; };
+		AA7AF5391AA606F700296CF0 /* JobLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AF5381AA606F700296CF0 /* JobLocationViewController.m */; };
 		AA9213861AA37C31009D0D25 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9213851AA37C31009D0D25 /* MapView.m */; };
 		AA9213881AA37C3A009D0D25 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9213871AA37C3A009D0D25 /* MapView.xib */; };
 		AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B7E191EAA8800644E86 /* MyJobsViewController.m */; };
@@ -193,6 +194,8 @@
 		AA5BD41E1922C4B20032C21C /* UserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		AA5BD4201922C54F0032C21C /* LogInViewControllerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewControllerCustom.h; sourceTree = "<group>"; };
 		AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewControllerCustom.m; sourceTree = "<group>"; };
+		AA7AF5371AA606F700296CF0 /* JobLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobLocationViewController.h; sourceTree = "<group>"; };
+		AA7AF5381AA606F700296CF0 /* JobLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobLocationViewController.m; sourceTree = "<group>"; };
 		AA9213841AA37C31009D0D25 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		AA9213851AA37C31009D0D25 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		AA9213871AA37C3A009D0D25 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
@@ -416,6 +419,8 @@
 		AAD30260191924BB000E4A47 = {
 			isa = PBXGroup;
 			children = (
+				AA7AF5371AA606F700296CF0 /* JobLocationViewController.h */,
+				AA7AF5381AA606F700296CF0 /* JobLocationViewController.m */,
 				AA0709DB19E0A592005760BB /* THChatInput.h */,
 				AA0709DC19E0A592005760BB /* THChatInput.m */,
 				AA0972EA1A9F76E100BD394A /* Parse-NSCoding-master */,
@@ -713,6 +718,7 @@
 				AAD3027D191924BB000E4A47 /* AppDelegate.m in Sources */,
 				AAD30279191924BB000E4A47 /* main.m in Sources */,
 				AA0972D91A9E247600BD394A /* AddDescriptionView.m in Sources */,
+				AA7AF5391AA606F700296CF0 /* JobLocationViewController.m in Sources */,
 				AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */,
 				AA0972E11A9E2F0500BD394A /* AddPhoneNumber.m in Sources */,
 				AA0972FE1A9F76E100BD394A /* PFFile+NSCoding.m in Sources */,

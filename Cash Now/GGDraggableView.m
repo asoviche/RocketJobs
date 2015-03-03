@@ -145,6 +145,7 @@
 
 -(void) tapped: (UITapGestureRecognizer *) tapGestureRecognizer {
     
+    [self.delegate GGDraggableViewDelegate_LoadDetailView];
 //    [self.delegate GGDraggableViewDelegate_LoadDetailView];
 }
 
