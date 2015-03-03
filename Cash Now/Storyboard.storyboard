@@ -115,7 +115,7 @@
         <!--My Posted Jobs View Controller-->
         <scene sceneID="gu0-UJ-sgV">
             <objects>
-                <viewController id="I8x-n7-inn" customClass="MyPostedJobsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyPostedJobsViewController" id="I8x-n7-inn" customClass="MyPostedJobsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LQB-o2-cdd"/>
                         <viewControllerLayoutGuide type="bottom" id="Slo-vb-ZkI"/>

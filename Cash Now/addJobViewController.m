@@ -18,6 +18,7 @@
 #import "NSDate+Calculations.h"
 
 #import "MyJobsViewController.h"
+#import "MyPostedJobsViewController.h"
 
 @interface addJobViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *buttonCamera;
@@ -430,7 +431,7 @@
     
     [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
-        NSLog(@"TEST 2");
+
         
         NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                              Job[@"Price"], @"Price",
@@ -440,19 +441,14 @@
                              Job.objectId, @"id", nil];
         
         NSLog(@"annotation for map : %@", [annotationForMap description]);
-        
-        
         NSLog(@"job : %@", Job[@"Location"]);
         
-        NSLog(@"TEST 3");
-        
         [JobMemoryManagement saveJobInMemory:job];
-        
-        NSLog(@"TEST 4");
-        
-        [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-        
         [self goToAnotherViewController];
+        
+//        [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
+        
+        
         
         //                self.activityIndicator.hidden = YES;
         //                self.progressView.hidden  = YES;
@@ -466,7 +462,7 @@
     SWRevealViewController *revealController = self.revealViewController;
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     
-    MyJobsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MyJobsViewController"];
+    MyPostedJobsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MyPostedJobsViewController"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
     [revealController setFrontViewController:navigationController animated:YES];
 }
