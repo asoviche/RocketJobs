@@ -56,6 +56,7 @@
 		AA5BD41F1922C4B20032C21C /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD41E1922C4B20032C21C /* UserDetailsViewController.m */; };
 		AA5BD4221922C54F0032C21C /* LogInViewControllerCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */; };
 		AA7AF5391AA606F700296CF0 /* JobLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AF5381AA606F700296CF0 /* JobLocationViewController.m */; };
+		AA7AF53C1AA6184000296CF0 /* SocialMedias.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7AF53B1AA6184000296CF0 /* SocialMedias.m */; };
 		AA9213861AA37C31009D0D25 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9213851AA37C31009D0D25 /* MapView.m */; };
 		AA9213881AA37C3A009D0D25 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9213871AA37C3A009D0D25 /* MapView.xib */; };
 		AA9A8B7F191EAA8800644E86 /* MyJobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9A8B7E191EAA8800644E86 /* MyJobsViewController.m */; };
@@ -196,6 +197,8 @@
 		AA5BD4211922C54F0032C21C /* LogInViewControllerCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewControllerCustom.m; sourceTree = "<group>"; };
 		AA7AF5371AA606F700296CF0 /* JobLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobLocationViewController.h; sourceTree = "<group>"; };
 		AA7AF5381AA606F700296CF0 /* JobLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobLocationViewController.m; sourceTree = "<group>"; };
+		AA7AF53A1AA6184000296CF0 /* SocialMedias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialMedias.h; sourceTree = "<group>"; };
+		AA7AF53B1AA6184000296CF0 /* SocialMedias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialMedias.m; sourceTree = "<group>"; };
 		AA9213841AA37C31009D0D25 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		AA9213851AA37C31009D0D25 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		AA9213871AA37C3A009D0D25 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
@@ -268,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD302B6191925EA000E4A47 /* Social.framework in Frameworks */,
 				AAD302B41919259A000E4A47 /* SystemConfiguration.framework in Frameworks */,
 				AAB20A9A193676C7006C5455 /* MapKit.framework in Frameworks */,
 				AAB9662B19229554003E65CF /* AVFoundation.framework in Frameworks */,
@@ -276,7 +280,6 @@
 				AAB9662519229535003E65CF /* CoreMedia.framework in Frameworks */,
 				AAB9652C19226B5C003E65CF /* MediaPlayer.framework in Frameworks */,
 				AAD302C119193E97000E4A47 /* Twitter.framework in Frameworks */,
-				AAD302B6191925EA000E4A47 /* Social.framework in Frameworks */,
 				AAD302BA191925F6000E4A47 /* Accounts.framework in Frameworks */,
 				AAD302B8191925F1000E4A47 /* AdSupport.framework in Frameworks */,
 				AAD302AE19192584000E4A47 /* QuartzCore.framework in Frameworks */,
@@ -322,6 +325,8 @@
 				AA0973091A9F7A0900BD394A /* MemoryManagement.m */,
 				AA0972E71A9F2F6300BD394A /* JobsParseManagement.h */,
 				AA0972E81A9F2F6300BD394A /* JobsParseManagement.m */,
+				AA7AF53A1AA6184000296CF0 /* SocialMedias.h */,
+				AA7AF53B1AA6184000296CF0 /* SocialMedias.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -733,6 +738,7 @@
 				AA9213861AA37C31009D0D25 /* MapView.m in Sources */,
 				AAB965FC19228794003E65CF /* ASProgressPopUpView.m in Sources */,
 				AA2E3EE919240F54000C4692 /* FriendsViewController.m in Sources */,
+				AA7AF53C1AA6184000296CF0 /* SocialMedias.m in Sources */,
 				AA0973011A9F76E100BD394A /* README.md in Sources */,
 				AA0973101AA06ADD00BD394A /* ApplicantsForJobViewController.m in Sources */,
 				AA0972FF1A9F76E100BD394A /* PFGeoPoint+NSCoding.m in Sources */,
