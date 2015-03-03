@@ -556,11 +556,43 @@
 #pragma mark IBActions
 
 - (IBAction)ModifyJob:(id)sender {
+    
 }
 
 
 - (IBAction)deleteJob:(id)sender {
-    
+    UIAlertView *alertDeleteJob = [[UIAlertView alloc]initWithTitle:@"Delete job ?" message:nil delegate:self cancelButtonTitle:@"Delete" otherButtonTitles: nil];
+    alertDeleteJob.tag = 100;
+    [alertDeleteJob show];
+}
+
+#pragma mark AlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  
+    if (alertView.tag == 100) { //delete job
+        
+        if (buttonIndex == 1) {
+            //delete on parse
+                //delete on disk
+            PFObject *jobToDelete = [PFObject objectWithClassName:@"Job"];
+            jobToDelete.objectId = self.jobIdToModify;
+            
+            [jobToDelete deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    
+                    //delete on disk
+                }
+            }];
+        }
+        
+    }else if (alertView.tag == 200){ //modify job
+        
+        if (buttonIndex == 1) {
+            //modify on parse
+                //modify on disk
+        }
+    }
     
 }
 
