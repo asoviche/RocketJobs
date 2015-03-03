@@ -39,6 +39,11 @@
 
 @property (strong, nonatomic) FirstTimePhoneNumberView *firstTimePhoneNumberView;
 
+//constraints
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *contraint_ImageDeny_x;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_ImageAccept_x;
+
 @end
 
 
@@ -61,11 +66,11 @@
     __block int countAllJobs;
     NSMutableArray *JobsPicturesArray;
     
-    NSString *dateString;
-    NSString *Description;
-    NSString *Hour;
-    NSString *Price;
-    NSString *JobID;
+//    NSString *dateString;
+//    NSString *Description;
+//    NSString *Hour;
+//    NSString *Price;
+//    NSString *JobID;
 
     
     #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -216,6 +221,9 @@
     NSLog(@"salut");
     // User's location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *userGeoPoint, NSError *error) {
+        
+        NSLog(@"error");
+        
         if (!error) {
             
             PFQuery *query = [PFQuery queryWithClassName:@"Job"];
@@ -303,13 +311,6 @@
         if ( !([applicantsArray containsObject:[PFUser currentUser].objectId] ||
                [acceptedApplicants containsObject:[PFUser currentUser].objectId] )) {
             
-            
-            Description = JobOnTop[@"Description"];
-            Hour = JobOnTop[@"Hour"];
-            Price = JobOnTop[@"Price"];
-            JobID = [JobOnTop objectId];
-            
-            
             //we add a view for each job
             GGDraggableView *dragView= [[GGDraggableView alloc] initWithFrame:CGRectMake((320-280)/2, 90, 280, 463)];
             
@@ -324,11 +325,11 @@
             }
             [ViewsArray addObject:dragView];
             
+            
             dragView.numeroView = numberOfTheJob;
             
             
-            
-            
+            NSString *dateString;
             if (JobOnTop[@"DateJob"]) {
                 
                 
@@ -388,9 +389,7 @@
                 }];
             }
             
-            //query users -> find the poster
-                //get the pp
-                    //set imagePP + name + description
+            //find job poster + display profile
             PFQuery *query = [PFUser query];
             [query getObjectInBackgroundWithId:((PFUser*)JobOnTop[@"Author"]).objectId block:^(PFObject *jobProvider, NSError *error) {
                 if (!error) {
@@ -441,11 +440,11 @@
             
             dragView.delegate = self;
             
-            dragView.JobID = JobID;
+            dragView.JobID = JobOnTop.objectId;
             dragView.labelJobDate.text = dateString;
-            dragView.labelJobHour.text = Hour;
-            dragView.labelJobPrice.text = [NSString stringWithFormat:@"%@/h", Price];
-            dragView.textViewJobDesription.text = Description;
+            dragView.labelJobHour.text = JobOnTop[@"Hour"];
+            dragView.labelJobPrice.text = [NSString stringWithFormat:@"%@/h", JobOnTop[@"Price"]];
+            dragView.textViewJobDesription.text = JobOnTop[@"Description"];
             
             
             numberOfTheJob++;
@@ -472,13 +471,12 @@
 
 -(void) GGDraggableViewDelegate_ApplyForJob{
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phoneNumber"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     PFObject *job = JobsArray[numberOfTheCurrentView];
     
+    NSString *phoneNumberInMemory = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
     //check if the phone number is entered
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"] == nil) {
+    if ( phoneNumberInMemory == nil || phoneNumberInMemory.length == 0 )
+    {
         [self.view bringSubviewToFront:self.firstTimePhoneNumberView];
         self.firstTimePhoneNumberView.currentJobId = job.objectId;
         [self animation_showfirstTimePhoneNumberView];
@@ -489,39 +487,34 @@
 }
 
 -(void) GGDraggableViewDelegate_positionViewChanged:(int)positionView{
-
-    int pos = positionView;
-    
-    static int factor = 2;
     
     //position < 0 : deny view
-    if (pos <= 0) {
+    if (positionView <= 0) {
         
         self.ImageViewDeny.hidden=NO;
         [self.view bringSubviewToFront:self.ImageViewDeny];
         
-        if (pos <= -150/factor) {
-            self.ImageViewDeny.frame = CGRectMake(-10, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+        if (positionView <= - 170) {
+            self.contraint_ImageDeny_x.constant = 0;
         }else{
-            self.ImageViewDeny.frame = CGRectMake(-90 + factor*(-pos/150.0)*80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+            self.contraint_ImageDeny_x.constant = -self.ImageViewDeny.frame.size.width + (-positionView/2.0);
         }
         
-        self.ImageViewAccept.frame = CGRectMake(320, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+        self.constraint_ImageAccept_x.constant = self.view.frame.size.width;
     }
     //position >0  : accept view
-    if (pos >= 0){
+    else if (positionView >= 0){
         
         self.ImageViewAccept.hidden=NO;
         [self.view bringSubviewToFront:self.ImageViewAccept];
         
-        if (pos >= 150/factor) {
-            self.ImageViewAccept.frame = CGRectMake(240, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+        if (positionView >= 170) {
+            self.constraint_ImageAccept_x.constant = 0;
         }else{
-            NSLog(@"change");
-            self.ImageViewAccept.frame = CGRectMake(240 + 80 - factor*(pos/150.0)*80, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+            self.constraint_ImageAccept_x.constant = self.ImageViewAccept.frame.size.width - (positionView/2);
         }
         
-        self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+        self.contraint_ImageDeny_x.constant = -self.ImageViewDeny.frame.size.width;
     }
 }
 
@@ -564,8 +557,11 @@
     
     //handle the view on the side : green/red
     
-    self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
-    self.ImageViewAccept.frame = CGRectMake(320, _ImageViewAccept.frame.origin.y, _ImageViewAccept.frame.size.width, _ImageViewAccept.frame.size.height);
+//    self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
+
+    
+    self.constraint_ImageAccept_x.constant = self.view.frame.size.width;
+    self.contraint_ImageDeny_x.constant = -self.ImageViewDeny.frame.size.width;
 }
 
 

@@ -273,17 +273,6 @@
     [self.delegate GGDraggableViewDelegate_deleteView];
 }
 
-- (void)updateOverlay:(CGFloat)distance
-{
-    if (distance > 0) {
-        self.overlayView.mode = GGOverlayViewModeRight;
-    } else if (distance <= 0) {
-        self.overlayView.mode = GGOverlayViewModeLeft;
-    }
-    CGFloat overlayStrength = MIN(fabsf(distance) / 100, 0.4);
-    self.overlayView.alpha = overlayStrength;
-}
-
 - (void)resetViewPositionAndTransformations
 {
     [UIView animateWithDuration:0.2
