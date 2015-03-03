@@ -46,7 +46,7 @@
     
     self.applicantsToMyJobsDictionary = [NSMutableDictionary new];
     
-    self.myJobsDictionary =  [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    
     NSLog(@"myJobsDictionary : %@", [self.myJobsDictionary description]);
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -57,6 +57,11 @@
     self.tableView.dataSource = self;
     
     [self downloadPostedJobs];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    self.myJobsDictionary =  [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    [self.tableView reloadData];
 }
 
 -(void)refreshTable{

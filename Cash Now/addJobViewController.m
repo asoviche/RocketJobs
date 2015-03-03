@@ -561,7 +561,7 @@
 
 
 - (IBAction)deleteJob:(id)sender {
-    UIAlertView *alertDeleteJob = [[UIAlertView alloc]initWithTitle:@"Delete job ?" message:nil delegate:self cancelButtonTitle:@"Delete" otherButtonTitles: nil];
+    UIAlertView *alertDeleteJob = [[UIAlertView alloc]initWithTitle:@"Delete job ?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
     alertDeleteJob.tag = 100;
     [alertDeleteJob show];
 }
@@ -571,17 +571,20 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   
     if (alertView.tag == 100) { //delete job
-        
+        NSLog(@"button index %ld", (long)buttonIndex);
         if (buttonIndex == 1) {
             //delete on parse
                 //delete on disk
+            
             PFObject *jobToDelete = [PFObject objectWithClassName:@"Job"];
             jobToDelete.objectId = self.jobIdToModify;
             
             [jobToDelete deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
-                    
+                    NSLog(@"succeded !");
                     //delete on disk
+                    [JobMemoryManagement deleteJobWithId:self.jobIdToModify];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
             }];
         }
@@ -590,7 +593,9 @@
         
         if (buttonIndex == 1) {
             //modify on parse
-                //modify on disk
+                //modify on disk = save on disk with same jobId
+            
+            
         }
     }
     
