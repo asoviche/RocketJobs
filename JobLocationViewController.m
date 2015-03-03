@@ -29,11 +29,6 @@
     self.map.delegate=self;
     self.myLocation.delegate=self;
     
-//    self.map.showsUserLocation =YES;
-//    [self.myLocation startUpdatingLocation];
-    
-    NSLog(@"location %@", [self.geoPointLocation description]);
-    
     
     CLLocationCoordinate2D locationCoordinate = CLLocationCoordinate2DMake(self.geoPointLocation.latitude, self.geoPointLocation.longitude);
 
