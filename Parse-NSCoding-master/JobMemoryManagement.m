@@ -35,6 +35,25 @@
     
 }
 
++(NSDictionary*) getJobFromMemoryWithId:(NSString*)jobId{
+    
+    NSDictionary *jobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    if (jobsDictionary == nil || [jobsDictionary objectForKey:jobId] == nil) {
+        return nil;
+    }else{
+        return [jobsDictionary objectForKey:jobId];
+    }
+}
+
++(void) deleteJobWithId:(NSString*)jobId{
+    NSMutableDictionary *jobsDictionary = [[MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"] mutableCopy];
+
+    if (jobsDictionary != nil && [jobsDictionary objectForKey:jobId] != nil) {
+        [jobsDictionary removeObjectForKey:jobId];
+        [MemoryManagement saveObjectInMemory:jobsDictionary toFolder:@"myJobsDictionary"];
+    }
+}
+
 
 +(void) newApplicantWithId:(NSString*)applicantId forJobWithId:(NSString*)jobId{
     

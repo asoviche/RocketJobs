@@ -225,6 +225,12 @@
                                                         <action selector="back:" destination="NOQ-V3-aYZ" id="r7h-x4-ptc"/>
                                                     </connections>
                                                 </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Job" id="Gld-KH-Zca">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="ModifyJob:" destination="NOQ-V3-aYZ" id="Rbc-Dt-7BQ"/>
+                                                    </connections>
+                                                </barButtonItem>
                                             </navigationItem>
                                         </items>
                                     </navigationBar>
@@ -1953,6 +1959,261 @@ But come back in a while !</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-4533.75" y="-1748.2394366197182"/>
+        </scene>
+        <!--Post your job-->
+        <scene sceneID="d1H-tR-VCR">
+            <objects>
+                <viewController storyboardIdentifier="modifyView" id="Wsf-sC-idm" customClass="addJobViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M5h-f8-qIV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zzu-GG-w4m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vmg-5t-VUv" customClass="AddjobViewController">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Job Description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="EQ2-nc-ZOd">
+                                <rect key="frame" x="36" y="117" width="528" height="105"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="nvA-Lq-YgV"/>
+                                </constraints>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bom-xW-oup">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pw-fd-Lhv">
+                                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                        <color key="barTintColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="Find a job" id="o6d-XH-gjs">
+                                                <barButtonItem key="leftBarButtonItem" image="back" id="pee-kJ-z1H">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="back:" destination="Wsf-sC-idm" id="bHF-Hd-PFg"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Modify" id="cyu-xT-e27">
+                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="ModifyJob:" destination="Wsf-sC-idm" id="92u-T1-7oK"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="4vp-nY-lhY"/>
+                                    <constraint firstAttribute="bottom" secondItem="5Pw-fd-Lhv" secondAttribute="bottom" id="dSu-ya-Kh5"/>
+                                    <constraint firstItem="5Pw-fd-Lhv" firstAttribute="leading" secondItem="Bom-xW-oup" secondAttribute="leading" id="g5m-3m-Qhs"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Pw-fd-Lhv" secondAttribute="trailing" id="mgw-xe-Lj6"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GIe-WM-887">
+                                <rect key="frame" x="160" y="252" width="280" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Gxh-fn-uf6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Today"/>
+                                    <segment title="Tomorrow"/>
+                                </segments>
+                                <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="SegmentControlDateJob:" destination="Wsf-sC-idm" eventType="valueChanged" id="wrT-i0-AZc"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly rate : 8 €/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayw-5F-BVy">
+                                <rect key="frame" x="206" y="354" width="188" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="FMk-dZ-jXG"/>
+                                    <constraint firstAttribute="width" constant="188" id="tFW-oK-DDt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="4" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="gGS-O1-vr3">
+                                <rect key="frame" x="158" y="383" width="284" height="31"/>
+                                <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="OJy-Mg-8y2"/>
+                                    <constraint firstAttribute="height" constant="30" id="ndo-XW-foG"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="SliderPrice:" destination="Wsf-sC-idm" eventType="valueChanged" id="GN1-Sg-FEs"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="96" translatesAutoresizingMaskIntoConstraints="NO" id="bCt-Rn-gHc">
+                                <rect key="frame" x="158" y="450" width="284" height="31"/>
+                                <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="HvF-3d-7kF"/>
+                                    <constraint firstAttribute="height" constant="30" id="ecW-Bi-QfG"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderHour:" destination="Wsf-sC-idm" eventType="valueChanged" id="gne-Oc-Jev"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Job starts at :  20 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGB-BH-aK3">
+                                <rect key="frame" x="219" y="421" width="168" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JTB-Mv-kbt"/>
+                                    <constraint firstAttribute="width" constant="168" id="xx8-nt-Ya0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f7z-6h-Oif" customClass="ASProgressPopUpView">
+                                <rect key="frame" x="20" y="247" width="280" height="2"/>
+                            </progressView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gPq-IO-Iby">
+                                <rect key="frame" x="281" y="72" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="4fc-Xi-iNa"/>
+                                    <constraint firstAttribute="width" constant="37" id="a5e-X8-9ZN"/>
+                                </constraints>
+                                <color key="color" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDc-6t-4t4">
+                                <rect key="frame" x="476" y="228" width="88" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="88A-Kr-Bab"/>
+                                    <constraint firstAttribute="height" constant="21" id="LE7-cT-eXp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I10-aW-TM6">
+                                <rect key="frame" x="299" y="303" width="141" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="7uA-V8-IaJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="Eqk-JL-fVD"/>
+                                </constraints>
+                                <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Other location">
+                                    <color key="titleColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="LocateSomewhereElse:" destination="Wsf-sC-idm" eventType="touchUpInside" id="3mc-1Q-9eI"/>
+                                    <action selector="btnAction:" destination="Wsf-sC-idm" eventType="touchUpInside" id="xyp-0S-7f1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2I6-Vg-GZK">
+                                <rect key="frame" x="160" y="303" width="138" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="UjG-HE-FzG"/>
+                                    <constraint firstAttribute="width" constant="138" id="hk4-hI-FAG"/>
+                                </constraints>
+                                <color key="tintColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Current location">
+                                    <color key="titleColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction:" destination="Wsf-sC-idm" eventType="touchUpInside" id="gxB-Tx-TIP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sY1-dp-FNt">
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.3411764706" blue="0.27058823529999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="lMO-Vx-pMj"/>
+                                </constraints>
+                                <state key="normal" title="Delete Job">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteJob:" destination="Wsf-sC-idm" eventType="touchUpInside" id="kwA-BG-hgh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="sY1-dp-FNt" firstAttribute="leading" secondItem="Vmg-5t-VUv" secondAttribute="leading" id="155-Jo-9aR"/>
+                            <constraint firstItem="bGB-BH-aK3" firstAttribute="top" secondItem="gGS-O1-vr3" secondAttribute="bottom" constant="8" id="1Ct-vg-dgk"/>
+                            <constraint firstItem="EQ2-nc-ZOd" firstAttribute="top" secondItem="Bom-xW-oup" secondAttribute="bottom" constant="53" id="23I-eg-2Ky"/>
+                            <constraint firstAttribute="centerX" secondItem="GIe-WM-887" secondAttribute="centerX" id="45s-Ce-eHT"/>
+                            <constraint firstItem="I10-aW-TM6" firstAttribute="trailing" secondItem="GIe-WM-887" secondAttribute="trailing" id="4Xo-Hw-12b"/>
+                            <constraint firstItem="I10-aW-TM6" firstAttribute="top" secondItem="GIe-WM-887" secondAttribute="bottom" constant="23" id="4id-7F-IQ1"/>
+                            <constraint firstItem="gGS-O1-vr3" firstAttribute="top" secondItem="ayw-5F-BVy" secondAttribute="bottom" constant="8" id="AY3-zd-TS2"/>
+                            <constraint firstAttribute="centerX" secondItem="bGB-BH-aK3" secondAttribute="centerX" id="Aw1-m4-jei"/>
+                            <constraint firstItem="gPq-IO-Iby" firstAttribute="top" secondItem="Bom-xW-oup" secondAttribute="bottom" constant="8" id="EXk-Ex-TSe"/>
+                            <constraint firstItem="Zzu-GG-w4m" firstAttribute="top" secondItem="sY1-dp-FNt" secondAttribute="bottom" id="KvR-Iq-jiH"/>
+                            <constraint firstItem="Bom-xW-oup" firstAttribute="top" secondItem="Vmg-5t-VUv" secondAttribute="top" id="MqF-gN-uc0"/>
+                            <constraint firstItem="EQ2-nc-ZOd" firstAttribute="trailing" secondItem="cDc-6t-4t4" secondAttribute="trailing" id="NPc-B9-tlh"/>
+                            <constraint firstAttribute="centerX" secondItem="gGS-O1-vr3" secondAttribute="centerX" id="NX5-cD-JTT"/>
+                            <constraint firstAttribute="centerX" secondItem="bCt-Rn-gHc" secondAttribute="centerX" id="NxC-pR-iyv"/>
+                            <constraint firstAttribute="trailing" secondItem="sY1-dp-FNt" secondAttribute="trailing" id="RET-Xx-zoM"/>
+                            <constraint firstAttribute="trailing" secondItem="Bom-xW-oup" secondAttribute="trailing" id="Zoh-yZ-NAs"/>
+                            <constraint firstItem="EQ2-nc-ZOd" firstAttribute="leading" secondItem="Vmg-5t-VUv" secondAttribute="leadingMargin" constant="20" id="bQA-nV-AVG"/>
+                            <constraint firstItem="2I6-Vg-GZK" firstAttribute="top" secondItem="GIe-WM-887" secondAttribute="bottom" constant="23" id="d42-ep-yrd"/>
+                            <constraint firstItem="cDc-6t-4t4" firstAttribute="top" secondItem="EQ2-nc-ZOd" secondAttribute="bottom" constant="6" id="f5Y-Pn-pG1"/>
+                            <constraint firstItem="2I6-Vg-GZK" firstAttribute="leading" secondItem="GIe-WM-887" secondAttribute="leading" id="hE2-MH-JNy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sY1-dp-FNt" secondAttribute="trailing" id="ihn-jJ-fmh"/>
+                            <constraint firstItem="bCt-Rn-gHc" firstAttribute="top" secondItem="bGB-BH-aK3" secondAttribute="bottom" constant="8" id="o2A-53-yHh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EQ2-nc-ZOd" secondAttribute="trailing" constant="20" id="ou1-SP-KR5"/>
+                            <constraint firstItem="ayw-5F-BVy" firstAttribute="top" secondItem="GIe-WM-887" secondAttribute="bottom" constant="74" id="qJn-5d-q2R"/>
+                            <constraint firstItem="sY1-dp-FNt" firstAttribute="leading" secondItem="Vmg-5t-VUv" secondAttribute="leadingMargin" id="sZ4-F1-SJg"/>
+                            <constraint firstAttribute="centerX" secondItem="gPq-IO-Iby" secondAttribute="centerX" id="uyV-h3-Jwy"/>
+                            <constraint firstAttribute="centerX" secondItem="ayw-5F-BVy" secondAttribute="centerX" id="w79-Ik-hax"/>
+                            <constraint firstItem="GIe-WM-887" firstAttribute="top" secondItem="EQ2-nc-ZOd" secondAttribute="bottom" constant="30" id="wg3-Sb-bs7"/>
+                            <constraint firstItem="Bom-xW-oup" firstAttribute="leading" secondItem="Vmg-5t-VUv" secondAttribute="leading" id="yde-J9-MsE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ihn-jJ-fmh"/>
+                                <exclude reference="sZ4-F1-SJg"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5oe-J0-k3j" appends="YES" id="iIO-lJ-ipm"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Post your job" id="wh3-za-L1d">
+                        <barButtonItem key="leftBarButtonItem" image="icon-menu" id="ufi-TC-yis">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="JobDate" destination="GIe-WM-887" id="Mes-P2-rvK"/>
+                        <outlet property="JobDesription" destination="EQ2-nc-ZOd" id="HHT-1y-krs"/>
+                        <outlet property="JobTimeSlider" destination="bCt-Rn-gHc" id="Rcn-36-bwI"/>
+                        <outlet property="activityIndicator" destination="gPq-IO-Iby" id="7DR-Th-xba"/>
+                        <outlet property="buttonCurrentLocation" destination="2I6-Vg-GZK" id="y9O-eP-D9r"/>
+                        <outlet property="buttonOtherLocation" destination="I10-aW-TM6" id="gmC-bo-220"/>
+                        <outlet property="buttonPost" destination="cyu-xT-e27" id="anb-M8-caf"/>
+                        <outlet property="jobPriceLabel" destination="ayw-5F-BVy" id="P3Q-RH-u2x"/>
+                        <outlet property="jobPriceSlider" destination="gGS-O1-vr3" id="c0b-DA-AIN"/>
+                        <outlet property="jobTimeLabel" destination="bGB-BH-aK3" id="hTn-XM-b3N"/>
+                        <outlet property="labelCountDescription" destination="cDc-6t-4t4" id="y0x-hf-XEo"/>
+                        <outlet property="progressView" destination="f7z-6h-Oif" id="LEd-NY-gqP"/>
+                        <outlet property="sidebarButton" destination="pee-kJ-z1H" id="a2d-bR-cuq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6zl-ls-oUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5oe-J0-k3j">
+                    <connections>
+                        <action selector="tap:" destination="Wsf-sC-idm" id="Olh-fa-Vta"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-113" y="940"/>
         </scene>
     </scenes>
     <resources>

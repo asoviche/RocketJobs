@@ -46,7 +46,7 @@
     
     self.applicantsToMyJobsDictionary = [NSMutableDictionary new];
     
-    self.myJobsDictionary =  [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    
     NSLog(@"myJobsDictionary : %@", [self.myJobsDictionary description]);
     
     self.refreshControl = [[UIRefreshControl alloc]init];
@@ -57,6 +57,11 @@
     self.tableView.dataSource = self;
     
     [self downloadPostedJobs];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    self.myJobsDictionary =  [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    [self.tableView reloadData];
 }
 
 -(void)refreshTable{
@@ -161,7 +166,7 @@
     
     NSSet *applicantsSet = [NSSet setWithArray:[[self.myJobsDictionary objectForKey: [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row]] objectForKey:@"acceptedApplicants"]];
     vc1.arrayApplicantsFromJob = [applicantsSet allObjects];
-
+    vc1.jobId = [[self.myJobsDictionary allKeys] objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc1 animated:YES];
     
     
@@ -180,7 +185,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"my jobs count : %d", [self.myJobsDictionary count]);
     return [self.myJobsDictionary count];
 }
 

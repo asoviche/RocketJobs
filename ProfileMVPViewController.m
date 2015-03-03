@@ -59,22 +59,7 @@
     }
     self.imageViewPP.image = imagePP;
     
-    //set description
-    self.labelDescription.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"About"];
-    if (self.labelDescription.text.length == 0) {
-        self.labelDescription.hidden = YES;
-    }else{
-        self.buttonAddDescription.hidden = YES;
-    }
-    
-    
-    //Set phone number
-    self.labelPhoneNumber.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
-    if (self.labelPhoneNumber.text.length == 0) {
-        self.labelPhoneNumber.hidden = YES;
-    }else{
-        self.buttonAddPhoneNumber.hidden = YES;
-    }
+    [self checkStates];
     
     self.addDescriptionView = [[AddDescriptionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     self.addDescriptionView.delegate = self;
@@ -94,9 +79,37 @@
     
 }
 
+-(void) checkStates{
+    
+    //set description
+    self.labelDescription.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"About"];
+    if (self.labelDescription.text.length == 0) {
+        self.labelDescription.hidden = YES;
+        self.buttonAddDescription.hidden = NO;
+    }else{
+        self.buttonAddDescription.hidden = YES;
+        self.labelDescription.hidden = NO;
+    }
+    
+    
+    //Set phone number
+    self.labelPhoneNumber.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
+    NSLog(@"label phone : %@", [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"]);
+    if (self.labelPhoneNumber.text.length == 0) {
+        self.labelPhoneNumber.hidden = YES;
+        self.buttonAddPhoneNumber.hidden = NO;
+
+    }else{
+        self.buttonAddPhoneNumber.hidden = YES;
+        self.labelPhoneNumber.hidden = NO;
+    }
+}
+
 #pragma mark AddDescriptionView delegate
 
 -(void)AddDescriptionDelegate_saved{
+    [self userInteractionEnabled:YES];
+    [self checkStates];
     
     CGRect frame = self.addDescriptionView.frame;
     frame.origin.y = -self.addDescriptionView.frame.size.height;
@@ -113,7 +126,8 @@
 }
 
 -(void) AddDescriptionDelegate_canceled{
-    
+    [self userInteractionEnabled:YES];
+
     CGRect frame = self.addDescriptionView.frame;
     frame.origin.y = -self.addDescriptionView.frame.size.height;
     [UIView animateWithDuration:0.2 animations:^{
@@ -124,6 +138,8 @@
 #pragma mark AddPhoneNumberView delegate
 
 -(void)AddPhoneNumberDelegate_saved{
+    [self userInteractionEnabled:YES];
+    [self checkStates];
     
     CGRect frame = self.addPhoneNumberView.frame;
     frame.origin.y = -self.addPhoneNumberView.frame.size.height;
@@ -139,7 +155,8 @@
 }
 
 -(void) AddPhoneNumberDelegate_canceled{
-    
+    [self userInteractionEnabled:YES];
+
     CGRect frame = self.addPhoneNumberView.frame;
     frame.origin.y = -self.addPhoneNumberView.frame.size.height;
     [UIView animateWithDuration:0.2 animations:^{
@@ -169,17 +186,27 @@
     
 }
 
+-(void) userInteractionEnabled:(BOOL)enable{
+    self.labelDescription.userInteractionEnabled = enable;
+    self.labelPhoneNumber.userInteractionEnabled = enable;
+    self.buttonAddPhoneNumber.userInteractionEnabled = enable;
+    self.buttonAddDescription.userInteractionEnabled = enable;
+    self.imageViewPP.userInteractionEnabled = enable;
+}
+
 
 #pragma mark IBActions
 
 - (IBAction)addDescription:(id)sender {
+    [self userInteractionEnabled:NO];
     [self animation_showAddDescriptionView];
-    
 }
 
 - (IBAction)addPhoneNumber:(id)sender {
+    [self userInteractionEnabled:NO];
     [self animation_showAddPhoneNumberView];
 }
+
 #pragma mark Gesture Recognizers
 
 - (IBAction)touchedImageViewPP:(UITapGestureRecognizer*)sender {
@@ -192,11 +219,13 @@
     
 }
 - (IBAction)touchedDescription:(UITapGestureRecognizer *)sender {
+    [self userInteractionEnabled:NO];
     [self animation_showAddDescriptionView];
     NSLog(@"desc");
 }
 
 - (IBAction)touchedPhoneNumber:(UITapGestureRecognizer*)sender {
+    [self userInteractionEnabled:NO];
     [self animation_showAddPhoneNumberView];
     NSLog(@"phone");
     

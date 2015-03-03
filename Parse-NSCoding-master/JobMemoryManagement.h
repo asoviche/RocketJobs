@@ -14,5 +14,6 @@
 +(void) newApplicantWithId:(NSString*)applicantId forJobWithId:(NSString*)jobId;
 +(void) newApplicantsArray:(NSArray*)applicantsArray forJobWithId:(NSString*)jobId;
 +(void) updateApplicantsForJobsWithDictionary:(NSDictionary*)applicantsToMyJobsDictionary;
-
++(NSDictionary*) getJobFromMemoryWithId:(NSString*)jobId;
++(void) deleteJobWithId:(NSString*)jobId;
 @end

@@ -58,6 +58,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelCountDescription;
 
 
+//job to modify / delete
+@property (strong, nonatomic) NSMutableDictionary * jobToModifyDictionary;
+
 @end
 
 @implementation addJobViewController{
@@ -135,20 +138,23 @@
     self.imageViewJobPicture.layer.cornerRadius = 2;
     
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.sidebarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.8 blue:0.9 alpha:1];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.view setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1]];
     
+    if (!self.jobIdToModify) {
     
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
+        // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+        _sidebarButton.target = self.revealViewController;
+        _sidebarButton.action = @selector(revealToggle:);
     
+        // Set the gesture
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
     
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     self.JobDesription.delegate=self;
     
@@ -167,7 +173,7 @@
     date = [self.JobDate titleForSegmentAtIndex:self.JobDate.selectedSegmentIndex];
     
     currency = [[NSUserDefaults standardUserDefaults] objectForKey:@"currency"];
-    NSLog(@"pref currency : %@", currency);
+
     price = [NSString stringWithFormat:@"%d",(int)self.jobPriceSlider.value];
     self.jobPriceLabel.text = [NSString stringWithFormat:@"Hourly rate : %@ %@/h", price ,currency ];
     
@@ -175,9 +181,19 @@
     int remainder = (int)self.JobTimeSlider.value%4;
     int quarter = remainder*15;
     self.jobTimeLabel.text = [NSString stringWithFormat:@"Job starts at : %02d : %02d",hourSlider, quarter];
-    
     sliderHour = (int)hourSlider;
     sliderMinute = (int)quarter;
+    
+    if (self.jobIdToModify) { // the user wants to modify / delete this job
+        
+        self.jobToModifyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[[JobMemoryManagement getJobFromMemoryWithId:self.jobIdToModify] mutableCopy]];
+        NSLog(@"job to modify : %@", [self.jobToModifyDictionary description]);
+        
+        //init the elements
+        self.JobDesription.text = self.jobToModifyDictionary[@"Description"];
+        
+        //modify other elements !
+    }
     
 }
 
@@ -431,8 +447,6 @@
     
     [Job saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
-
-        
         NSDictionary *job = [NSDictionary dictionaryWithObjectsAndKeys: Job[@"Description"], @"Description",
                              Job[@"Price"], @"Price",
                              Job[@"Hour"], @"Hour",
@@ -447,7 +461,6 @@
         [self goToAnotherViewController];
         
 //        [[[UIAlertView alloc]initWithTitle:@"Thanks" message:@"Your job has been posted !" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil]show];
-        
         
         
         //                self.activityIndicator.hidden = YES;
@@ -534,5 +547,59 @@
     return updatedImage;
 }
 
+#pragma  mark - MODIFY / DELETE JOB
 
+- (IBAction)back:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark IBActions
+
+- (IBAction)ModifyJob:(id)sender {
+    
+}
+
+
+- (IBAction)deleteJob:(id)sender {
+    UIAlertView *alertDeleteJob = [[UIAlertView alloc]initWithTitle:@"Delete job ?" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+    alertDeleteJob.tag = 100;
+    [alertDeleteJob show];
+}
+
+#pragma mark AlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  
+    if (alertView.tag == 100) { //delete job
+        NSLog(@"button index %ld", (long)buttonIndex);
+        if (buttonIndex == 1) {
+            //delete on parse
+                //delete on disk
+            
+            PFObject *jobToDelete = [PFObject objectWithClassName:@"Job"];
+            jobToDelete.objectId = self.jobIdToModify;
+            
+            [jobToDelete deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"succeded !");
+                    //delete on disk
+                    [JobMemoryManagement deleteJobWithId:self.jobIdToModify];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+        
+    }else if (alertView.tag == 200){ //modify job
+        
+        if (buttonIndex == 1) {
+            //modify on parse
+                //modify on disk = save on disk with same jobId
+            
+            
+        }
+    }
+    
+}
+
+#pragma mark -
 @end

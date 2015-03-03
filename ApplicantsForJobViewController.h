@@ -16,5 +16,6 @@
 @interface ApplicantsForJobViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, MFMessageComposeViewControllerDelegate>
 
 @property NSArray *arrayApplicantsFromJob;
+@property NSString *jobId;
 
 @end
