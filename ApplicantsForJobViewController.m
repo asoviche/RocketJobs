@@ -12,6 +12,7 @@
 #import "addJobViewController.h"
 
 @interface ApplicantsForJobViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *labelNoApplicant;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayApplicants;
@@ -29,22 +30,32 @@
     self.controller = [[MFMessageComposeViewController alloc] init] ;
     self.controller.delegate = self;
     
-    NSLog(@"applicants from job . %@", [self.arrayApplicantsFromJob description]);
+//    NSLog(@"applicants from job . %@", [self.arrayApplicantsFromJob description]);
     
-    self.arrayApplicants = [NSMutableArray new];
     
-    NSDictionary *dicAllApplicants = [MemoryManagement getObjectFromMemoryInFolder:@"applicantsDictionary"];
+    if (self.arrayApplicantsFromJob != nil && [self.arrayApplicantsFromJob count] > 0 ) {
+        
+        self.labelNoApplicant.hidden = YES;
+        
+        self.arrayApplicants = [NSMutableArray new];
+        
+        NSDictionary *dicAllApplicants = [MemoryManagement getObjectFromMemoryInFolder:@"applicantsDictionary"];
+        
+//    NSLog(@"all appl : %@", [dicAllApplicants description]);
+        
+        for (NSString *applicantId in self.arrayApplicantsFromJob) {
+            [self.arrayApplicants addObject:[dicAllApplicants objectForKey:applicantId]];
+        }
+        
     
-    NSLog(@"all appl : %@", [dicAllApplicants description]);
-    
-    for (NSString *applicantId in self.arrayApplicantsFromJob) {
-        [self.arrayApplicants addObject:[dicAllApplicants objectForKey:applicantId]];
-    }
-    
-    NSLog(@"applicants for job : %@", [self.arrayApplicants description]);
+//    NSLog(@"applicants for job : %@", [self.arrayApplicants description]);
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    }else{
+        self.tableView.hidden = YES;
+        self.labelNoApplicant.hidden = NO;
+    }
 }
 
 - (IBAction)ModifyJob:(UIBarButtonItem *)sender {
