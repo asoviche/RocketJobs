@@ -65,6 +65,10 @@
     self.layer.borderWidth = 1.0f;
     self.layer.borderColor = [UIColorFromRGB(0xD1D1D1) CGColor];
     
+    self.labelPosterName.hidden = YES;
+    self.textViewPosterDescription.hidden = YES;
+    self.imageViewPosterImagePP.hidden = YES;
+    
     //labels
 //    self.LabelDescriptionJob = [[UITextView alloc]init];
 //    [self addSubview:self.LabelDescriptionJob];
@@ -272,6 +276,12 @@
 
     [self removeGestureRecognizer:self.panGestureRecognizer];
     [self.delegate GGDraggableViewDelegate_deleteView];
+}
+
+-(void) showPosterProfile{
+    self.labelPosterName.hidden = NO;
+    self.textViewPosterDescription.hidden = NO;
+    self.imageViewPosterImagePP.hidden = NO;
 }
 
 - (void)resetViewPositionAndTransformations

@@ -57,6 +57,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelPosterName;
 @property (strong, nonatomic) IBOutlet UITextView *textViewPosterDescription;
 
-
+-(void) showPosterProfile;
 
 @end

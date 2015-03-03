@@ -306,8 +306,6 @@
         NSArray *applicantsArray = JobOnTop[@"ApplicantsID"];
         NSArray *acceptedApplicants = JobOnTop[@"acceptedApplicants"];
         
-        NSLog(@"a");
-        
         //check if the user has already applied or is accepted for the job
         if ( !([applicantsArray containsObject:[PFUser currentUser].objectId] ||
                [acceptedApplicants containsObject:[PFUser currentUser].objectId] )) {
@@ -397,7 +395,8 @@
                     
                     dragView.labelPosterName.text = jobProvider[@"name"];
                     dragView.textViewPosterDescription.text = jobProvider[@"About"];
-                   
+                    [dragView showPosterProfile];
+                    
                     PFFile *userImageFile = jobProvider[@"imagePP"];
                     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
                         if (!error) {
@@ -522,15 +521,11 @@
 -(void) GGDraggableViewDelegate_LoadDetailView{
     
     PFObject *job = JobsArray[numberOfTheCurrentView];
-//    PFUser *user = job[@"Author"];
     
     UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
     JobLocationViewController *vc1 = [sb instantiateViewControllerWithIdentifier:@"JobLocationViewController"];
     vc1.geoPointLocation = job[@"Location"];
     [self.navigationController pushViewController:vc1 animated:YES];
-    
-    //load the detail view of the profile
-//    [self performSegueWithIdentifier:@"next" sender:user];
 }
 
 -(void) GGDraggableViewDelegate_deleteView{
@@ -562,10 +557,6 @@
     }
     
     //handle the view on the side : green/red
-    
-//    self.ImageViewDeny.frame = CGRectMake(-80, _ImageViewDeny.frame.origin.y, _ImageViewDeny.frame.size.width, _ImageViewDeny.frame.size.height);
-
-    
     self.constraint_ImageAccept_x.constant = self.view.frame.size.width;
     self.contraint_ImageDeny_x.constant = -self.ImageViewDeny.frame.size.width;
 }
