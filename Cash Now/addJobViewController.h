@@ -17,4 +17,6 @@
 
 @property BOOL newMedia;
 
+@property NSString *jobIdToModify;
+
 @end

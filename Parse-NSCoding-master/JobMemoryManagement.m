@@ -35,6 +35,16 @@
     
 }
 
++(NSDictionary*) getJobFromMemoryWithId:(NSString*)jobId{
+    
+    NSDictionary *jobsDictionary = [MemoryManagement getObjectFromMemoryInFolder:@"myJobsDictionary"];
+    if (jobsDictionary == nil || [jobsDictionary objectForKey:jobId] == nil) {
+        return nil;
+    }else{
+        return [jobsDictionary objectForKey:jobId];
+    }
+}
+
 
 +(void) newApplicantWithId:(NSString*)applicantId forJobWithId:(NSString*)jobId{
     

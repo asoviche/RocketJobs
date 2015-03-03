@@ -9,6 +9,7 @@
 #import "ApplicantsForJobViewController.h"
 #import "MemoryManagement.h"
 #import "ImageManagement.h"
+#import "addJobViewController.h"
 
 @interface ApplicantsForJobViewController ()
 
@@ -44,6 +45,13 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+- (IBAction)ModifyJob:(UIBarButtonItem *)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    addJobViewController *vc = [sb instantiateViewControllerWithIdentifier:@"modifyView"];
+    vc.jobIdToModify = self.jobId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)back:(id)sender {
