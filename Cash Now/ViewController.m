@@ -18,6 +18,7 @@
 #import "NSDate+Calculations.h"
 
 #import "JobsParseManagement.h"
+#import "JobLocationViewController.h"
 
 @interface ViewController ()
 
@@ -521,10 +522,15 @@
 -(void) GGDraggableViewDelegate_LoadDetailView{
     
     PFObject *job = JobsArray[numberOfTheCurrentView];
-    PFUser *user = job[@"Author"];
+//    PFUser *user = job[@"Author"];
+    
+    UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    JobLocationViewController *vc1 = [sb instantiateViewControllerWithIdentifier:@"JobLocationViewController"];
+    vc1.geoPointLocation = job[@"Location"];
+    [self.navigationController pushViewController:vc1 animated:YES];
     
     //load the detail view of the profile
-    [self performSegueWithIdentifier:@"next" sender:user];
+//    [self performSegueWithIdentifier:@"next" sender:user];
 }
 
 -(void) GGDraggableViewDelegate_deleteView{

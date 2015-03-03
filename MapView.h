@@ -22,7 +22,6 @@
 
 @property (nonatomic, assign) id<MapViewDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIView *mapView;
-
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 -(void) showMapView;
 

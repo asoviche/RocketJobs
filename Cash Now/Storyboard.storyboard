@@ -544,6 +544,70 @@ But come back in a while !</string>
             </objects>
             <point key="canvasLocation" x="-1586.25" y="110.91549295774647"/>
         </scene>
+        <!--Job Location View Controller-->
+        <scene sceneID="6aR-v7-QUH">
+            <objects>
+                <viewController storyboardIdentifier="JobLocationViewController" id="dhT-pT-ObR" customClass="JobLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vwL-xw-5HX"/>
+                        <viewControllerLayoutGuide type="bottom" id="IjB-kp-Url"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZzF-nY-R7d">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-El-U2s">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylf-bd-Pcx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAp-uZ-lTj">
+                                        <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                        <color key="barTintColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="Job's location" id="KZV-hR-d62">
+                                                <barButtonItem key="leftBarButtonItem" image="back" id="Ec1-Ve-FyR">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <action selector="back:" destination="dhT-pT-ObR" id="SyA-fh-SXW"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YAp-uZ-lTj" secondAttribute="trailing" id="0mC-8Y-F3Q"/>
+                                    <constraint firstItem="YAp-uZ-lTj" firstAttribute="leading" secondItem="ylf-bd-Pcx" secondAttribute="leading" id="V2M-kJ-Eii"/>
+                                    <constraint firstAttribute="height" constant="64" id="VRX-yj-ft2"/>
+                                    <constraint firstAttribute="bottom" secondItem="YAp-uZ-lTj" secondAttribute="bottom" id="hHt-ZZ-Qpv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0gm-El-U2s" secondAttribute="trailing" id="8xy-4e-swl"/>
+                            <constraint firstItem="ylf-bd-Pcx" firstAttribute="leading" secondItem="ZzF-nY-R7d" secondAttribute="leading" id="Ciz-Gz-6SF"/>
+                            <constraint firstItem="ylf-bd-Pcx" firstAttribute="top" secondItem="ZzF-nY-R7d" secondAttribute="top" id="M4E-uY-zdj"/>
+                            <constraint firstItem="IjB-kp-Url" firstAttribute="top" secondItem="0gm-El-U2s" secondAttribute="bottom" id="bjT-T2-bte"/>
+                            <constraint firstItem="0gm-El-U2s" firstAttribute="leading" secondItem="ZzF-nY-R7d" secondAttribute="leading" id="cVx-WF-0BQ"/>
+                            <constraint firstAttribute="trailing" secondItem="ylf-bd-Pcx" secondAttribute="trailing" id="kJt-qf-Ufk"/>
+                            <constraint firstItem="0gm-El-U2s" firstAttribute="top" secondItem="ylf-bd-Pcx" secondAttribute="bottom" id="m7r-x4-j8w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="map" destination="0gm-El-U2s" id="gWW-di-LV2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q6Y-3i-3WS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-863" y="238"/>
+        </scene>
         <!--Applicants-->
         <scene sceneID="Nq0-kR-Wuz">
             <objects>
