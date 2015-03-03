@@ -10,6 +10,8 @@
 #import "SWRevealViewController.h"
 #import "GGDraggableView.h"
 #import "LogInViewControllerCustom.h"
+#import <Social/Social.h>
+#import "SocialMedias.h"
 
 @interface SettingsViewController ()
 @property (strong, nonatomic) IBOutlet UISlider *SliderKm;
@@ -178,4 +180,53 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)share:(id)sender {
+    [self ShareFacebook];
+}
+
+- (void)ShareFacebook
+{
+    SLComposeViewController *fbController=[SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            [fbController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                default:
+                {
+                    NSLog(@"Cancelled.....");
+                    // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs://"]];
+                    
+                }
+                    break;
+                case SLComposeViewControllerResultDone:
+                {
+                    NSLog(@"Posted....");
+                }
+                    break;
+            }};
+        
+        
+        [fbController setInitialText:@"..."];
+        
+        
+        [fbController setCompletionHandler:completionHandler];
+        [self presentViewController:fbController animated:YES completion:nil];
+    }
+    else{
+//        UIAlertView *alert = [[[UIAlertView alloc]initWithTitle:@"Sign in!" message:@"Please first Sign In!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil]autorelease];
+//        [alert show];
+    }
+}
+
+
+- (IBAction)shareTwitter:(id)sender {
+    [SocialMedias tweetWithMessage:@"Found a Job on RocketJobs !" image:nil url:nil viewController:self];
+
+}
+
 @end

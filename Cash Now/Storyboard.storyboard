@@ -1562,7 +1562,7 @@ But come back in a while !</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLX-9W-vhY">
-                                <rect key="frame" x="221.5" y="464" width="157" height="30"/>
+                                <rect key="frame" x="221" y="464" width="157" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Dnf-k5-fJ7"/>
                                     <constraint firstAttribute="width" constant="157" id="j2E-xn-LeO"/>
@@ -1630,6 +1630,32 @@ But come back in a while !</string>
                                 <color key="textColor" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-8j-JE3">
+                                <rect key="frame" x="232" y="510" width="134" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dq5-e4-ajz"/>
+                                    <constraint firstAttribute="width" constant="134" id="jEI-JT-RyT"/>
+                                </constraints>
+                                <state key="normal" title="Share on Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="share:" destination="FjS-dg-T5c" eventType="touchUpInside" id="hvO-Mo-Kfv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxA-p2-6vy">
+                                <rect key="frame" x="244.5" y="541" width="111" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1IY-Z9-zWh"/>
+                                    <constraint firstAttribute="width" constant="111" id="44S-vF-0iV"/>
+                                </constraints>
+                                <state key="normal" title="Share on Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareTwitter:" destination="FjS-dg-T5c" eventType="touchUpInside" id="v9g-7s-Slp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -1645,10 +1671,14 @@ But come back in a while !</string>
                             <constraint firstAttribute="centerX" secondItem="zSe-0A-RzR" secondAttribute="centerX" id="Q5b-F2-zPz"/>
                             <constraint firstItem="VZ5-uI-JN7" firstAttribute="top" secondItem="cph-0G-rwi" secondAttribute="bottom" constant="14" id="Qsb-Md-YnT"/>
                             <constraint firstItem="zSe-0A-RzR" firstAttribute="top" secondItem="B8W-hD-IZT" secondAttribute="bottom" id="UHl-Wd-Aru"/>
+                            <constraint firstItem="GxA-p2-6vy" firstAttribute="top" secondItem="jR9-8j-JE3" secondAttribute="bottom" constant="1" id="UNz-gL-oWd"/>
+                            <constraint firstAttribute="centerX" secondItem="GxA-p2-6vy" secondAttribute="centerX" id="VAg-kD-Qzu"/>
                             <constraint firstItem="zSe-0A-RzR" firstAttribute="top" secondItem="ziS-tm-9xo" secondAttribute="top" id="XsP-kO-cHd"/>
                             <constraint firstAttribute="width" secondItem="zSe-0A-RzR" secondAttribute="width" id="bYL-o3-qtd"/>
                             <constraint firstItem="VZ5-uI-JN7" firstAttribute="top" secondItem="5kg-jm-55k" secondAttribute="bottom" constant="101" id="bvM-vL-ns3"/>
                             <constraint firstItem="yLX-9W-vhY" firstAttribute="top" secondItem="MUq-og-eGr" secondAttribute="bottom" constant="27" id="fp8-Ra-WER"/>
+                            <constraint firstAttribute="centerX" secondItem="jR9-8j-JE3" secondAttribute="centerX" id="gGF-Ua-2Th"/>
+                            <constraint firstItem="jR9-8j-JE3" firstAttribute="top" secondItem="yLX-9W-vhY" secondAttribute="bottom" constant="16" id="gLS-9r-cdk"/>
                             <constraint firstItem="J3A-4M-lO4" firstAttribute="top" secondItem="ajw-yg-QNv" secondAttribute="bottom" constant="17" id="i2G-e0-g6V"/>
                             <constraint firstItem="MUq-og-eGr" firstAttribute="top" secondItem="J3A-4M-lO4" secondAttribute="bottom" constant="76" id="jE9-yO-yTw"/>
                             <constraint firstItem="zSe-0A-RzR" firstAttribute="top" secondItem="B8W-hD-IZT" secondAttribute="bottom" id="qQ5-Sw-Gx3"/>
@@ -2298,7 +2328,7 @@ But come back in a while !</string>
         <image name="icon-yes" width="73" height="49"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SjO-cN-bVf"/>
         <segue reference="9eB-nS-h1g"/>
-        <segue reference="Jrk-Ga-X2e"/>
     </inferredMetricsTieBreakers>
 </document>
