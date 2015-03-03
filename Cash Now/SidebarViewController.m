@@ -135,10 +135,13 @@
         imageView.layer.cornerRadius = imageView.frame.size.width/2;
         imageView.clipsToBounds = YES;
         
-        if([[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"]){
-            labelPhone.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
+        NSString *phoneNumberInMemory = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
+        //check if the phone number is entered
+        if ( phoneNumberInMemory == nil || phoneNumberInMemory.length == 0 )
+        {
+            labelPhone.text = @"Enter phone number";
         }else{
-            labelPhone.text = @"Enter your phone number";
+            labelPhone.text = [[NSUserDefaults standardUserDefaults]stringForKey:@"phoneNumber"];
         }
         
     }else{

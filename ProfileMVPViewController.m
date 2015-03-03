@@ -134,7 +134,7 @@
     }];
     
     //save phone number in parse
-    [PFUser currentUser][@"phoneNumber"] = self.labelPhoneNumber.text ;
+    [PFUser currentUser][@"phoneNumber"] = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneNumber"];
     [[PFUser currentUser] saveEventually];
 }
 
