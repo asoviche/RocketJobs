@@ -1128,16 +1128,6 @@ But come back in a while !</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Job Description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ze9-gs-4ZF">
-                                <rect key="frame" x="36" y="117" width="528" height="105"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="105" id="qSK-ua-mqI"/>
-                                </constraints>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xez-yT-38u">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
@@ -1148,7 +1138,7 @@ But come back in a while !</string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </textAttributes>
                                         <items>
-                                            <navigationItem title="Find a job" id="Ehi-Fw-o7H">
+                                            <navigationItem title="Post a Job" id="Ehi-Fw-o7H">
                                                 <barButtonItem key="leftBarButtonItem" image="icon-menu" id="Qp8-yL-nfC">
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </barButtonItem>
@@ -1170,7 +1160,7 @@ But come back in a while !</string>
                                     <constraint firstItem="0Pz-mT-pZ9" firstAttribute="leading" secondItem="Xez-yT-38u" secondAttribute="leading" id="XyF-rt-XXQ"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-wW-tja">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-wW-tja">
                                 <rect key="frame" x="160" y="252" width="280" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1206,7 +1196,7 @@ But come back in a while !</string>
                                     <action selector="SliderPrice:" destination="HaS-xy-qPt" eventType="valueChanged" id="Tbn-27-beY"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="96" translatesAutoresizingMaskIntoConstraints="NO" id="0JE-h9-6BT">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="96" translatesAutoresizingMaskIntoConstraints="NO" id="0JE-h9-6BT">
                                 <rect key="frame" x="158" y="450" width="284" height="31"/>
                                 <color key="tintColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.47058823529411764" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -1217,8 +1207,8 @@ But come back in a while !</string>
                                     <action selector="sliderHour:" destination="HaS-xy-qPt" eventType="valueChanged" id="oF3-8c-3WD"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Job starts at :  20 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOH-ID-Qdo">
-                                <rect key="frame" x="219" y="421" width="168" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job starts at :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOH-ID-Qdo">
+                                <rect key="frame" x="216" y="421" width="168" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="XJl-zD-IQh"/>
                                     <constraint firstAttribute="width" constant="168" id="czt-YD-Ju1"/>
@@ -1239,7 +1229,7 @@ But come back in a while !</string>
                                 <color key="color" red="0.17254901959999999" green="0.33333333329999998" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/140" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byS-lu-K5X">
-                                <rect key="frame" x="476" y="228" width="88" height="21"/>
+                                <rect key="frame" x="476" y="231" width="88" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="jpL-Db-tx2"/>
                                     <constraint firstAttribute="height" constant="21" id="uuV-K8-zij"/>
@@ -1279,35 +1269,70 @@ But come back in a while !</string>
                                     <action selector="btnAction:" destination="HaS-xy-qPt" eventType="touchUpInside" id="kJs-dj-t7y"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xDY-BV-MVd">
+                                <rect key="frame" x="136" y="444" width="327" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="HIM-UW-eGh"/>
+                                    <constraint firstAttribute="width" constant="327" id="PRp-57-Rf4"/>
+                                    <constraint firstAttribute="width" constant="291" id="zDf-Lu-t25"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="447103978.46257102">
+                                    <!--2015-03-03 19:32:58 +0000-->
+                                </date>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zDf-Lu-t25"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="pickerValueChanged:" destination="HaS-xy-qPt" eventType="valueChanged" id="nOs-dc-6d1"/>
+                                </connections>
+                            </datePicker>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Describe your job here !" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WX9-r0-E6q">
+                                <rect key="frame" x="20" y="105" width="560" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Vr6-G2-ZyW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="YF1-7E-R3f" firstAttribute="top" secondItem="cbb-wW-tja" secondAttribute="bottom" constant="74" id="0Qs-Sh-tUw"/>
                             <constraint firstItem="1D6-8b-jkj" firstAttribute="top" secondItem="YF1-7E-R3f" secondAttribute="bottom" constant="8" id="14q-Po-bJR"/>
-                            <constraint firstItem="ze9-gs-4ZF" firstAttribute="leading" secondItem="Maz-Ct-OdH" secondAttribute="leadingMargin" constant="20" id="3c5-yK-8ha"/>
-                            <constraint firstItem="ze9-gs-4ZF" firstAttribute="trailing" secondItem="byS-lu-K5X" secondAttribute="trailing" id="5RU-IL-agh"/>
                             <constraint firstItem="Xez-yT-38u" firstAttribute="top" secondItem="Maz-Ct-OdH" secondAttribute="top" id="8CJ-ft-nxZ"/>
                             <constraint firstItem="pgm-SI-7tF" firstAttribute="leading" secondItem="cbb-wW-tja" secondAttribute="leading" id="CWl-5p-RtC"/>
+                            <constraint firstItem="cbb-wW-tja" firstAttribute="top" secondItem="WX9-r0-E6q" secondAttribute="bottom" constant="19" id="Edb-8d-e1U"/>
                             <constraint firstAttribute="centerX" secondItem="YF1-7E-R3f" secondAttribute="centerX" id="Go6-8g-fw9"/>
                             <constraint firstItem="Xez-yT-38u" firstAttribute="leading" secondItem="Maz-Ct-OdH" secondAttribute="leading" id="HqX-gW-ZjD"/>
                             <constraint firstItem="qFn-ck-BZh" firstAttribute="top" secondItem="Xez-yT-38u" secondAttribute="bottom" constant="8" id="HzG-vK-Vh4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ze9-gs-4ZF" secondAttribute="trailing" constant="20" id="JHI-DH-xPt"/>
                             <constraint firstAttribute="trailing" secondItem="Xez-yT-38u" secondAttribute="trailing" id="JY5-qZ-WkE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="byS-lu-K5X" secondAttribute="trailing" constant="20" id="Kw1-4w-LFB"/>
                             <constraint firstItem="dT3-hT-N82" firstAttribute="trailing" secondItem="cbb-wW-tja" secondAttribute="trailing" id="LUu-mg-USa"/>
-                            <constraint firstItem="ze9-gs-4ZF" firstAttribute="top" secondItem="Xez-yT-38u" secondAttribute="bottom" constant="53" id="T49-lR-6yo"/>
                             <constraint firstItem="dT3-hT-N82" firstAttribute="top" secondItem="cbb-wW-tja" secondAttribute="bottom" constant="23" id="Vze-2f-PN5"/>
+                            <constraint firstItem="WX9-r0-E6q" firstAttribute="leading" secondItem="Maz-Ct-OdH" secondAttribute="leading" constant="20" id="bcY-ZL-Klz"/>
+                            <constraint firstItem="WX9-r0-E6q" firstAttribute="top" secondItem="Xez-yT-38u" secondAttribute="bottom" constant="41" id="c0P-z9-9R1"/>
+                            <constraint firstItem="xDY-BV-MVd" firstAttribute="top" secondItem="MOH-ID-Qdo" secondAttribute="bottom" constant="2" id="gIb-eH-za8"/>
                             <constraint firstItem="pgm-SI-7tF" firstAttribute="top" secondItem="cbb-wW-tja" secondAttribute="bottom" constant="23" id="guy-6q-dYN"/>
                             <constraint firstItem="0JE-h9-6BT" firstAttribute="top" secondItem="MOH-ID-Qdo" secondAttribute="bottom" constant="8" id="h8i-XW-PUu"/>
-                            <constraint firstItem="byS-lu-K5X" firstAttribute="top" secondItem="ze9-gs-4ZF" secondAttribute="bottom" constant="6" id="hCf-fA-t9e"/>
                             <constraint firstItem="MOH-ID-Qdo" firstAttribute="top" secondItem="1D6-8b-jkj" secondAttribute="bottom" constant="8" id="j9l-hb-Cys"/>
-                            <constraint firstItem="cbb-wW-tja" firstAttribute="top" secondItem="ze9-gs-4ZF" secondAttribute="bottom" constant="30" id="oCQ-H8-cP3"/>
+                            <constraint firstItem="byS-lu-K5X" firstAttribute="top" secondItem="WX9-r0-E6q" secondAttribute="bottom" constant="-2" id="nvu-M3-EDv"/>
                             <constraint firstAttribute="centerX" secondItem="MOH-ID-Qdo" secondAttribute="centerX" id="rX3-xw-xeF"/>
                             <constraint firstAttribute="centerX" secondItem="qFn-ck-BZh" secondAttribute="centerX" id="rdc-gH-h6r"/>
+                            <constraint firstAttribute="trailing" secondItem="WX9-r0-E6q" secondAttribute="trailing" constant="20" id="tT7-4T-pGE"/>
                             <constraint firstAttribute="centerX" secondItem="1D6-8b-jkj" secondAttribute="centerX" id="wIK-U6-cfj"/>
                             <constraint firstAttribute="centerX" secondItem="cbb-wW-tja" secondAttribute="centerX" id="wnN-mm-Suc"/>
                             <constraint firstAttribute="centerX" secondItem="0JE-h9-6BT" secondAttribute="centerX" id="xpp-y9-w7e"/>
+                            <constraint firstItem="byS-lu-K5X" firstAttribute="top" secondItem="WX9-r0-E6q" secondAttribute="bottom" constant="-5" id="zB7-Ur-iKs"/>
+                            <constraint firstAttribute="centerX" secondItem="xDY-BV-MVd" secondAttribute="centerX" id="zuC-pI-BRv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="zB7-Ur-iKs"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="skY-w2-3DT" appends="YES" id="T8H-kT-sS4"/>
                         </connections>
@@ -1320,7 +1345,7 @@ But come back in a while !</string>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="JobDate" destination="cbb-wW-tja" id="vNQ-hF-ZUb"/>
-                        <outlet property="JobDesription" destination="ze9-gs-4ZF" id="YaN-Zm-rfE"/>
+                        <outlet property="JobDesription" destination="WX9-r0-E6q" id="N0X-ru-F45"/>
                         <outlet property="JobTimeSlider" destination="0JE-h9-6BT" id="sYF-qb-zcl"/>
                         <outlet property="activityIndicator" destination="qFn-ck-BZh" id="z0U-PK-kbG"/>
                         <outlet property="buttonCurrentLocation" destination="pgm-SI-7tF" id="gR9-H5-QJg"/>
@@ -1330,6 +1355,8 @@ But come back in a while !</string>
                         <outlet property="jobPriceSlider" destination="1D6-8b-jkj" id="YmZ-Li-teY"/>
                         <outlet property="jobTimeLabel" destination="MOH-ID-Qdo" id="QVg-0V-jXL"/>
                         <outlet property="labelCountDescription" destination="byS-lu-K5X" id="cKo-4e-Al3"/>
+                        <outlet property="navBar" destination="0Pz-mT-pZ9" id="VDp-g1-rOq"/>
+                        <outlet property="pickerDate" destination="xDY-BV-MVd" id="xJ5-Ai-kz9"/>
                         <outlet property="progressView" destination="Qqb-gi-a3B" id="mbg-sK-Eox"/>
                         <outlet property="sidebarButton" destination="Qp8-yL-nfC" id="3Jj-cL-kaJ"/>
                     </connections>

@@ -46,6 +46,7 @@
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *buttonPost;
 
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
 //****
 @property (strong, nonatomic) MapView* mapViewCustom;
@@ -57,11 +58,14 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *labelCountDescription;
 
+@property (strong, nonatomic) IBOutlet UIDatePicker *pickerDate;
 
 //job to modify / delete
 @property (strong, nonatomic) NSMutableDictionary * jobToModifyDictionary;
 
 @end
+
+#define PLACEHOLDER @"Describe your job here !"
 
 @implementation addJobViewController{
     NSString *date;
@@ -134,13 +138,12 @@
     self.JobDesription.layer.borderWidth = 1.0f;
     self.JobDesription.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
-    self.imageViewJobPicture.layer.masksToBounds = YES;
-    self.imageViewJobPicture.layer.cornerRadius = 2;
+//    self.imageViewJobPicture.layer.masksToBounds = YES;
+//    self.imageViewJobPicture.layer.cornerRadius = 2;
     
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    self.sidebarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.14 green:0.8 blue:0.9 alpha:1];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.view setBackgroundColor:[UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1]];
@@ -156,33 +159,39 @@
     }
     
     
-    self.JobDesription.delegate=self;
     
     self.buttonCurrentLocation.selected=YES;
     
     //mapView ***********************************
     self.mapViewCustom = [[MapView alloc]init];
-    self.mapViewCustom.center = self.view.center;
+
+    self.mapViewCustom.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
+//    self.mapViewCustom.center = self.view.center;
+
     self.mapViewCustom.alpha = 0;
     self.mapViewCustom.delegate=self;
     [self.view addSubview:self.mapViewCustom];
     //*******************************************
     
+    self.pickerDate.minimumDate = [NSDate date];
+    self.pickerDate.maximumDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*10];//10 days from now
+    self.pickerDate.minuteInterval = 15;
+    
     
     //initialisation
-    date = [self.JobDate titleForSegmentAtIndex:self.JobDate.selectedSegmentIndex];
+//    date = [self.JobDate titleForSegmentAtIndex:self.JobDate.selectedSegmentIndex];
     
     currency = [[NSUserDefaults standardUserDefaults] objectForKey:@"currency"];
 
     price = [NSString stringWithFormat:@"%d",(int)self.jobPriceSlider.value];
     self.jobPriceLabel.text = [NSString stringWithFormat:@"Hourly rate : %@ %@/h", price ,currency ];
     
-    int hourSlider = self.JobTimeSlider.value/4;
-    int remainder = (int)self.JobTimeSlider.value%4;
-    int quarter = remainder*15;
-    self.jobTimeLabel.text = [NSString stringWithFormat:@"Job starts at : %02d : %02d",hourSlider, quarter];
-    sliderHour = (int)hourSlider;
-    sliderMinute = (int)quarter;
+//    int hourSlider = self.JobTimeSlider.value/4;
+//    int remainder = (int)self.JobTimeSlider.value%4;
+//    int quarter = remainder*15;
+//    self.jobTimeLabel.text = [NSString stringWithFormat:@"Job starts at : %02d : %02d",hourSlider, quarter];
+//    sliderHour = (int)hourSlider;
+//    sliderMinute = (int)quarter;
     
     if (self.jobIdToModify) { // the user wants to modify / delete this job
         
@@ -195,12 +204,23 @@
         //modify other elements !
     }
     
+    self.JobDesription.text = PLACEHOLDER;
+    self.buttonPost.enabled = NO;
+
+}
+
+#pragma mark nsdatePicker delegate
+
+
+- (IBAction)pickerValueChanged:(id)picker {
+    NSLog(@"changed : %@", [picker date]);
 }
 
 #pragma mark - MapViewCustom Delegate
 
 -(void) MapViewDelegate_clickedOkWithLocation:(MyAnnotation*)annotation{
-    
+
+    self.navBar.topItem.title = @"Post a Job";
     annotationForMap = annotation;
     self.buttonPost.enabled=YES;
     
@@ -212,7 +232,8 @@
 }
 
 -(void) MapViewDelegate_clickedCancel{
-    
+
+    self.navBar.topItem.title = @"Post a Job";
     self.buttonPost.enabled=YES;
     
     if (!annotationForMap) {
@@ -234,6 +255,12 @@
 
 -(void) textViewDidChange:(UITextView *)textView{
     self.labelCountDescription.text = [NSString stringWithFormat:@"%lu/140", (unsigned long)textView.text.length];
+   
+    if ([textView.text isEqualToString:PLACEHOLDER] || textView.text.length == 0) {
+        self.buttonPost.enabled = NO;
+    }else{
+        self.buttonPost.enabled = YES;
+    }
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -250,13 +277,13 @@
     return textView.text.length + (text.length - range.length) <= 140;
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-    if ([textView.text isEqualToString:@"Job Description"]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
-    }
-    [textView becomeFirstResponder];
-}
+//- (void)textViewDidBeginEditing:(UITextView *)textView{
+//    if ([textView.text isEqualToString:@"Job Description"]) {
+//        textView.text = @"";
+//        textView.textColor = [UIColor blackColor]; //optional
+//    }
+//    [textView becomeFirstResponder];
+//}
 
 - (IBAction)tap:(id)sender {
     [self.JobDesription resignFirstResponder];
@@ -268,8 +295,25 @@
     return YES;
 }
 
-#pragma mark -
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:PLACEHOLDER]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
 
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = PLACEHOLDER;
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+
+#pragma mark -
 
 - (IBAction) btnAction:(UIButton*)button{
     self.buttonCurrentLocation.selected=NO;
@@ -278,16 +322,23 @@
 
     if (button == self.buttonCurrentLocation) {
         annotationForMap = nil;
+        [self.mapViewCustom.map removeAnnotations:self.mapViewCustom.map.annotations];
     }
 }
 
 - (IBAction)LocateSomewhereElse:(id)sender {
+    
+    self.navBar.topItem.title = @"Pin your job location";
     
     self.buttonPost.enabled = NO;
     
     self.title = @"Pin your job location";
     
     [self.JobDesription resignFirstResponder];
+    
+    if (!annotationForMap) {
+        [self.mapViewCustom.map removeAnnotations:[self.mapViewCustom.map annotations]];
+    }
     
     [self.mapViewCustom showMapView];
     
@@ -344,80 +395,81 @@
         Job[@"Price"] = [NSString stringWithFormat:@"%@ %@",price, currency];
         Job[@"Date"] = date;
         Job[@"Hour"] = [NSString stringWithFormat:@"%02d : %02d", sliderHour, sliderMinute];
+        Job[@"DateJob"] = self.pickerDate.date;
         [Job setObject:[PFUser currentUser] forKey:@"Author"];
         
         
         // HANDLE DATE OF THE JOB ***************************************
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
+//        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
         
         
-        if (self.JobDate.selectedSegmentIndex == 0) {   //today selected
-            
-            
-            //check if the date of the job is in the past **********************
-            NSDate* now = [NSDate date] ;
-            NSCalendar* calendar = [NSCalendar currentCalendar] ;
-            NSDateComponents* Components2 = [calendar components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:now] ;
-            [Components2 setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-            
-            int CurrentHour = (int)[Components2 hour];
-            int CurrentMinute = (int)[Components2 minute];
-            
-            NSLog(@"hour : %d", CurrentHour);
-            NSLog(@"minute : %d", CurrentMinute);
-            
-            if (sliderHour < CurrentHour || (sliderHour == CurrentHour && sliderMinute < CurrentMinute)) {
-                
-                NSLog(@"job in the past");
-                
-                [[[UIAlertView alloc]initWithTitle:@"Wrong Date" message:@"Please provide a valide date" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
-                self.buttonPost.enabled=YES;
-                self.activityIndicator.hidden = YES;
-                return;
-            }
-            
-            //*******************************************************************
-            
-            
-            
-            //progress view
-            //            self.progressView.hidden = NO;
-            //            self.progressView.progress = 0.0;
-            
-            
-            
-            
-            NSLog(@"hour before sending : %d", sliderHour);
-            NSDate *dateJob = [NSDate dateWithYear:(int)[components year] month:(int)[components month] day:(int)[components day] hour:sliderHour minute:sliderMinute second:0];
-            
-            NSLog(@"date to save : %@", dateJob);
-            
-            Job[@"DateJob"] = dateJob;
-            
-            
-        }
-        else {  //tomorrow selected
-            NSDate* now = [NSDate date] ;
-            
-            NSDateComponents* tomorrowComponents = [NSDateComponents new] ;
-            
-            tomorrowComponents.day = 1 ;
-            NSCalendar* calendar = [NSCalendar currentCalendar] ;
-            NSDate* tomorrow = [calendar dateByAddingComponents:tomorrowComponents toDate:now options:0] ;
-            
-            NSDateComponents* tomorrowComponents2 = [calendar components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:tomorrow] ;
-            [tomorrowComponents2 setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-            
-            tomorrowComponents2.hour = sliderHour ;
-            tomorrowComponents2.minute = sliderMinute;
-            NSDate* dateJobTomorrow = [calendar dateFromComponents:tomorrowComponents2] ;
-            
-            NSLog(@"date tomorrow : %@", dateJobTomorrow);
-            
-            Job[@"DateJob"] = dateJobTomorrow;
-            
-            
-        }
+//        if (self.JobDate.selectedSegmentIndex == 0) {   //today selected
+//            
+//            
+//            //check if the date of the job is in the past **********************
+//            NSDate* now = [NSDate date] ;
+//            NSCalendar* calendar = [NSCalendar currentCalendar] ;
+//            NSDateComponents* Components2 = [calendar components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:now] ;
+//            [Components2 setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+//            
+//            int CurrentHour = (int)[Components2 hour];
+//            int CurrentMinute = (int)[Components2 minute];
+//            
+//            NSLog(@"hour : %d", CurrentHour);
+//            NSLog(@"minute : %d", CurrentMinute);
+//            
+//            if (sliderHour < CurrentHour || (sliderHour == CurrentHour && sliderMinute < CurrentMinute)) {
+//                
+//                NSLog(@"job in the past");
+//                
+//                [[[UIAlertView alloc]initWithTitle:@"Wrong Date" message:@"Please provide a valide date" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
+//                self.buttonPost.enabled=YES;
+//                self.activityIndicator.hidden = YES;
+//                return;
+//            }
+//            
+//            //*******************************************************************
+//            
+//            
+//            
+//            //progress view
+//            //            self.progressView.hidden = NO;
+//            //            self.progressView.progress = 0.0;
+//            
+//            
+//            
+//            
+//            NSLog(@"hour before sending : %d", sliderHour);
+//            NSDate *dateJob = [NSDate dateWithYear:(int)[components year] month:(int)[components month] day:(int)[components day] hour:sliderHour minute:sliderMinute second:0];
+//            
+//            NSLog(@"date to save : %@", dateJob);
+//            
+//            Job[@"DateJob"] = dateJob;
+//            
+//            
+//        }
+//        else {  //tomorrow selected
+//            NSDate* now = [NSDate date] ;
+//            
+//            NSDateComponents* tomorrowComponents = [NSDateComponents new] ;
+//            
+//            tomorrowComponents.day = 1 ;
+//            NSCalendar* calendar = [NSCalendar currentCalendar] ;
+//            NSDate* tomorrow = [calendar dateByAddingComponents:tomorrowComponents toDate:now options:0] ;
+//            
+//            NSDateComponents* tomorrowComponents2 = [calendar components:(NSEraCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit) fromDate:tomorrow] ;
+//            [tomorrowComponents2 setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+//            
+//            tomorrowComponents2.hour = sliderHour ;
+//            tomorrowComponents2.minute = sliderMinute;
+//            NSDate* dateJobTomorrow = [calendar dateFromComponents:tomorrowComponents2] ;
+//            
+//            NSLog(@"date tomorrow : %@", dateJobTomorrow);
+//            
+//            Job[@"DateJob"] = dateJobTomorrow;
+//            
+//            
+//        }
         //*****************************************************************
         
         if (self.buttonOtherLocation.selected==YES && annotationForMap != nil ) { //the user changed location
