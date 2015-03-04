@@ -20,6 +20,11 @@
 
 
 @property(nonatomic) CGFloat xOriginal;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityProfile;
+
+//constraints
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraint_TextViewJobDescription_width;
+
 
 @end
 
@@ -68,6 +73,9 @@
     self.labelPosterName.hidden = YES;
     self.textViewPosterDescription.hidden = YES;
     self.imageViewPosterImagePP.hidden = YES;
+    
+    
+
     
     //labels
 //    self.LabelDescriptionJob = [[UITextView alloc]init];
@@ -146,6 +154,13 @@
     
     return self;
 }
+
+-(void) updateConstraintsInView{
+    //constraints
+    self.constraint_TextViewJobDescription_width.constant = self.frame.size.width - 40;
+    
+}
+
 
 -(void) tapped: (UITapGestureRecognizer *) tapGestureRecognizer {
     
@@ -279,6 +294,7 @@
 }
 
 -(void) showPosterProfile{
+    [self.activityProfile stopAnimating];
     self.labelPosterName.hidden = NO;
     self.textViewPosterDescription.hidden = NO;
     self.imageViewPosterImagePP.hidden = NO;

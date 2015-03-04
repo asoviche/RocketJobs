@@ -56,7 +56,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewPosterImagePP;
 @property (strong, nonatomic) IBOutlet UILabel *labelPosterName;
 @property (strong, nonatomic) IBOutlet UITextView *textViewPosterDescription;
+@property (strong, nonatomic) IBOutlet UIView *viewForJobDetails;
 
 -(void) showPosterProfile;
+-(void) updateConstraintsInView;
 
 @end

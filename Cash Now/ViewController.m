@@ -311,10 +311,13 @@
                [acceptedApplicants containsObject:[PFUser currentUser].objectId] )) {
             
             //we add a view for each job
-            GGDraggableView *dragView= [[GGDraggableView alloc] initWithFrame:CGRectMake((320-280)/2, 90, 280, 463)];
+            GGDraggableView *dragView= [[GGDraggableView alloc] init];
+            dragView.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
+            [dragView updateConstraintsInView];
             
             if (numberOfTheJob == 0) {
-                dragView.frame = CGRectMake((320-280)/2, 80, 280, 463);
+//                dragView.frame = CGRectMake((320-280)/2, 80, 280, 463);
+                dragView.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
             }
             
             if( numberOfTheJob < 2 ) {
@@ -323,8 +326,6 @@
                 
             }
             [ViewsArray addObject:dragView];
-            
-            
             dragView.numeroView = numberOfTheJob;
             
             
@@ -373,6 +374,31 @@
                 dateString = @"no date";
             }
             
+
+            
+            NSDateFormatter *dateFormatterDate = [[NSDateFormatter alloc] init];
+            [dateFormatterDate setDateFormat:@"MMM, dd"];
+            
+            NSDateFormatter *dateFormatterHour = [[NSDateFormatter alloc] init];
+            
+            NSLocale *locale = [NSLocale currentLocale];
+            NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
+            NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:countryCode] ;
+            NSString *country = [usLocale displayNameForKey: NSLocaleCountryCode value: countryCode];
+            NSLog(@"Country : %@", country);
+            if ([country isEqualToString:@"France"]) {
+                [dateFormatterHour setDateFormat:@"HH:mm"];
+            }else{
+                [dateFormatterHour setDateFormat:@"h:mm a"];
+            }
+            
+            NSTimeZone *timeZoneLocal = [NSTimeZone localTimeZone];
+            [dateFormatterDate setTimeZone:timeZoneLocal];
+            [dateFormatterHour setTimeZone:timeZoneLocal];
+            NSLog(@"adjusted for timezone: %@", [dateFormatterDate stringFromDate:JobOnTop[@"DateJob"]]);
+            NSLog(@"adjusted for timezone 2: %@", [dateFormatterHour stringFromDate:JobOnTop[@"DateJob"]]);
+            dragView.labelJobDate.text = [dateFormatterDate stringFromDate:JobOnTop[@"DateJob"]];
+            dragView.labelJobHour.text = [dateFormatterHour stringFromDate:JobOnTop[@"DateJob"]];
             
             
             //distance to the user
@@ -441,8 +467,6 @@
             dragView.delegate = self;
             
             dragView.JobID = JobOnTop.objectId;
-            dragView.labelJobDate.text = dateString;
-            dragView.labelJobHour.text = JobOnTop[@"Hour"];
             dragView.labelJobPrice.text = [NSString stringWithFormat:@"%@/h", JobOnTop[@"Price"]];
             dragView.textViewJobDesription.text = JobOnTop[@"Description"];
             
@@ -552,7 +576,8 @@
         [self.view bringSubviewToFront:dragCurrentView2];
         
         [UIView animateWithDuration:0.1 animations:^{
-            dragCurrentView2.frame = CGRectMake((320-291)/2, 80, 291, 463);
+//            dragCurrentView2.frame = CGRectMake((320-291)/2, 80, 291, 463);
+            dragCurrentView2.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
         }];
     }
     

@@ -15,10 +15,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonCancel;
 @property (strong, nonatomic) IBOutlet UIButton *buttonOk;
 
+
+
 @end
 
 @implementation MapView{
-    MyAnnotation *annotation;
+//    MyAnnotation *annotation;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -37,6 +39,9 @@
     
     
     
+    self.layer.cornerRadius = 5;
+    self.clipsToBounds=YES;
+    
     self.map.delegate=self;
     self.myLocation.delegate=self;
     
@@ -50,6 +55,8 @@
     self.buttonOk.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     self.buttonCancel.titleLabel.font = [UIFont fontWithName:@"OpenSans-Light" size:16];
     
+    
+
 
     return self;
 }
@@ -58,6 +65,23 @@
     self.map.delegate=self;
     self.map.showsUserLocation =YES;
     [self.myLocation startUpdatingLocation];
+    
+    NSLog(@"annotations : %@", [self.map.annotations description]);
+    
+    self.buttonOk.enabled = NO;
+    self.buttonOk.alpha = 0.5;
+    for (id annotation in self.map.annotations) {
+        
+        NSLog(@"annotation : %@", [annotation description]);
+        if ([annotation isKindOfClass:[MyAnnotation class]]) {
+            NSLog(@"done ");
+            self.buttonOk.enabled = YES;
+            self.buttonOk.alpha = 1;
+        }
+    }
+    
+    
+
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
@@ -71,9 +95,12 @@
     CGPoint touchPoint = [gestureRecognizer locationInView:self.map];
     CLLocationCoordinate2D touchMapCoordinate = [self.map convertPoint:touchPoint toCoordinateFromView:self.map];
     
-    annotation = [[MyAnnotation alloc] initWithCoordinates:touchMapCoordinate title:@"Job's location"];
-    [self.map addAnnotation:annotation];
-    [self.map setSelectedAnnotations:@[annotation]];
+    MyAnnotation *annotationMap = [[MyAnnotation alloc] initWithCoordinates:touchMapCoordinate title:@"Job's location"];
+    [self.map addAnnotation:annotationMap];
+    [self.map setSelectedAnnotations:@[annotationMap]];
+
+    self.buttonOk.enabled = YES;
+    self.buttonOk.alpha = 1;
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
@@ -96,7 +123,12 @@
 #pragma mark IBActions
 
 - (IBAction)clickedOk:(id)sender {
-    [self.delegate MapViewDelegate_clickedOkWithLocation:annotation];
+    if (self.map.annotations.count > 0) {
+        [self.delegate MapViewDelegate_clickedOkWithLocation:[self.map.annotations firstObject]];
+    }else{
+        [self.map removeAnnotations:self.map.annotations];
+        [self.delegate MapViewDelegate_clickedCancel];
+    }
 }
 
 - (IBAction)clickedCancel:(id)sender {
