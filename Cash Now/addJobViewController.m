@@ -175,7 +175,7 @@
     [self.view addSubview:self.mapViewCustom];
     //*******************************************
     
-    self.pickerDate.minimumDate = [NSDate date];
+    self.pickerDate.minimumDate = [NSDate dateWithTimeIntervalSinceNow:60*60];//in 1h
     self.pickerDate.maximumDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*10];//10 days from now
     self.pickerDate.minuteInterval = 15;
     

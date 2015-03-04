@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GGDraggableView">
             <connections>
+                <outlet property="activityProfile" destination="cy7-18-5NA" id="FNU-Cb-Xrs"/>
+                <outlet property="constraint_TextViewJobDescription_width" destination="CRV-yr-IFC" id="NVH-4q-hfu"/>
                 <outlet property="imageViewPosterImagePP" destination="MSV-Ge-fMG" id="0Ll-np-kpF"/>
                 <outlet property="labelJobDate" destination="yHb-U9-MJa" id="7a7-P9-Qum"/>
                 <outlet property="labelJobHour" destination="FIl-5Y-ABn" id="1vQ-vN-AoC"/>
@@ -31,8 +33,21 @@
                         <constraint firstAttribute="width" constant="95" id="zZE-O0-DGE"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-lC-5F4">
+                    <rect key="frame" x="130" y="293" width="450" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="6Nl-cr-SgW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Profile description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c62-Dw-5ZJ">
-                    <rect key="frame" x="20" y="363" width="560" height="217"/>
+                    <rect key="frame" x="20" y="363" width="560" height="149"/>
+                    <color key="backgroundColor" red="0.98823529409999999" green="0.20392156859999999" blue="0.4549019608" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="149" id="ag7-4E-lyq"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -46,7 +61,9 @@
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Job desc" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvO-85-FjB">
                     <rect key="frame" x="20" y="20" width="560" height="104"/>
+                    <color key="backgroundColor" red="0.43137258290000002" green="0.78039222959999999" blue="0.45882356169999999" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="560" id="CRV-yr-IFC"/>
                         <constraint firstAttribute="height" constant="104" id="w4s-qm-dz0"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,36 +162,41 @@
                         <constraint firstItem="yHb-U9-MJa" firstAttribute="centerX" secondItem="dDW-OI-bge" secondAttribute="centerX" id="x5p-Gi-a4Y"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-lC-5F4">
-                    <rect key="frame" x="130" y="293.5" width="450" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="6Nl-cr-SgW"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cy7-18-5NA">
+                    <rect key="frame" x="282" y="285" width="37" height="37"/>
+                    <color key="color" red="0.1333333333" green="0.32549019610000002" blue="0.47058823529999999" alpha="1" colorSpace="deviceRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="JiK-lC-5F4" firstAttribute="centerY" secondItem="MSV-Ge-fMG" secondAttribute="centerY" id="46Q-9Z-xBf"/>
                 <constraint firstItem="kvO-85-FjB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="5UP-RW-rO6"/>
+                <constraint firstItem="JiK-lC-5F4" firstAttribute="trailing" secondItem="kvO-85-FjB" secondAttribute="trailing" id="6IQ-Io-eMh"/>
                 <constraint firstItem="MSV-Ge-fMG" firstAttribute="top" secondItem="2s0-oZ-paX" secondAttribute="bottom" constant="20" id="7z1-C2-Vv1"/>
+                <constraint firstItem="kvO-85-FjB" firstAttribute="centerX" secondItem="cy7-18-5NA" secondAttribute="centerX" id="9Vp-5l-qY7"/>
                 <constraint firstAttribute="centerX" secondItem="KLo-iZ-fwj" secondAttribute="centerX" id="HNu-82-ib6"/>
-                <constraint firstAttribute="bottom" secondItem="c62-Dw-5ZJ" secondAttribute="bottom" constant="20" id="OiD-yJ-pbB"/>
                 <constraint firstItem="KLo-iZ-fwj" firstAttribute="top" secondItem="2s0-oZ-paX" secondAttribute="bottom" constant="8" id="S1x-Mx-Ez3"/>
                 <constraint firstItem="c62-Dw-5ZJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Sk8-sq-8eW"/>
                 <constraint firstItem="JiK-lC-5F4" firstAttribute="leading" secondItem="MSV-Ge-fMG" secondAttribute="trailing" constant="20" id="T3d-Mh-znn"/>
                 <constraint firstAttribute="centerX" secondItem="2s0-oZ-paX" secondAttribute="centerX" id="Vfu-1w-dIP"/>
-                <constraint firstAttribute="trailing" secondItem="kvO-85-FjB" secondAttribute="trailing" constant="20" id="Zfq-f9-4hF"/>
+                <constraint firstItem="MSV-Ge-fMG" firstAttribute="centerY" secondItem="cy7-18-5NA" secondAttribute="centerY" id="YHF-nJ-Fhw"/>
                 <constraint firstItem="MSV-Ge-fMG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="d8j-vi-ye3"/>
+                <constraint firstItem="kvO-85-FjB" firstAttribute="centerX" secondItem="2s0-oZ-paX" secondAttribute="centerX" id="f3J-Od-oXb"/>
                 <constraint firstItem="c62-Dw-5ZJ" firstAttribute="top" secondItem="MSV-Ge-fMG" secondAttribute="bottom" constant="8" id="gqy-qm-WjD"/>
-                <constraint firstAttribute="trailing" secondItem="c62-Dw-5ZJ" secondAttribute="trailing" constant="20" id="h48-6n-K3X"/>
                 <constraint firstItem="2s0-oZ-paX" firstAttribute="top" secondItem="kvO-85-FjB" secondAttribute="bottom" constant="24" id="hKu-8u-6bA"/>
                 <constraint firstItem="kvO-85-FjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ora-8r-HFa"/>
+                <constraint firstItem="KLo-iZ-fwj" firstAttribute="centerX" secondItem="kvO-85-FjB" secondAttribute="centerX" id="uJZ-Gb-aA9"/>
+                <constraint firstItem="c62-Dw-5ZJ" firstAttribute="width" secondItem="kvO-85-FjB" secondAttribute="width" id="vK2-oe-T5g"/>
                 <constraint firstAttribute="trailing" secondItem="JiK-lC-5F4" secondAttribute="trailing" constant="20" id="wC0-oB-BaA"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Vfu-1w-dIP"/>
+                    <exclude reference="HNu-82-ib6"/>
+                    <exclude reference="wC0-oB-BaA"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="401" y="268"/>
         </view>
     </objects>

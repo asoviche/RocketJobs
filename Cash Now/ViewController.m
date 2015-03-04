@@ -313,7 +313,7 @@
             //we add a view for each job
             GGDraggableView *dragView= [[GGDraggableView alloc] init];
             dragView.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
-            
+            [dragView updateConstraintsInView];
             
             if (numberOfTheJob == 0) {
 //                dragView.frame = CGRectMake((320-280)/2, 80, 280, 463);

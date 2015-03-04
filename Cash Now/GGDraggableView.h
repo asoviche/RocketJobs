@@ -59,5 +59,6 @@
 @property (strong, nonatomic) IBOutlet UIView *viewForJobDetails;
 
 -(void) showPosterProfile;
+-(void) updateConstraintsInView;
 
 @end
