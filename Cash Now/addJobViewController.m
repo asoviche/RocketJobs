@@ -162,9 +162,11 @@
     
     self.buttonCurrentLocation.selected=YES;
     
+    self.JobDesription.text = PLACEHOLDER;
+    self.buttonPost.enabled = NO;
+    
     //mapView ***********************************
     self.mapViewCustom = [[MapView alloc]init];
-
     self.mapViewCustom.frame = CGRectMake(20, 64 + 20, self.view.frame.size.width - 40, self.view.frame.size.height - 64 - 40);
 //    self.mapViewCustom.center = self.view.center;
 
@@ -202,10 +204,10 @@
         self.JobDesription.text = self.jobToModifyDictionary[@"Description"];
         
         //modify other elements !
+        self.buttonPost.enabled = YES;
     }
     
-    self.JobDesription.text = PLACEHOLDER;
-    self.buttonPost.enabled = NO;
+
 
 }
 
@@ -264,8 +266,6 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-    
     
     self.JobDesription.textColor =  UIColorFromRGB(0x225378);
     
